@@ -1,1 +1,11 @@
 // Your custom color SCSS settings go here...
+$background: #002642;
+$accentLight: #E5DADA;
+$accentDark: #02040F;
+$yellow: #E59500;
+$magenta: #840032;
+
+// Override bootstrap styles here. See https://getbootstrap.com/docs/4.0/getting-started/theming/#theme-colors for some pointers
+$primary: $accentDark;
+$danger: $magenta;
+$warning: #ddbc2b;
