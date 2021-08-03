@@ -13,5 +13,8 @@ export default {
       },
       detail(id){
         return client.get('/breweries/'+id);
+      },
+      beer(id){
+        return client.get('/breweries/'+id+'beers');
       }
 }

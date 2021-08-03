@@ -23,6 +23,7 @@ if(currentToken && currentToken != 'undefined') {
 export default new Vuex.Store({
   state: {
     breweries: [],
+    beer: [],
     token: currentToken || '',
     user: currentUser || {} // If a user is an admin, their user.role will be 'admin'
   },
@@ -45,6 +46,9 @@ export default new Vuex.Store({
     },
     LOADED_BREWERIES(state, payload){
       state.breweries = payload;
+    },
+    LOADED_BEER(state, payload){
+      state.beer = payload;
     }
   }
 })
