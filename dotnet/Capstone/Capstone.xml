@@ -36,6 +36,11 @@
             Id represents primary key of database
             </summary>
         </member>
+        <member name="P:Capstone.Models.BreweryDetails.Name">
+            <summary>
+            Id represents primary key of database
+            </summary>
+        </member>
         <member name="T:Capstone.Models.LoginResponse">
             <summary>
             Model to return upon successful login (user data + token)

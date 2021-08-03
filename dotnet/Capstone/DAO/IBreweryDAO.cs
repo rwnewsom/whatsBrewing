@@ -9,5 +9,7 @@ namespace Capstone.DAO
     public interface IBreweryDAO
     {
         List<Brewery> GetBreweries();
+
+        BreweryDetails GetBreweryById(int id);
     }
 }
