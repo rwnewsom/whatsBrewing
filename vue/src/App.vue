@@ -31,8 +31,17 @@
         &nbsp;|&nbsp;Logout
       </router-link>
     </div>
+
+    <div class="main">
+      <router-view />
+    </div>
+
+
+    <div class="ad">
+      
+      <iframe width="224" height="126" src="https://www.youtube.com/embed/gtbgKR2OLBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     
-    <router-view />
   </div>
 </template>
 
@@ -56,17 +65,54 @@ export default {
 html {
   background-color: $background;
   color: $accentLight;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
 }
 
-app {
-   background-color: $background;
+#nav{
+  grid-area: head;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $magenta;
+}
+
+.nav-item{
   color: $accentLight;
-  margin: 0;
-  padding: 0;
+  font-size: 1.5rem;
+}
+
+#app {
+  background-color: $background;
+  color: $accentLight;
+
+  display: grid;
+  grid-template-areas: "head head"
+                       "main ad";
+  grid-template-columns:4fr 1fr;
+  grid-template-rows:   3rem 1fr;
+
+  height: 100vh;
+  width: 100vw;
 
 }
+
+.main{
+  grid-area: main;
+}
+
+
+.ad{
+  grid-area: ad;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ad iframe {
+  padding-top: 1rem;
+}
+
 //override default body & html padding & margin to eliminate scrollbar
 body{
   margin: 0;
