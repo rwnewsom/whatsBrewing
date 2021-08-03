@@ -11,7 +11,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBeers = "SELECT name, style FROM beers";
+        private string sqlListBeers = "SELECT name, style FROM beers WHERE brewery = @id";
         private string sqlBeerDetails = "SELECT name, style, description, ABV, IBU FROM beers WHERE beer_id = @id";
 
         public BeersSqlDAO(string dbConnectionString)
@@ -19,7 +19,7 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public List<Beers> GetBeers()
+        public List<Beers> GetBeers(int id)
         {
             List<Beers> beers = new List<Beers>();
 
@@ -28,7 +28,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlListBeers, conn);
-
+                cmd.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)

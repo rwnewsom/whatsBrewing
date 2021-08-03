@@ -7,19 +7,15 @@
                 <tr>
                     <th>Name</th>
                     <th>Style</th>
-                    <th>Description</th>
-                    <th>ABV</th>
-                    <th>IBU</th>
+                   
                 </tr>
             </thead>
 
             <tbody>
                 <tr v-for="beer of allBeers" v-bind:key="beer.breweryId">
-                    <td>{{beer.Name}}</td>
-                    <td>{{beer.Style}}</td>
-                    <td>{{beer.Description}}</td>
-                    <td>{{beer.ABV}}</td>
-                    <td>{{beer.IBU}}</td>
+                    <td>{{beer.name}}</td>
+                    <td>{{beer.style}}</td>
+                    
                 </tr>
 
             </tbody>
@@ -36,6 +32,8 @@
 import BreweryService from '../services/BreweryService.js'
 export default {
 
+    
+
     computed: {
         allBeers(){
             return this.$store.state.beer;
@@ -44,8 +42,9 @@ export default {
 
     created(){
         console.log('Attempting beer request...');
+        let breweryId = parseInt(this.$route.params.id);
 
-        BreweryService.beer()
+        BreweryService.beer(breweryId)
         .then(result => {
             console.log('Promise Resolved', result);
 

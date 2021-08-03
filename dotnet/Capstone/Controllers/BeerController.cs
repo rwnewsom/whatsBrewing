@@ -19,9 +19,9 @@ namespace Capstone.Controllers
         }
 
         [HttpGet("breweries/{id}/beer")]
-        public ActionResult<List<Beers>> ListBeers()
+        public ActionResult<List<Beers>> ListBeers(int id)
         {
-            return Ok(beersDao.GetBeers());
+            return Ok(beersDao.GetBeers(id));
         }
 
         //[HttpGet("breweries/{id}")]

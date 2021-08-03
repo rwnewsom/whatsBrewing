@@ -8,7 +8,7 @@ namespace Capstone.DAO
 {
     public interface IBeersDAO
     {
-        List<Beers> GetBeers();
+        List<Beers> GetBeers(int id);
 
         BeerDetails GetBeerById(int id);
     }
