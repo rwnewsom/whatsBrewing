@@ -11,4 +11,7 @@ export default {
     list() {
         return client.get('/breweries');
       },
+      detail(id){
+        return client.get('/breweries/'+id);
+      }
 }

@@ -25,7 +25,7 @@ namespace Capstone.Controllers
             return Ok(breweryDao.GetBreweries());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("breweries/{id}")]
         public ActionResult<BreweryDetails> GetBreweryById(int id)
         {
             BreweryDetails breweryDetails = breweryDao.GetBreweryById(id);

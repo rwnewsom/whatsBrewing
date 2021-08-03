@@ -17,7 +17,10 @@
               {{brewery.id}}
           </td>
           <td>
+            <router-link v-bind:to="{name: 'breweryDetails', params: {id: brewery.id}}">
               {{brewery.name}}
+              </router-link>
+              
           </td>
           <td>
             {{brewery.description}}
@@ -101,10 +104,17 @@ table td, table th {
 table tbody td {
   font-size: 13px;
 }
+
+tr:nth-child(odd) a{
+  color: whitesmoke;
+}
+
 table tr:nth-child(even) {
   background: $accentLight;
   color: $accentDark;
 }
+
+
 table thead {
   background: $accentDark;
   color: $accentLight;
