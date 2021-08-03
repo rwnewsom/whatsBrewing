@@ -8,6 +8,12 @@
         <i class="fas fa-home"></i> <!-- This is a font awesome icon -->
         Home 
       </router-link>
+
+      <router-link class="nav-item" v-bind:to="{ name: 'breweries' }">
+        <i class="fas fa-beer"></i> <!-- This is a font awesome icon -->
+        All Breweries 
+      </router-link>
+
       <router-link
         class="nav-item"
         v-bind:to="{ name: 'register' }"
@@ -46,5 +52,25 @@ export default {
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 // Your custom styles go below this point
+
+html {
+  background-color: $background;
+  color: $accentLight;
+  margin: 0;
+  padding: 0;
+}
+
+app {
+   background-color: $background;
+  color: $accentLight;
+  margin: 0;
+  padding: 0;
+
+}
+//override default body & html padding & margin to eliminate scrollbar
+body{
+  margin: 0;
+  padding: 0;
+}
 
 </style>

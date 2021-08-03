@@ -42,6 +42,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    LOADED_BREWERIES(state, payload){
+      state.breweries = payload;
     }
   }
 })

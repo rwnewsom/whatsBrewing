@@ -1,4 +1,4 @@
-<template>
+/* <template> *_*_*_ VESTIGIAL *_*_*_
   <div class="brewery">
     <table>
       <thead>
@@ -9,7 +9,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id">
+        <!-- Changed to computed property, of as opposed to in -->
+        <tr v-for="brewery of allBreweries" v-bind:key="brewery.id">
           <td width="80%">
               {{brewery.id}}
           </td>
@@ -27,14 +28,25 @@
 
 <script>
 import BreweryService from "../services/BreweryService.js";
+//adding this
 export default {
-    name: "brewery",
-    methods: {
-        getBrewery
+    computed: {
+      allBreweries(){
+        return this.$store.state.breweries;
+      }
+    },
+
+    created() {
+      BreweryService.list()
+      .then(result => {
+        if(result.status === 200) {
+          this.$store.commit('LOADED_BREWERIES', result.data);
+        }
+      } );
     }
 }
 </script>
 
 <style>
 
-</style>
+</style> */
