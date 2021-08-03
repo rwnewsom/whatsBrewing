@@ -1,7 +1,6 @@
 <template>
-  <div>
-      <!-- <h1>BreweryList</h1>
-      <brewery /> -->
+  <div class ="brew-display">
+     
        <div class="brewery">
     <table>
       <thead>
@@ -26,13 +25,16 @@
         </tr>
       </tbody>
     </table>
+    </div>
+  <div class = "filt">
+    <p>filter</p>
   </div>
   </div>
 </template>
 
 <script>
 import BreweryService from '../services/BreweryService.js'
-// import BreweryService from '../services/BreweryService';
+
 export default {
 
   computed: {
@@ -55,27 +57,7 @@ export default {
         }
       } );
     }
-  /* components: {  },
-    name: "brewery",
-    data() {
-    return {
-      brewery: {
-        id: '',
-        name: '',
-        description: '',
-      },
-    },
-    
-  }, */
-    /* methods: {
-        listBreweries() {
-            BreweryService.list(
-                //.then(response => {
-                   // this.$store
-                //})
-            )
-        }
-    } */
+ 
 }
 </script>
 
@@ -84,7 +66,19 @@ export default {
 
 @import '../styles/colors.scss';
 
+.brew-display{
+  display: grid;
+    grid-template-areas: "filt main";                       
+    grid-template-columns: 1fr 4fr;
+}
+
+.filt{
+  grid-area: filt;
+  vertical-align: text-top;
+}
+
 table {
+    grid-area: main;
     width: 100%;
 }
 
@@ -95,6 +89,7 @@ table thead th {
 
 
 table {
+  margin-top: 1rem;
   border: 1px solid $accentLight;
   width: 100%;
   border-collapse: collapse;
@@ -108,6 +103,7 @@ table tbody td {
 }
 table tr:nth-child(even) {
   background: $accentLight;
+  color: $accentDark;
 }
 table thead {
   background: $accentDark;

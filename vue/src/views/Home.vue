@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h1>Sip Stalker</h1>
-    <p>Find your obsession.</p>
+    <h1>Vagrant Tippler</h1>
+    <h3>Not all who wander are lost.</h3>
     <img src="../assets/proriat-hospitality-unsplash.jpg" />
   </div>
 </template>
