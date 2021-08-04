@@ -41,6 +41,7 @@ CREATE TABLE address (
 	phone_number varchar(20) NOT NULL,
 	brewery int NOT NULL,
 	url nvarchar(100) NOT NULL,
+	map_url nvarchar(200) NULL,
 	CONSTRAINT PK_address PRIMARY KEY (address_id),
 	FOREIGN KEY (brewery) REFERENCES breweries(brewery_id)
 );
@@ -100,11 +101,11 @@ INSERT INTO breweries (brewery_name, brewery_description) VALUES ('East End Brew
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('Burgh''ers Brewing Lawrenceville', 'Upbeat spot offering build-your-own burgers & other locally sourced fare, plus shakes & sodas.');
 
 
-INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Columbus', '1175', 'N High St', 'OH', '43201', '(614) 908-3053', '1', 'https://www.brewdog.com/usa/bars/usa/brewdog-short-north')
-INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Columbus', '1101', 'N 4th St', 'OH', '43201', '(614) 421-2337', '2', 'https://www.seventhsonbrewing.com/')
-INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Columbus', '215', 'N 4th St', 'OH', '43215', '(614) 429-3936', '3', 'https://www.wolfsridgebrewing.com/')
-INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Columbus', '2555', 'Harrison Rd', 'OH', '43204', '(614) 224-3626', '4', 'https://columbusbrewing.com/')
-INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Columbus', '467', 'N High St', 'OH', '43215', '(614) 228-2537', '5', 'https://www.barleysbrewing.com/')
+INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url, map_url) VALUES ('Columbus', '1175', 'N High St', 'OH', '43201', '(614) 908-3053', '1', 'https://www.brewdog.com/usa/bars/usa/brewdog-short-north', 'https://maps.google.com/maps?q=1175%20N%20High%20St%20Coulmbus%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed')
+INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url, map_url) VALUES ('Columbus', '1101', 'N 4th St', 'OH', '43201', '(614) 421-2337', '2', 'https://www.seventhsonbrewing.com/', 'https://maps.google.com/maps?q=1101%20N%204th%20St%20Columbus%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed')
+INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url, map_url) VALUES ('Columbus', '215', 'N 4th St', 'OH', '43215', '(614) 429-3936', '3', 'https://www.wolfsridgebrewing.com/', 'https://maps.google.com/maps?q=215%20N%204th%20St%20Columbus%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed')
+INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url, map_url) VALUES ('Columbus', '2555', 'Harrison Rd', 'OH', '43204', '(614) 224-3626', '4', 'https://columbusbrewing.com/', 'https://maps.google.com/maps?q=2555%20Harrison%20Rd%20Columbus%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed')
+INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url, map_url) VALUES ('Columbus', '467', 'N High St', 'OH', '43215', '(614) 228-2537', '5', 'https://www.barleysbrewing.com/', 'https://maps.google.com/maps?q=467%20N%20High%20St%20Columbus%20OH&t=&z=13&ie=UTF8&iwloc=&output=embed')
 
 INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Cincinnati', '1910', 'Elm St', 'OH', '45202', '(513) 381-1367', '6', 'https://rhinegeist.com/')
 INSERT INTO address (city_name, street_number, street_name, state, zip_code, phone_number, brewery, url) VALUES ('Cincinnati', '3301', 'Madison Rd', 'OH', '45209', '(513) 836-8733', '7', 'https://www.madtreebrewing.com/')
