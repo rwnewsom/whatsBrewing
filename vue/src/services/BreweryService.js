@@ -17,5 +17,8 @@ export default {
       beer(id){
         //https://localhost:44315/Beer/breweries/1/beer
         return client.get('Beer/breweries/'+id+'/beer');
+      },
+      beerDetails(id, beerId){ //TODO: input URL
+        return client.get('Beer/breweries/'+id+'/beer/'+beerId);
       }
 }
