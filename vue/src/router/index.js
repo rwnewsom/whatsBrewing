@@ -7,6 +7,7 @@ import Register from "../views/Register.vue";
 import store from "../store/index";
 import DisplayBreweries from "../views/DisplayBreweries.vue";
 import BreweryDetails from "../views/BreweryDetails.vue";
+import BeerDetails from "../views/BeerDetails.vue";
 
 Vue.use(Router);
 
@@ -68,6 +69,11 @@ const router = new Router({
       path: "/breweries/:id",
       name: "breweryDetails",
       component: BreweryDetails
+    },
+    {
+      path: "/Beer/breweries/:id/beer/:beerId",
+      name: "beerDetails",
+      component: BeerDetails
     }
   ],
 });

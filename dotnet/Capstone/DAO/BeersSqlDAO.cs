@@ -12,7 +12,7 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private string sqlListBeers = "SELECT name, style FROM beers WHERE brewery = @id";
-        private string sqlBeerDetails = "SELECT name, style, description, ABV, IBU FROM beers WHERE beer_id = @id";
+        private string sqlBeerDetails = "SELECT name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
 
         public BeersSqlDAO(string dbConnectionString)
         {
@@ -43,7 +43,7 @@ namespace Capstone.DAO
             return beers;
         }
 
-        public BeerDetails GetBeerById(int id)
+        public BeerDetails GetBeerById(int id, int beerId)
         {
             BeerDetails beerDetails = new BeerDetails();
 
@@ -51,6 +51,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlBeerDetails, conn);
+                cmd.Parameters.AddWithValue("@beerId", beerId);
                 cmd.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -62,7 +63,10 @@ namespace Capstone.DAO
                         beerDetails.Style = Convert.ToString(reader["style"]);
                         beerDetails.Description = Convert.ToString(reader["description"]);
                         beerDetails.ABV = Convert.ToDecimal(reader["ABV"]);
+                        if (reader["IBU"] != DBNull.Value)
+                        {
                         beerDetails.IBU = Convert.ToInt32(reader["IBU"]);
+                        }
 
                     }
 

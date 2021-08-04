@@ -10,6 +10,6 @@ namespace Capstone.DAO
     {
         List<Beers> GetBeers(int id);
 
-        BeerDetails GetBeerById(int id);
+        BeerDetails GetBeerById(int id, int beerId);
     }
 }

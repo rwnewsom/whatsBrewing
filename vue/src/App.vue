@@ -130,6 +130,10 @@ body {
   align-items: center;
 }
 
+#nav router-link {
+  align-content: center;
+}
+
 #nav-spacer {
   grid-area: spacer;
   width: 100%;

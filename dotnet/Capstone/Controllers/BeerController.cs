@@ -24,16 +24,16 @@ namespace Capstone.Controllers
             return Ok(beersDao.GetBeers(id));
         }
 
-        //[HttpGet("breweries/{id}")]
-        //public ActionResult<BreweryDetails> GetBreweryById(int id)
-        //{
-        //    BreweryDetails breweryDetails = breweryDao.GetBreweryById(id);
+        [HttpGet("breweries/{id}/beer/{beerId}")]
+        public ActionResult<BeerDetails> GetBeerById(int id, int beerId)
+        {
+            BeerDetails beerDetails = beersDao.GetBeerById(id, beerId);
 
-        //    if (breweryDetails == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(breweryDetails);
-        //}
+            if (beerDetails == null)
+            {
+                return NotFound();
+            }
+            return Ok(beerDetails);
+        }
     }
 }
