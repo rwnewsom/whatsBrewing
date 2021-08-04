@@ -11,6 +11,7 @@ namespace Capstone.Models
         public int BeerId { get; set; }
         public string Name { get; set; }
         public string Style { get; set; }
+        public string BreweryName { get; set; }
 
     }
 }

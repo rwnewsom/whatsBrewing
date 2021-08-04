@@ -18,6 +18,12 @@ namespace Capstone.Controllers
             this.beersDao = beersDao;
         }
 
+        [HttpGet("/beer")]
+        public ActionResult<List<Beers>> GetAllBeers()
+        {
+            return Ok(beersDao.DisplayAllBeers());
+        }
+
         [HttpGet("breweries/{id}/beer")]
         public ActionResult<List<Beers>> ListBeers(int id)
         {
