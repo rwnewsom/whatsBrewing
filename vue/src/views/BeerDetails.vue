@@ -2,12 +2,12 @@
   <div>
       <h1> The Deets </h1>
       <!-- if not working check case -->
-      <h2>{{currentBeer.Name}}</h2>
-      <h3>{{currentBeer.Style}}</h3>
-      <h4>{{currentBeer.Description}}</h4>
-      <h3>ABV: {{currentBeer.ABV}}</h3>
-      <h3 v-if="currentBeer.IBU">IBU: {{currentBeer.ABV}}</h3>
-      <h3 v-if="!currentBeer.IBU">IBU: Not Listed</h3>
+      <h2>{{currentBeer.name}}</h2>
+      <h3>{{currentBeer.style}}</h3>
+      <h4>{{currentBeer.description}}</h4>
+      <h3>ABV: {{currentBeer.abv}}</h3>
+      <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ABV}}</h3>
+      <h3 v-if="!currentBeer.ibu">IBU: Not Listed</h3>
   </div>
 </template>
 
