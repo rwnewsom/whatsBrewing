@@ -11,7 +11,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBeers = "SELECT name, style FROM beers WHERE brewery = @id";
+        private string sqlListBeers = "SELECT beer_id, name, style FROM beers WHERE brewery = @id";
         private string sqlBeerDetails = "SELECT beer_id, name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
 
         public BeersSqlDAO(string dbConnectionString)
