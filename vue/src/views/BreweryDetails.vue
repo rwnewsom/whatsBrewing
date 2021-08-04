@@ -9,7 +9,10 @@
             <p>{{currentBrewery.url}}</p>
         </div>
 
+        
+
         <div class="beerDeets">
+            <h4>Current Beers</h4>
         <beer-list />
         </div>
     </div>
