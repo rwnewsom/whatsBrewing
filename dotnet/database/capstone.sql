@@ -69,7 +69,7 @@ CREATE TABLE beers (
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
-INSERT INTO breweries (brewery_name, brewery_description) VALUES ('BrewDog', 'No-nonsense chain bar specialising in the Scottish brewery''s craft beers, with regular guest brews.');
+INSERT INTO breweries (brewery_name, brewery_description) VALUES ('BrewDog', 'No-nonsense chain bar specializing in the Scottish brewery''s craft beers, with regular guest brews.');
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('Seventh Son Brewing Co.', 'Brewery specializing in ales & IPAs with a bright, rustic tasting room & visiting food trucks.');
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('Wolf''s Ridge Brewing', 'This brewery offers free Saturday tours plus an elevated American eatery with a sizable beer menu.');
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('Columbus Brewing Company', 'Columbus Brewing Company is an independent craft brewery dedicated to exploring the flavors of American hops. Best known for Columbus IPA and Bodhi, we also enjoy the subtleties of German-style lagers, the intense characteristics of barrel aged beers and everything in between. We have designed and built our new brewery to make more beer, but also to allow us to explore new frontiers.');
