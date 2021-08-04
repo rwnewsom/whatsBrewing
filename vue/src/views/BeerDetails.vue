@@ -6,7 +6,7 @@
       <h3>{{currentBeer.style}}</h3>
       <h4>{{currentBeer.description}}</h4>
       <h3>ABV: {{currentBeer.abv}}</h3>
-      <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ABV}}</h3>
+      <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ibu}}</h3>
       <h3 v-if="!currentBeer.ibu">IBU: Not Listed</h3>
   </div>
 </template>

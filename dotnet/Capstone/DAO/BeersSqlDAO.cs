@@ -11,7 +11,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBeers = "SELECT beer_id, name, style FROM beers WHERE brewery = @id";
+        private string sqlListBeers = "SELECT beer_id, name, style, brewery FROM beers WHERE brewery = @id";
         private string sqlBeerDetails = "SELECT beer_id, brewery, name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
 
         public BeersSqlDAO(string dbConnectionString)
@@ -86,6 +86,8 @@ namespace Capstone.DAO
             {
                 Name = Convert.ToString(reader["name"]),
                 Style = Convert.ToString(reader["style"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
+                BreweryId = Convert.ToInt32(reader["brewery"]),
             };
 
             return beers;
