@@ -11,8 +11,10 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBeers = "SELECT beer_id, name, style FROM beers WHERE brewery = @id";
+        private string sqlListBeers = "SELECT beer_id, name, style, brewery FROM beers WHERE brewery = @id";
         private string sqlBeerDetails = "SELECT beer_id, brewery, name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
+        private string sqlDisplayAllBeers = "SELECT beers.beer_id, beers.name, beers.style, breweries.brewery_name, breweries.brewery_id FROM beers JOIN breweries ON beers.brewery = breweries.brewery_id";
+        
 
         public BeersSqlDAO(string dbConnectionString)
         {
@@ -37,6 +39,29 @@ namespace Capstone.DAO
                     {
                         Beers beer = GetBeersFromReader(reader);
                         beers.Add(beer);
+                    }
+                }
+            }
+            return beers;
+        }
+
+        public List<Beers> DisplayAllBeers()
+        {
+            List<Beers> beers = new List<Beers>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlDisplayAllBeers, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Beers beerToDisplay = GetAllBeersFromReader(reader);
+                        beers.Add(beerToDisplay);
                     }
                 }
             }
@@ -86,8 +111,22 @@ namespace Capstone.DAO
             {
                 Name = Convert.ToString(reader["name"]),
                 Style = Convert.ToString(reader["style"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
+                BreweryId = Convert.ToInt32(reader["brewery"]),
             };
+            return beers;
+        }
 
+        private Beers GetAllBeersFromReader(SqlDataReader reader)
+        {
+            Beers beers = new Beers()
+            {
+                Name = Convert.ToString(reader["name"]),
+                Style = Convert.ToString(reader["style"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
+                BreweryName = Convert.ToString(reader["brewery_name"]),
+                BreweryId = Convert.ToInt32(reader["brewery_id"])
+            };
             return beers;
         }
     }

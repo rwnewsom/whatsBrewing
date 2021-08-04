@@ -12,8 +12,8 @@
             </thead>
 
             <tbody>
-                <tr v-for="beer of allBeers" v-bind:key="beer.breweryId">
-                    <td>{{beer.name}}</td>
+                <tr v-for="beer of allBeers" v-bind:key="beer.beerId">
+                    <td> <router-link v-bind:to="{name:'beerDetails', params: {id: beer.breweryId, beerId: beer.beerId}}"> {{beer.name}} </router-link></td>
                     <td>{{beer.style}}</td>
                     
                 </tr>
@@ -38,6 +38,7 @@ export default {
         allBeers(){
             return this.$store.state.beer;
         }
+        
     },
 
     created(){
@@ -58,5 +59,9 @@ export default {
 </script>
 
 <style>
+
+a{
+    color: #E5DADA
+}
 
 </style>

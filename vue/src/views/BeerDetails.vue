@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="beerDeets">
       <h1> The Deets </h1>
       <!-- if not working check case -->
       <h2>{{currentBeer.name}}</h2>
       <h3>{{currentBeer.style}}</h3>
       <h4>{{currentBeer.description}}</h4>
       <h3>ABV: {{currentBeer.abv}}</h3>
-      <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ABV}}</h3>
+      <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ibu}}</h3>
       <h3 v-if="!currentBeer.ibu">IBU: Not Listed</h3>
   </div>
 </template>
@@ -38,5 +38,9 @@ export default {
 </script>
 
 <style>
+
+.beerDeets{
+    padding-left: 2rem;
+}
 
 </style>
