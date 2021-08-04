@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="beerDeets">
       <h1> The Deets </h1>
       <!-- if not working check case -->
       <h2>{{currentBeer.name}}</h2>
@@ -38,5 +38,9 @@ export default {
 </script>
 
 <style>
+
+.beerDeets{
+    padding-left: 2rem;
+}
 
 </style>

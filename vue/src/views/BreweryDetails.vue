@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <div class="beerDeets">
             <h1>{{currentBrewery.name}}</h1>
             <h2>{{currentBrewery.description}}</h2>
             <p>{{currentBrewery.streetNumber}} {{currentBrewery.streetName}}</p>
@@ -8,7 +8,10 @@
             <p>{{currentBrewery.phoneNumber}}</p>
             <p>{{currentBrewery.url}}</p>
         </div>
+
+        <div class="beerDeets">
         <beer-list />
+        </div>
     </div>
 
 </template>
@@ -43,5 +46,9 @@ export default {
 </script>
 
 <style>
+
+.beerDeets{
+    padding-left: 2rem;
+}
 
 </style>

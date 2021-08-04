@@ -5,35 +5,35 @@
   <div id="app">
     <!-- If you start to get random styling you don't like, remove container from this div -->
     <div id="nav">
-      <div id="nav-spacer" />
-        <router-link class="nav-item home" v-bind:to="{ name: 'home' }">
+      
+        <router-link class="nav-item" v-bind:to="{ name: 'home' }">
           <i class="fas fa-home"></i>
           <!-- This is a font awesome icon -->
           Home
         </router-link>
 
-        <router-link class="nav-item breweries" v-bind:to="{ name: 'breweries' }">
+        <router-link class="nav-item" v-bind:to="{ name: 'breweries' }">
           <i class="fas fa-beer"></i>
           <!-- This is a font awesome icon -->
           All Breweries
         </router-link>
 
         <router-link
-          class="nav-item register"
+          class="nav-item"
           v-bind:to="{ name: 'register' }"
           v-if="!$store.state.token"
         >
           Register
         </router-link>
         <router-link
-          class="nav-item login"
+          class="nav-item"
           v-bind:to="{ name: 'login' }"
           v-if="!$store.state.token"
         >
           Login
         </router-link>
         <router-link
-          class="nav-item login"
+          class="nav-item"
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token"
         >
@@ -46,15 +46,7 @@
     </div>
 
     <div class="ad">
-      <iframe
-        width="224"
-        height="126"
-        src="https://www.youtube.com/embed/gtbgKR2OLBc"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <p> Your Ad Here </p>
     </div>
   </div>
 </template>
@@ -89,7 +81,7 @@ html {
     "head head"
     "main ad";
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 10rem 1fr;
+  grid-template-rows: 5rem 1fr;
 
   height: 100vh;
   width: 100vw;
@@ -103,12 +95,13 @@ html {
   grid-area: ad;
   display: flex;
   justify-content: space-around;
-  background-color: $babypowder;
+  background-color: $accentLight;
+  color: $accentDark;
+  border: 1px solid $accentDark;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $accentLight);
 }
 
-.ad iframe {
-  padding-top: 1rem;
-}
+
 
 //override default body & html padding & margin to eliminate scrollbar
 body {
@@ -118,38 +111,42 @@ body {
 
 #nav {
   grid-area: head;
-  display: grid;
+/*   display: grid;
   grid-template-areas:
     "spacer spacer spacer spacer"
     "home breweries register login";
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr 1fr; */
 
   width: 100%;
-  text-align: center; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
+  background-color: $magenta;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $accentLight);
 }
 
-#nav router-link {
-  align-content: center;
-}
 
-#nav-spacer {
+
+/* #nav-spacer {
   grid-area: spacer;
   width: 100%;
   height: 100%;
   background-color: #E71D36;
-}
+} */
 
-.nav-item {
-  background-color: #2ec4b6;
+ a .nav-item {
+  // background-color: #2ec4b6;
   color: $accentLight;
   font-size: 1.5rem;
   height: 100%;
   text-transform: uppercase;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.home {
+/* .home {
   grid-area: home;
 }
 
@@ -163,5 +160,5 @@ body {
 
 .login {
   grid-area: login;
-}
+} */
 </style>
