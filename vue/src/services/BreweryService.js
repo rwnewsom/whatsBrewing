@@ -20,5 +20,8 @@ export default {
       },
       beerDetails(id, beerId){ //TODO: input URL http://localhost:8080/breweries/7/beer/55
         return client.get('Beer/breweries/'+id+'/beer/'+beerId);
+      },
+      listAllBeers(){
+        return client.get('Beer/');
       }
 }

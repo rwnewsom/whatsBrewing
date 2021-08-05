@@ -1,8 +1,9 @@
 <template>
     <div class="review-container">
-        <h4>This beer has an average rating of {{averageRating}} </h4>
+        <h4 v-if="numberOfReviews >= 1">This beer has an average rating of {{averageRating}} </h4>
+        <h4 v-else>This beer has no reviews.</h4>
         
-        <h4>There are {{numberOfReviews}} reviews for this beer:</h4>
+        <h4 v-if="numberOfReviews >= 1">There are {{numberOfReviews}} reviews for this beer:</h4>
     <review-card v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
   </div> 
   
