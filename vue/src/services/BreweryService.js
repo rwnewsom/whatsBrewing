@@ -23,5 +23,8 @@ export default {
       },
       listAllBeers(){
         return client.get('Beer/');
+      },
+      submitReview(review){
+        return client.push('Beer/breweries/', review);
       }
 }

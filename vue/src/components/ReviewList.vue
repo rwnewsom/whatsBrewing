@@ -1,5 +1,6 @@
 <template>
     <div class="review-container">
+        <add-review-form />
         <h4 v-if="numberOfReviews >= 1">This beer has an average rating of {{averageRating}} </h4>
         <h4 v-else>This beer has no reviews.</h4>
         
@@ -11,11 +12,14 @@
 
 <script>
 import ReviewCard from '../components/ReviewCard.vue';
-import ReviewService from '../services/ReviewService.js'
+import ReviewService from '../services/ReviewService.js';
+import AddReviewForm from '../components/AddReviewForm.vue';
+
 export default {
     name: 'review-list',
     components: {
-        ReviewCard
+        ReviewCard,
+        AddReviewForm
     },
      computed: {
         allReviews(){

@@ -27,7 +27,8 @@ export default new Vuex.Store({
     beerDetails:[],
     reviews:[],
     token: currentToken || '',
-    user: currentUser || {} // If a user is an admin, their user.role will be 'admin'
+    user: currentUser || {}, // If a user is an admin, their user.role will be 'admin'
+    isAddFormVisible: false,
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -57,6 +58,9 @@ export default new Vuex.Store({
     },
     LOADED_REVIEWS(state, payload){
       state.reviews = payload;
-    }
+    },
+    TOGGLE_ADD_FORM_VISIBLE(state){
+      state.isAddFormVisible = !state.isAddFormVisible;
+    },
   }
 })
