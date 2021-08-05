@@ -14,20 +14,17 @@ namespace Capstone.Models
         
         public string Name { get; set; }
         public string Description { get; set; }
-
         public int StreetNumber { get; set; }
-
         public string StreetName { get; set; }
-
         public string CityName { get; set; }
-
         public string State { get; set; }
-
         public int ZipCode { get; set; }
-
         public string PhoneNumber { get; set; }
-
         public string Url { get; set; }
+        /// <summary>
+        /// From the Google Maps HTML Generator, code that would be within src=""
+        /// </summary>
+        public string? MapUrl { get; set; }
 
     }
 }

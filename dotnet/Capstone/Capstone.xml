@@ -41,6 +41,11 @@
             Id represents primary key of database
             </summary>
         </member>
+        <member name="P:Capstone.Models.BreweryDetails.MapUrl">
+            <summary>
+            From the Google Maps HTML Generator, code that would be within src=""
+            </summary>
+        </member>
         <member name="T:Capstone.Models.LoginResponse">
             <summary>
             Model to return upon successful login (user data + token)
@@ -59,6 +64,16 @@
         <member name="T:Capstone.Models.ReturnUser">
             <summary>
             Model of user data to return upon successful login
+            </summary>
+        </member>
+        <member name="P:Capstone.Models.Review.ReviewId">
+            <summary>
+            Primary key of SQL
+            </summary>
+        </member>
+        <member name="P:Capstone.Models.Review.BeerId">
+            <summary>
+            Foreign Key representing Beers table
             </summary>
         </member>
         <member name="T:Capstone.Security.IPasswordHasher">
