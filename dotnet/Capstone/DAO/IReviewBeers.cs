@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    interface IReviewBeer
+    public interface IReviewBeer
     {
+        //maybe take in beer id as a param later
+        ReviewBeers AddBeerReview(ReviewBeers review);
     }
 }
