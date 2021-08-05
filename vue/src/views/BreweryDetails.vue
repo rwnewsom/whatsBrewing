@@ -1,20 +1,20 @@
 <template>
-    <div>
-        <div class="beerDeets">
-            <h1>{{currentBrewery.name}}</h1>
-            <h2>{{currentBrewery.description}}</h2>
-            <p>{{currentBrewery.streetNumber}} {{currentBrewery.streetName}}</p>
-            <p>{{currentBrewery.cityName}}, {{currentBrewery.state}} {{currentBrewery.zipCode}}</p>
-            <p>{{currentBrewery.phoneNumber}}</p>
-            <p>{{currentBrewery.url}}</p>
+    <div id="brewery-details">
+        <div class="brewery">
+            <div class="beerDeets">
+                <h1>{{currentBrewery.name}}</h1>
+                <h2>{{currentBrewery.description}}</h2>
+                <p>{{currentBrewery.streetNumber}} {{currentBrewery.streetName}}</p>
+                <p>{{currentBrewery.cityName}}, {{currentBrewery.state}} {{currentBrewery.zipCode}}</p>
+                <p>{{currentBrewery.phoneNumber}}</p>
+                <p>{{currentBrewery.url}}</p>
+            </div>
+            <div class="beerDeets">
+                <h4>Current Beers</h4>
+                <beer-list />
+            </div>
         </div>
-
-        
-
-        <div class="beerDeets">
-            <h4>Current Beers</h4>
-        <beer-list />
-        </div>
+        <Ad />
     </div>
 
 </template>
@@ -22,10 +22,12 @@
 <script>
 import BreweryService from '../services/BreweryService.js'
 import BeerList from '../components/BeerList.vue'
+import Ad from "../components/Ad.vue";
 
 export default {
     components: {
         BeerList,
+        Ad
     },
     computed: {
         currentBrewery(){
@@ -52,6 +54,17 @@ export default {
 
 .beerDeets{
     padding-left: 2rem;
+}
+
+#brewery-details {
+    display: grid;
+    grid-template-areas: "details ad";
+    grid-template-columns: 4fr 1fr;
+    height: 100%;
+}
+
+.brewery {
+    grid-area: details;
 }
 
 </style>

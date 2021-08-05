@@ -11,14 +11,16 @@
         </div>
       </div>
     </div>
-    <div class = "filt">
+    <div class="filt">
       <p>filter</p>
     </div>
+    <Ad />
   </div>
 </template>
 
 <script>
 import BreweryService from "../services/BreweryService.js";
+import Ad from "../components/Ad.vue";
 
 export default {
   computed: {
@@ -26,6 +28,10 @@ export default {
       return this.$store.state.breweries;
     },
   },
+
+  components: {
+        Ad,
+    },
 
   created() {
     console.log("Attempting brewery request..."); //this is the last loggged message
@@ -47,8 +53,8 @@ export default {
 
 .brew-display {
   display: grid;
-  grid-template-areas: "filt main";
-  grid-template-columns: 1fr 4fr;
+  grid-template-areas: "filt main ad";
+  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .filt {
@@ -57,7 +63,7 @@ export default {
   background-color: $babypowder;
 }
 
-.brewery-card {
+.brewery-card, .brewery-card > a {
   color: #011627;
   background: $babypowder;
   text-align: center;
@@ -96,4 +102,5 @@ export default {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
+
 </style>

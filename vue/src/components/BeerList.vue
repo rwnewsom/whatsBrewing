@@ -7,25 +7,17 @@
                 <tr>
                     <th>Name</th>
                     <th>Style</th>
-                   
                 </tr>
             </thead>
-
             <tbody>
                 <tr v-for="beer of allBeers" v-bind:key="beer.beerId">
-                    <td> <router-link v-bind:to="{name:'beerDetails', params: {id: beer.breweryId, beerId: beer.beerId}}"> {{beer.name}} </router-link></td>
+                    <td> <router-link class="beerlink" v-bind:to="{name:'beerDetails', params: {id: beer.breweryId, beerId: beer.beerId}}"> {{beer.name}} </router-link></td>
                     <td>{{beer.style}}</td>
-                    
                 </tr>
-
             </tbody>
-
-
         </table>
     </div>
-
 </div>
-  
 </template>
 
 <script>
@@ -60,7 +52,7 @@ export default {
 
 <style>
 
-a{
+.beerlink{
     color: #E5DADA
 }
 
