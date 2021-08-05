@@ -9,5 +9,7 @@ namespace Capstone.DAO
     public interface IReviewDAO
     {
         List<Review> GetReviews(int Beer);
+
+        bool AddBeerReview(ReviewBeers review);
     }
 }

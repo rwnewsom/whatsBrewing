@@ -41,6 +41,30 @@ namespace Capstone.DAO
             return reviews;
         }
 
+        public bool AddBeerReview(ReviewBeers review)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO beer_reviews (reviewer_name, beer, reviewer_rating, review_description, review_date) VALUES (@name, @beer, @rating, @description, @date)", conn);
+                    cmd.Parameters.AddWithValue("@name", review.Name);
+                    cmd.Parameters.AddWithValue("@beer", review.BeerId);
+                    cmd.Parameters.AddWithValue("@rating", review.Rating);
+                    cmd.Parameters.AddWithValue("@description", review.Description);
+                    cmd.Parameters.AddWithValue("@date", DateTime.Now);
+                    int added = cmd.ExecuteNonQuery();
+                    return added == 1;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return false;
+            }
+        }
+
         private Review GetAllReviewsFromReader(SqlDataReader reader)
         {
             Review review = new Review()
