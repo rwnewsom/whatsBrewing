@@ -4,6 +4,7 @@
         <h1> Beer: The Devil is in the Details.... </h1>
         <!-- if not working check case -->
         <h2>Name: {{currentBeer.name}}</h2>
+        <h3>Brewery: {{ currentBrewery.name }}</h3>
         <h3>Style: {{currentBeer.style}}</h3>
         <h4>Description: {{currentBeer.description}}</h4>
         <h3>ABV: {{currentBeer.abv}}</h3>
@@ -27,6 +28,9 @@ export default {
     computed: {
         currentBeer(){
             return this.$store.state.beerDetails;
+        },
+        currentBrewery(){
+            return this.$store.state.breweries;
         }
     },
       components: {
@@ -44,6 +48,17 @@ export default {
             console.log('Promise resolved.', result);
             if(result.status === 200){
                 this.$store.commit('LOADED_BEER_DETAILS', result.data);
+            }
+        }),
+        console.log('Requesting brewery details.');
+
+        let currentBreweryId = parseInt(this.$route.params.id);
+
+        BreweryService.breweries(currentBreweryId)
+        .then(result => {
+            console.log('Promise resolved.', result);
+            if(result.status === 200){
+                this.$store.commit('LOADED_BREWERIES', result.data);
             }
         });
     }
