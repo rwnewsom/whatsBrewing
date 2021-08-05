@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Capstone.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    interface IReviewBeer
+    public interface IReviewBeer
     {
+        //maybe take in beer id as a param later
+        ReviewBeers AddBeerReview(ReviewBeers review);
     }
 }

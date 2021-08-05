@@ -30,7 +30,7 @@ namespace Capstone.Controllers
         public ActionResult AddBeerReview(string name, int rating, string description, DateTime date)
         {
             ActionResult result;
-            ReviewBeers review = reviewBeersDAO.AddBeerReview(name.);
+            ReviewBeers review = reviewBeersDAO.AddBeerReview();
         }
 
 
