@@ -9,6 +9,10 @@
         <h3>ABV: {{currentBeer.abv}}</h3>
         <h3 v-if="currentBeer.ibu">IBU: {{currentBeer.ibu}}</h3>
         <h3 v-if="!currentBeer.ibu">IBU: Not Listed</h3>
+         <div class="ReviewDetails">
+                <review-list />
+
+        </div>
       </div>
   <Ad />    
   </div>
@@ -17,6 +21,7 @@
 <script>
 import BreweryService from '../services/BreweryService.js'
 import Ad from "../components/Ad.vue";
+import ReviewList from '../components/ReviewList.vue';
 
 export default {
     computed: {
@@ -26,6 +31,7 @@ export default {
     },
       components: {
         Ad,
+        ReviewList,
     },
     created(){
         console.log('Requesting beer details...');
@@ -48,15 +54,17 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 
-.beerDeets{
+/* .beerDeets{
     padding-left: 2rem;
-}
+} */
 
 #beer-details {
     display: grid;
     grid-template-areas: "details ad";
     grid-template-columns: 4fr 1fr;
     height: 100%;
+    padding-top: 2rem;
+    padding-left: 2rem;
 }
 
 </style>

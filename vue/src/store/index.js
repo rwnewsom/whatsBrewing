@@ -25,6 +25,7 @@ export default new Vuex.Store({
     breweries: [],
     beer: [],
     beerDetails:[],
+    reviews:[],
     token: currentToken || '',
     user: currentUser || {} // If a user is an admin, their user.role will be 'admin'
   },
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     },
     LOADED_BEER_DETAILS(state, payload){
       state.beerDetails = payload;
+    },
+    LOADED_REVIEWS(state, payload){
+      state.reviews = payload;
     }
   }
 })

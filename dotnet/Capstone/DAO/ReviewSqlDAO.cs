@@ -44,7 +44,7 @@ namespace Capstone.DAO
         private Review GetAllReviewsFromReader(SqlDataReader reader)
         {
             Review review = new Review()
-            {// review_date, beer
+            {
                 ReviewId = Convert.ToInt32(reader["review_id"]),
                 ReviewerName = Convert.ToString(reader["reviewer_name"]),
                 ReviewerRating = Convert.ToInt32(reader["reviewer_rating"]),

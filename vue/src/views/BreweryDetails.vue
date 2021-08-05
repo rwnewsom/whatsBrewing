@@ -13,6 +13,7 @@
                 <h4>Current Beers</h4>
                 <beer-list />
             </div>
+           
 
          <!--    <div class="mapouter">
                 <div class="gmap_canvas">
@@ -28,11 +29,13 @@
 <script>
 import BreweryService from '../services/BreweryService.js'
 import BeerList from '../components/BeerList.vue'
-import Ad from "../components/Ad.vue";
+import Ad from "../components/Ad.vue"
+
 
 export default {
     components: {
         BeerList,
+        
         Ad
     },
     computed: {
