@@ -63,7 +63,7 @@ CREATE TABLE beer_reviews (
 	reviewer_name varchar(100) NOT NULL,
 	reviewer_rating int NOT NULL,
 	review_description varchar(1000) NOT NULL,
-	review_date date NOT NULL,
+	review_date DATETIME DEFAULT GetDate(),
 	beer int NOT NULL,
 	CONSTRAINT PK_beer_reviews PRIMARY KEY (review_id),
 	FOREIGN KEY (beer) REFERENCES beers(beer_id)
