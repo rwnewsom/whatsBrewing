@@ -13,6 +13,12 @@
                 <h4>Current Beers</h4>
                 <beer-list />
             </div>
+
+         <!--    <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="600" height="500" id="gmap_canvas" src = {currentMapUrl}  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies</a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                </div>
+            </div> -->
         </div>
         <Ad />
     </div>
@@ -32,6 +38,10 @@ export default {
     computed: {
         currentBrewery(){
             return this.$store.state.breweries;
+        },
+
+        currentMapUrl(){
+            return '"' +this.currentBrewery.mapUrl+'"';
         }
     },
     created(){
@@ -66,5 +76,19 @@ export default {
 .brewery {
     grid-area: details;
 }
+
+/* .mapouter{
+    position:relative;
+    text-align:right;
+    height:500px;
+    width:600px;
+} */
+
+/* .gmap_canvas{
+    overflow:hidden;
+    background:none!important;
+    height:500px;
+    width:600px;
+    } */
 
 </style>
