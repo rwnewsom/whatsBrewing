@@ -13,6 +13,7 @@ namespace Capstone.Controllers
     public class ReviewController : Controller
     {
         private readonly IReviewDAO reviewDAO;
+        private readonly IReviewBeer reviewBeersDAO;
 
         public ReviewController(IReviewDAO reviewDAO)
         {
@@ -23,6 +24,13 @@ namespace Capstone.Controllers
         public ActionResult<List<Review>> ListReviews(int beer)
         {
             return Ok(reviewDAO.GetReviews(beer));
+        }
+
+        [HttpPost("addReview")]
+        public ActionResult AddBeerReview(string name, int rating, string description, DateTime date)
+        {
+            ActionResult result;
+            ReviewBeers review = reviewBeersDAO.AddBeerReview(name.);
         }
 
 
