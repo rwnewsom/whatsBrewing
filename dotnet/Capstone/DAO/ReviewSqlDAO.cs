@@ -43,8 +43,7 @@ namespace Capstone.DAO
 
         public bool AddBeerReview(ReviewBeers review)
         {
-            try
-            {
+           
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -58,11 +57,7 @@ namespace Capstone.DAO
                     int added = cmd.ExecuteNonQuery();
                     return added == 1;
                 }
-            }
-            catch (SqlException ex)
-            {
-                return false;
-            }
+          
         }
 
         private Review GetAllReviewsFromReader(SqlDataReader reader)

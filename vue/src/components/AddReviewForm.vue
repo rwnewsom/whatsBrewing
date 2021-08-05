@@ -15,7 +15,7 @@
       </div>
       <div class="form-element">
         <label for="review">Review:</label>
-        <textarea id="review" v-model="newReview.review"></textarea>
+        <textarea id="review" v-model="newReview.description"></textarea>
       </div>
       <input type="submit" value="Save" v-bind:disabled="isSaveDisabled"> <!-- v-on:click.prevent="handleSave" -->
       <input type="button" value="Cancel" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
@@ -23,14 +23,15 @@
 </template>
 
 <script>
-//import BreweryService from '../services/BreweryService.js'; 
+import BreweryService from '../services/BreweryService.js'; 
 export default {
     data() {
         return {
             newReview: {
                 rating: 1,
-                review: '',
-                reviewer: ''
+                description: '',
+                name: this.$store.state.user.username,
+                beerId: 0,
             },
         };
     },
@@ -46,6 +47,9 @@ export default {
     methods: {
         handleSave(event) {
             console.log('Save was clicked!', event);
+            this.newReview.name = this.$store.state.user.username;
+            this.newReview.beerId= +this.$route.params.beerId;
+            BreweryService.submitReview(this.newReview);
 
             // Identify an object representing the new review
             //let reviewToAdd = this.newReview;
@@ -59,11 +63,11 @@ export default {
             // Clear the form for the next addition (and prevents odd bugs in adding data multiple times)
             this.newReview = {
                 rating: 1,
-                review: '',
-                reviewer: ''
+                description: '',
+                name: ''
             }
 
-             if (this.$route.name === 'new') 
+            //  if (this.$route.name === 'new') 
              //{
             //   // Redirect to the list page
             //   //this.$router.push({name: 'list'});

@@ -25,6 +25,6 @@ export default {
         return client.get('Beer/');
       },
       submitReview(review){
-        return client.push('Beer/breweries/', review);
+        return client.post('Review/addReview', review);
       }
 }
