@@ -71,7 +71,7 @@
             Primary key of SQL
             </summary>
         </member>
-        <member name="P:Capstone.Models.Review.BeerId">
+        <member name="P:Capstone.Models.Review.Beer">
             <summary>
             Foreign Key representing Beers table
             </summary>
