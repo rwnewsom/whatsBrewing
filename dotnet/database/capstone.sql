@@ -523,6 +523,7 @@ INSERT INTO beer_reviews (reviewer_name, reviewer_rating, review_description, re
 --INSERT INTO beer_reviews (reviewer_name, reviewer_rating, review_description, review_date, beer) VALUES ('', '', '', '', '49')
 --INSERT INTO beer_reviews (reviewer_name, reviewer_rating, review_description, review_date, beer) VALUES ('', '', '', '', '50')
 --INSERT INTO beer_reviews (reviewer_name, reviewer_rating, review_description, review_date, beer) VALUES ('', '', '', '', '50')
+INSERT INTO beer_reviews (reviewer_name, reviewer_rating, review_description, review_date, beer) VALUES ('Q-Daddy', '2', 'This beer sucks. I don''t know why it has a high rating at all. I was stuck with a 6 pack of this trash. The Beatles would be ashamed, and hopefully the brewer''s parents are too.', '8/05/21', '96')
 
 
 
