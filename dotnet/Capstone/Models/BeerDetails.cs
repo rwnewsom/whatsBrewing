@@ -13,5 +13,6 @@ namespace Capstone.Models
         public string Description { get; set; }
         public decimal ABV { get; set; }
         public int? IBU { get; set; }
+        public int BreweryId { get; set; }
     }
 }

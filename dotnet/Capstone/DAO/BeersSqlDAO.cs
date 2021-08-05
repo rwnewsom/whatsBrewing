@@ -129,5 +129,51 @@ namespace Capstone.DAO
             };
             return beers;
         }
+
+        public bool AddBeer (BeerDetails beer)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery)", conn);
+                    cmd.Parameters.AddWithValue("@name", beer.Name);
+                    cmd.Parameters.AddWithValue("@style", beer.Style);
+                    cmd.Parameters.AddWithValue("@description", beer.Description);
+                    cmd.Parameters.AddWithValue("@ABV", beer.ABV);
+                    cmd.Parameters.AddWithValue("@IBU", beer.IBU);
+                    cmd.Parameters.AddWithValue("@brewery", beer.BreweryId);
+                    int added = cmd.ExecuteNonQuery();
+                    return added == 1;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteBeer(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("DELETE FROM beers WHERE beer_id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int added = cmd.ExecuteNonQuery();
+                    return added == 1;
+                }
+            }
+            catch (SqlException ex)
+            {
+                return false;
+            }
+        }
     }
 }
