@@ -12,7 +12,12 @@
             <div class="beerDeets">
                 <h4>Current Beers</h4>
                 <beer-list />
-                <add-beer />
+                <div v-if="deleteOrAddAuth">
+                    <add-beer />
+                </div>
+                <div v-else>
+                    <p>If you are a brewer and would like edit privileges, please contact support.</p>
+                </div>
             </div>
            
 
@@ -47,7 +52,12 @@ export default {
 
         currentMapUrl(){
             return '"' +this.currentBrewery.mapUrl+'"';
-        }
+        },
+        deleteOrAddAuth(){
+            if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
+                return true;
+            } return false;
+        },
     },
     created(){
         console.log('Requesting brewery details.');
