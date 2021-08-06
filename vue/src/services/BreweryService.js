@@ -28,6 +28,6 @@ export default {
         return client.post('Review/addReview', review);
       },
       addBeer(newBeer){
-        return client.post('/beer', newBeer);
+        return client.post('Beer/addBeer', newBeer);
       }
 }

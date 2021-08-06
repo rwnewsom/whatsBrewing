@@ -14,7 +14,7 @@ namespace Capstone.DAO
         private string sqlListBeers = "SELECT beer_id, name, style, brewery FROM beers WHERE brewery = @id";
         private string sqlBeerDetails = "SELECT beer_id, brewery, name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
         private string sqlDisplayAllBeers = "SELECT beers.beer_id, beers.name, beers.style, breweries.brewery_name, breweries.brewery_id FROM beers JOIN breweries ON beers.brewery = breweries.brewery_id";
-        
+
 
         public BeersSqlDAO(string dbConnectionString)
         {
@@ -91,7 +91,7 @@ namespace Capstone.DAO
                         beerDetails.ABV = Convert.ToDecimal(reader["ABV"]);
                         if (reader["IBU"] != DBNull.Value)
                         {
-                        beerDetails.IBU = Convert.ToInt32(reader["IBU"]);
+                            beerDetails.IBU = Convert.ToInt32(reader["IBU"]);
                         }
 
                     }
@@ -130,50 +130,42 @@ namespace Capstone.DAO
             return beers;
         }
 
-        public bool AddBeer (BeerDetails beer)
+        public bool AddBeer(BeerDetails beer)
         {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery)", conn);
-                    cmd.Parameters.AddWithValue("@name", beer.Name);
-                    cmd.Parameters.AddWithValue("@style", beer.Style);
-                    cmd.Parameters.AddWithValue("@description", beer.Description);
-                    cmd.Parameters.AddWithValue("@ABV", beer.ABV);
-                    cmd.Parameters.AddWithValue("@IBU", beer.IBU);
-                    cmd.Parameters.AddWithValue("@brewery", beer.BreweryId);
-                    int added = cmd.ExecuteNonQuery();
-                    return added == 1;
-                }
-            }
-            catch (SqlException ex)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                return false;
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery)", conn);
+                cmd.Parameters.AddWithValue("@name", beer.Name);
+                cmd.Parameters.AddWithValue("@style", beer.Style);
+                cmd.Parameters.AddWithValue("@description", beer.Description);
+                cmd.Parameters.AddWithValue("@ABV", beer.ABV);
+                cmd.Parameters.AddWithValue("@IBU", beer.IBU);
+                cmd.Parameters.AddWithValue("@brewery", beer.BreweryId);
+                int added = cmd.ExecuteNonQuery();
+                return added == 1;
             }
+
+
         }
 
         public bool DeleteBeer(int id)
         {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("DELETE FROM beers WHERE beer_id = @id", conn);
-                    cmd.Parameters.AddWithValue("@id", id);
-
-                    int added = cmd.ExecuteNonQuery();
-                    return added == 1;
-                }
-            }
-            catch (SqlException ex)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                return false;
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("DELETE FROM beers WHERE beer_id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                int added = cmd.ExecuteNonQuery();
+                return added == 1;
             }
+
+
         }
     }
 }

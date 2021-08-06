@@ -4,7 +4,11 @@
     <h2 class="title">The Vagrant Tippler</h2>
     <h3 class="headline">Not all who wander are lost.</h3>
     <p class="quote"> You might not end up where you intended to go, but you'll get where you needed to be.</p>
-    <add-beer />
+    
+    <div v-if="deleteOrAddAuth">
+      <add-beer />
+    </div>
+
     <display-all-beers />
   </div>
 </template>
@@ -17,6 +21,13 @@ export default {
   components: {
     AddBeer,
     DisplayAllBeers
+  },
+  computed: {
+    deleteOrAddAuth(){
+            if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
+                return true;
+            } return false;
+        },
   }
 };
 </script>
