@@ -45,7 +45,7 @@
                     <textarea class="form-control" id="description" rows="3"
                             v-model.trim="newBeer.description" placeholder="Description"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success" 
+                <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
                         class="spinner-border spinner-border-sm" 
