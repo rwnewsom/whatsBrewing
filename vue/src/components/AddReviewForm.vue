@@ -1,25 +1,29 @@
 <template>
-  <form v-on:submit.prevent="handleSave"
-      > <!-- v-show keeps it in the DOM, but adds display: none. This is ALWAYS a good idea for forms -->
 
-      <input type="hidden" value="YourUserIDGoesHere" />
-      <div class="form-element">
-        <label for="rating">Rating:</label>
-        <select id="rating" v-model.number="newReview.rating">
-          <option value="1">1 Star</option>
-          <option value="2">2 Stars</option>
-          <option value="3">3 Stars</option>
-          <option value="4">4 Stars</option>
-          <option value="5">5 Stars</option>
-        </select>
-      </div>
-      <div class="form-element">
-        <label for="review">Review:</label>
-        <textarea id="review" v-model="newReview.description"></textarea>
-      </div>
-      <input type="submit" value="Save" v-bind:disabled="isSaveDisabled"> <!-- v-on:click.prevent="handleSave" -->
-      <input type="button" value="Cancel" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
-    </form>  
+<div class="form-box">
+  <h2>Add a review</h2>
+  <form v-on:submit.prevent="handleSave"
+        > <!-- v-show keeps it in the DOM, but adds display: none. This is ALWAYS a good idea for forms -->
+
+        <input type="hidden" value="YourUserIDGoesHere" />
+        <div class="form-element">
+          <label for="rating">Rating:</label>
+          <select id="rating" v-model.number="newReview.rating">
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+        <div class="form-element">
+          <label for="review">Review:</label>
+          <textarea id="review" v-model="newReview.description"></textarea>
+        </div>
+        <input type="submit" value="Save" v-bind:disabled="isSaveDisabled"> <!-- v-on:click.prevent="handleSave" -->
+        <input type="button" value="Cancel" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
+      </form>
+    </div> 
 </template>
 
 <script>
@@ -85,6 +89,37 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "../styles/colors.scss";
+
+.form-box{
+  border: 1px solid $babypowder;
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.form-box textarea {
+  width: 80%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.form-box select {
+  width: 20%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.form-box label {
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.form-box input {
+  border-radius: 5px;
+}
+
+
 
 </style>

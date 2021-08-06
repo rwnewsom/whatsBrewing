@@ -26,6 +26,7 @@ export default new Vuex.Store({
     beer: [],
     beerDetails:[],
     reviews:[],
+    isLoggedIn: false,
     token: currentToken || '',
     user: currentUser || {}, // If a user is an admin, their user.role will be 'admin'
     isAddFormVisible: false,
@@ -39,12 +40,14 @@ export default new Vuex.Store({
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
+      state.isLoggedIn = true;
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.isLoggedIn = false;
       axios.defaults.headers.common = {};
     },
     LOADED_BREWERIES(state, payload){

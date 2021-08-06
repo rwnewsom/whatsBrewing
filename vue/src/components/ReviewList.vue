@@ -1,11 +1,17 @@
 <template>
     <div class="review-container">
-        <add-review-form />
+        <div class="wrapper" v-if="addFormVisible===true"> 
+            <add-review-form /> 
+        </div>
+        <div class="wrapper" v-else> 
+            <h4>*Please Login to leave a review*</h4>
+        </div>
         <h4 v-if="numberOfReviews >= 1">This beer has an average rating of {{averageRating}} </h4>
         <h4 v-else>This beer has no reviews.</h4>
         
         <h4 v-if="numberOfReviews >= 1">There are {{numberOfReviews}} reviews for this beer:</h4>
-    <review-card v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
+    <review-card  v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
+    
   </div> 
   
 </template>
@@ -28,6 +34,12 @@ export default {
 
         numberOfReviews(){
             return this.$store.state.reviews.length;
+        },
+
+        addFormVisible(){
+            if (this.$store.state.user.username){
+                return true;
+            } return false;
         },
 
         averageRating(){
