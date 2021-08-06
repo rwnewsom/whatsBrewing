@@ -12,6 +12,7 @@
             <div class="beerDeets">
                 <h4>Current Beers</h4>
                 <beer-list />
+                <add-beer />
             </div>
            
 
@@ -30,12 +31,13 @@
 import BreweryService from '../services/BreweryService.js'
 import BeerList from '../components/BeerList.vue'
 import Ad from "../components/Ad.vue"
+import AddBeer from "../views/AddBeer.vue";
 
 
 export default {
     components: {
         BeerList,
-        
+        AddBeer,
         Ad
     },
     computed: {

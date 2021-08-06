@@ -26,5 +26,8 @@ export default {
       },
       submitReview(review){
         return client.post('Review/addReview', review);
+      },
+      addBeer(newBeer){
+        return client.post('/beer', newBeer);
       }
 }

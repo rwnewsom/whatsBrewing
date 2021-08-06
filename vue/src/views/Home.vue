@@ -4,15 +4,18 @@
     <h2 class="title">The Vagrant Tippler</h2>
     <h3 class="headline">Not all who wander are lost.</h3>
     <p class="quote"> You might not end up where you intended to go, but you'll get where you needed to be.</p>
+    <add-beer />
     <display-all-beers />
   </div>
 </template>
 
 <script>
 import DisplayAllBeers from "../components/DisplayAllBeers.vue";
+import AddBeer from "../views/AddBeer.vue";
 export default {
   name: "home",
   components: {
+    AddBeer,
     DisplayAllBeers
   }
 };

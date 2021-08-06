@@ -62,5 +62,8 @@ export default new Vuex.Store({
     TOGGLE_ADD_FORM_VISIBLE(state){
       state.isAddFormVisible = !state.isAddFormVisible;
     },
+    ADD_BEER(state, payload){
+      state.beer.push(payload);
+    }
   }
 })
