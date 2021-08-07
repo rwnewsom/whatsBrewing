@@ -9,6 +9,7 @@
                 <p>{{currentBrewery.phoneNumber}}</p>
                 <p>{{currentBrewery.url}}</p>
             </div>
+            
             <div class="beerDeets">
                 <h4>Current Beers</h4>
                 <beer-list />
@@ -45,6 +46,7 @@ export default {
         AddBeer,
         Ad
     },
+
     computed: {
         currentBrewery(){
             return this.$store.state.breweries;
