@@ -6,6 +6,21 @@
 - Quintin Owsley
 - Rob Newsom
 
+## Current TODOs
+
+### In Progress
+
+1. Delete a Beer
+    - Button background - danger 
+    - Have a confirmation pop-up
+    - Refresh Data following delete
+2. Review a Beer
+    - Refresh Data following delete
+3. Add a Beer
+    - Refresh Data following delete
+
+4. Dedicated view or button to list all beers
+
 ## Use cases
 
 ### Required Use Cases
@@ -19,6 +34,31 @@ You should attempt to complete all of the following required use cases.
    2. **[COMPLETE]** As a Beer Lover I can view a list of a brewery’s beers to see if there’s a beer I’d like to try or a beer I have tried that I’d like to rate/review.
 
                                                                        |
+### Sprint Backlog
+
+1. Login: functional but needs to be cleaned up.
+2. New Brewer Account
+3. New Brewery
+4. Update Brewer Information
+    - Brewer should only be able to update own brewery
+
+## Stretch Goals
+
+### Admin Panel
+
+1. Handle Bad Users
+  - Admins are able to view list of and delete users
+
+2. Validate that Brewery is legitimate
+  - Add boolean value 'provisional' to Brewery on creation
+  - Provisional Breweries are only viewable by administrators
+  - Provisional Breweries have a button allowing admins to delete or approve the brewery
+
+### User Profile Page
+  - Usernames become clicable and lead to view about user
+  - User details could include about, general location, favorite Breweries and Beers
+  - User can upload images
+
 
 ## How to set up the database
 
