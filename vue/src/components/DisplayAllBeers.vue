@@ -55,15 +55,15 @@ export default {
 @import "../styles/colors.scss";
 
 .beerlink{
-    color: #E5DADA
+    color: $white
 }
 
 tr:nth-child(even){
-    background-color: $tiffanyblue;
-    color: $richblack;
+    background-color: $blue;
+    color: $black;
 }
 .beer-list{
-    border: 1px solid $orangepeel;
+    border: 1px solid $yellow;
     width: 80%;
     padding: 2rem;
 }

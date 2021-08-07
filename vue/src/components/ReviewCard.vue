@@ -32,13 +32,13 @@ export default {
 @import "../styles/colors.scss";
 
 .card {
-    border: 2px solid $accentLight;
+    border: 2px solid $white;
     border-radius: 10px;
     width: 500px;
     height: auto;
     margin: 20px;
-    background-color: $background;
-    color: $accentLight;    
+    background-color: $black;
+    color: $white;    
 }
 
 .card-content{

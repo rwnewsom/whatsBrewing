@@ -13,7 +13,7 @@
           Breweries
         </router-link>
 
-        <router-link class="nav-item home" v-bind:to="{ name: 'home' }">
+        <router-link class="nav-item home-link" v-bind:to="{ name: 'home' }">
           <!-- This is a font awesome icon -->
           Home
         </router-link>
@@ -47,7 +47,9 @@
           </router-link>
         </div>
     </div>
-
+    <router-link id="logo-container" v-bind:to="{ name: 'home' }">
+     <img id="primary-logo" src="./assets/officiallogo.png" />
+    </router-link>
     <div class="main">
       <router-view />
     </div>
@@ -69,15 +71,15 @@ export default {};
 // Your custom styles go below this point
 
 html {
-  background-color: $background;
-  color: $accentLight;
+  background-color: $black;
+  color: $white;
   /* margin: 0;
   padding: 0; */
 }
 
 #app {
-  background-color: $background;
-  color: $accentLight;
+  background-color: $white;
+  color: $white;
 
   display: grid;
   grid-template-areas:
@@ -98,8 +100,8 @@ html {
 //   display: flex;
 //   justify-content: space-around;
 //   background-color: $babypowder;
-//   color: $accentDark;
-//   border: 1px solid $accentDark;
+//   color: $black;
+//   border: 1px solid $black;
 // }
 
 //override default body & html padding & margin to eliminate scrollbar
@@ -119,7 +121,6 @@ body {
   grid-template-rows: 1.5fr .5fr 1fr;
 
   width: 100%;
-  text-align: center;
   align-items: center;
   filter: drop-shadow(0.25rem 0.1rem 0.5rem black);
 }
@@ -128,24 +129,24 @@ body {
   grid-area: top;
   width: 100%;
   height: 100%;
-  background-color: #E71D36;
+  background-color: $black;
 } 
 
 #nav-spacer-2 {
   grid-area: middle;
   width: 100%;
   height: 100%;
-  background-color: #2ec4b6;
+  background-color: $blue;
 }
 
 #nav router-link {
   align-content: center;
-  background-color: #FF9F1C;
+  background-color: $yellow;
 }
 
 .nav-item, a.nav-item {
-  background-color: #FF9F1C;
-  color: $babypowder;
+  background-color: $white;
+  color: $black;
   font-size: 1.5rem;
   height: 100%;
   text-transform: uppercase;
@@ -154,14 +155,16 @@ body {
   text-decoration-line: none;
 }
 
-.home {
+.home-link {
   grid-area: home;
   font-weight: bold;
+  padding-left: 5rem;
 }
 
 .breweries {
   grid-area: breweries;
   font-weight: bold;
+  padding-left: 1rem;
 }
 
 .register {
@@ -181,22 +184,49 @@ body {
 .events {
   grid-area: events;
   font-weight: bold;
+  text-align: right;
+  padding-right: 1rem;
 }
 
 .news {
   grid-area: news;
   font-weight: bold;
+  text-align: right;
+  padding-right: 5rem;
 }
 
 .account-button {
-  border: 2px solid black;
+  border: 2px solid $black;
   text-decoration-line: none;
   margin-right: 1rem;
-  background-color: $babypowder;
-  color: $richblack;
+  background-color: $white;
+  color: $black;
   padding: 0 1rem;
   border-radius: 1rem;
   min-width: 8rem;
 }
 
+#logo-container {
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+#primary-logo {
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  margin-left: auto; 
+  margin-right: auto;
+  margin-top: 0.5rem; 
+  width: 12%;
+  border-radius: 10rem;
+}
+
+#primary-logo:hover {
+  margin-top: 0.3rem;
+  width: 11.5rem;
+}
 </style>

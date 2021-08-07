@@ -149,7 +149,7 @@ export default {
 @import "../styles/colors.scss";
 
 .form-box{
-  border: 1px solid $babypowder;
+  border: 1px solid $white;
   margin: 2rem;
   padding: 1rem;
   border-radius: 5px;

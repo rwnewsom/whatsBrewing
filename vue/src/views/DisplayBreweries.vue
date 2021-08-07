@@ -60,12 +60,12 @@ export default {
 .filt {
   grid-area: filt;
   vertical-align: text-top;
-  background-color: $babypowder;
+  background-color: $white;
 }
 
 .brewery-card, .brewery-card > a {
-  color: #011627;
-  background: $babypowder;
+  color: $black;
+  background: $white;
   text-align: center;
   width: 65%;
   height: 355px;
