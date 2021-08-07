@@ -50,8 +50,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "../styles/colors.scss";
 .beerlink{
     color: #E5DADA
 }

@@ -8,7 +8,7 @@ import store from "../store/index";
 import DisplayBreweries from "../views/DisplayBreweries.vue";
 import BreweryDetails from "../views/BreweryDetails.vue";
 import BeerDetails from "../views/BeerDetails.vue";
-
+import DisplayAllBeers from "../components/DisplayAllBeers.vue";
 Vue.use(Router);
 
 /**
@@ -75,6 +75,11 @@ const router = new Router({
       path: "/breweries/:id/beer/:beerId",
       name: "beerDetails",
       component: BeerDetails
+    },
+    {
+      path: "/beers",
+      name: "beers",
+      component: DisplayAllBeers,
     }
   ],
 });

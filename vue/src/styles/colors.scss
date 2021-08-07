@@ -9,3 +9,7 @@ $yellow: #FF9F1C;
 $primary: $black;
 $danger: $yellow;
 $warning: $red;
+
+.noline, .noline:hover{
+    text-decoration-line: none;
+}

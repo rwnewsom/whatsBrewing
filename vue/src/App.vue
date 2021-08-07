@@ -13,9 +13,9 @@
           Breweries
         </router-link>
 
-        <router-link class="nav-item home-link" v-bind:to="{ name: 'home' }">
+        <router-link class="nav-item beers" v-bind:to="{ name: 'beers' }">
           <!-- This is a font awesome icon -->
-          Home
+          Beers
         </router-link>
         <a class="nav-item events">
           Events
@@ -53,6 +53,10 @@
     <div class="main">
       <router-view />
     </div>
+    <div id="footer">
+      <div id="footer-top" />
+      <div id="footer-bottom" />
+    </div>
   </div>
 </template>
 
@@ -71,21 +75,22 @@ export default {};
 // Your custom styles go below this point
 
 html {
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $black;
   /* margin: 0;
   padding: 0; */
 }
 
 #app {
   background-color: $white;
-  color: $white;
+  color: $black;
 
   display: grid;
   grid-template-areas:
     "head"
-    "main";
-  grid-template-rows: 8rem 1fr;
+    "main"
+    "footer";
+  grid-template-rows: 8rem 1fr 5.5rem;
 
   height: 100%;
   width: 100%;
@@ -95,6 +100,23 @@ html {
   grid-area: main;
 }
 
+#footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-areas: "footer-top"
+                       "footer-bottom";
+  grid-template-rows: 1fr 3fr;
+}
+
+#footer-top {
+  grid-area: footer-top;
+  background-color: $blue;
+}
+
+#footer-bottom {
+  grid-area: footer-bottom;
+  background-color: $black;
+}
 // .ad {
 //   grid-area: ad;
 //   display: flex;
@@ -116,7 +138,7 @@ body {
   grid-template-areas:
     "top top top top"
     "middle middle middle middle"
-    "home breweries events news";
+    "breweries beers events news";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1.5fr .5fr 1fr;
 
@@ -155,16 +177,16 @@ body {
   text-decoration-line: none;
 }
 
-.home-link {
-  grid-area: home;
+.beers {
+  grid-area: beers;
   font-weight: bold;
-  padding-left: 5rem;
+  padding-left: 1rem;
 }
 
 .breweries {
   grid-area: breweries;
   font-weight: bold;
-  padding-left: 1rem;
+  padding-left: 5rem;
 }
 
 .register {
@@ -179,6 +201,7 @@ body {
   grid-area: top;
   display: flex;
   flex-direction: row-reverse;
+  text-align: center;
 }
 
 .events {
@@ -223,10 +246,11 @@ body {
   margin-top: 0.5rem; 
   width: 12%;
   border-radius: 10rem;
+  z-index: 2;
 }
 
 #primary-logo:hover {
-  margin-top: 0.3rem;
+  margin-top: 0.4rem;
   width: 11.5rem;
 }
 </style>
