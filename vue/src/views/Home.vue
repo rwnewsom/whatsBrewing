@@ -3,8 +3,8 @@
     <div class="img-container">
       <div class="image-text">
         <div class="title-box">
-          <h2 class="title">WHAT'S BREWIN?</h2>
-          <h3 class="headline">Not all who wander are lost.</h3>
+          <h2 class="title">Drink where your beer is made.</h2>
+          <h3 class="headline">Start your journey here.</h3>
         </div>
         <router-link v-bind:to="{ name: 'breweries' }" class="noline">
           <div class="image-button brewery-button">Find your Brewery</div>
@@ -18,8 +18,16 @@
       <img id="home-img" src="https://images.unsplash.com/photo-1589711428882-6f8d7bff75f7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJyZXdlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
     </div>
     
-    <p class="quote"> You might not end up where you intended to go, but you'll get where you needed to be.</p>
-    
+    <div class="quote">
+    If you keep thinking that everywhere you turn there's a new craft brewery popping up—it’s not just 
+            your imagination. A craft beer revolution has swept over America. Whether you enjoy a good IPA or you 
+            prefer a dark porter, it’s likely that you can find a craft beer or brewery not too far from your 
+            doorstep.
+    </div>
+    <div class="quote2">
+      Welcome to What's Brewin. Find local breweries in your area, search for your favorite beer, review the beers you've tried, 
+            and enjoy what your local area has to offer. 
+    </div>
     <div v-if="deleteOrAddAuth">
       <add-beer />
     </div>
@@ -78,7 +86,7 @@ export default {
   background: rgba(255,255,255, .5);
   font-family: "Monaco","Helvana", "Arial", "Sans-serif";
   border: 4px solid $black;
-  padding: 1rem 6rem;
+  padding: 1rem 3rem;
 }
 
 .image-text {
@@ -115,6 +123,17 @@ export default {
 
 .quote {
   text-align: center;
+  padding-left: 20rem;
+  padding-right: 20rem;
+}
+
+.quote2 {
+  text-align: center;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  font-weight: bold;
 }
 
 .home {
