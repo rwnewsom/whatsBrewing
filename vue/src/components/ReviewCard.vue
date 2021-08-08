@@ -2,7 +2,16 @@
 <div class="review-display">
     <div class="card">
         <div class="card-content">
+           
             <h4>Reviewer: {{review.reviewerName}}</h4>
+
+             <div class="starReviews">
+                <img src="../assets/filledHop.png"
+                    v-for="i of review.reviewerRating" v-bind:key="i"  />
+                <img class="empty" src="../assets/emptyHop.png"
+                    v-for="i of emptyIcons" v-bind:key="i"  />
+            </div>
+
             <h4 class="reviewer-rating">Rating: {{ review.reviewerRating}}</h4>
             <p class="review-author">Review: {{ review.reviewDescription }}</p>
         </div>
@@ -14,18 +23,21 @@
 <script>
 
 export default {
+     computed: {
+            emptyIcons(){
+            return 5- this.review.reviewerRating;
+        } 
+     },
     name: 'review-card',
     props: {
         review: Object,
         enableAdd: { //For future implementation, code taken from lecture
             type: Boolean,
             default: false,
-        }
+        },
     },
-   
-
-
 }
+
 </script>
 
 <style lang="scss">
@@ -43,6 +55,16 @@ export default {
 
 .card-content{
     padding: 1rem;
+}
+
+.starReviews img {
+    height: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.starReviews img .empty {
+    opacity: .5;
 }
 
 
