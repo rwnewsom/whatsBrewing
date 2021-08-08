@@ -1,16 +1,19 @@
 <template>
     <div id="brewery-details">
         <div class="brewery">
-            <div class="beerDeets">
-                <h1>{{currentBrewery.name}}</h1>
-                <h2>{{currentBrewery.description}}</h2>
-                <p>{{currentBrewery.streetNumber}} {{currentBrewery.streetName}}</p>
-                <p>{{currentBrewery.cityName}}, {{currentBrewery.state}} {{currentBrewery.zipCode}}</p>
-                <p>{{currentBrewery.phoneNumber}}</p>
-                <p>{{currentBrewery.url}}</p>
+            <div class="breweryDetails">
+                <h1 class="name">{{currentBrewery.name}}</h1>
+                <h3 class="description">{{currentBrewery.description}}</h3>
+                <div class="address">
+                    <p>Street Address:</p>
+                    <p>{{currentBrewery.streetNumber}} {{currentBrewery.streetName}}</p>
+                    <p>{{currentBrewery.cityName}}, {{currentBrewery.state}} {{currentBrewery.zipCode}}</p>
+                    <p>{{currentBrewery.phoneNumber}}</p>
+                </div>
+                <p class="url">{{currentBrewery.url}}</p>
             </div>
             
-            <div class="beerDeets">
+            <div class="beerDetails">
                 <h4>Current Beers</h4>
                 <beer-list />
                 <div v-if="deleteOrAddAuth">
@@ -77,10 +80,58 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "../styles/colors.scss";
 
-.beerDeets{
+.beerDetails{
     padding-left: 2rem;
+    padding-top: 1rem;
+}
+
+.breweryDetails{
+    padding-left: 2rem;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-areas: 
+        "name name name "
+        "dsc dsc dsc"
+        "adr . ."
+        "url url url";
+}
+
+.address{
+    grid-area: adr;
+    padding-left: 1rem;
+    
+}
+
+.address p{
+    margin: 0;
+    padding: 0;
+}
+
+.address p:first-child{
+    border-top: 1px solid $black;
+    border-bottom: 1px solid $black;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: oblique;
+}
+
+.name{
+    grid-area: name;
+    text-align: center;
+    
+}
+
+.url{
+    padding-top: 1rem;
+    grid-area: url;
+}
+
+.description{
+    grid-area: dsc;
+    padding: 1rem;
 }
 
 #brewery-details {

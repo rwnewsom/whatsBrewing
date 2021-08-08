@@ -52,8 +52,36 @@ export default {
 
 <style lang="scss">
 @import "../styles/colors.scss";
-.beerlink{
-    color: #E5DADA
+.beer-display .beer-list table tbody tr td a:nth-child(odd) {
+    // color: #E5DADA changing to close color on colors.scss - RN
+    color: $black;
 }
+
+.beer-display .beer-list table tbody tr td router-link:nth-child(even) {
+    // color: #E5DADA changing to close color on colors.scss - RN
+    color: $white;
+}
+
+table {
+    box-sizing: border-box;
+    border: 1px solid $blue;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table tr {
+    border: 1px solid $black;
+}
+
+table tr td {
+    padding-left: 1rem;
+}
+
+table tr th {
+    padding-left: 1rem;
+}
+
+
 
 </style>
