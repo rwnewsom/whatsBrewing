@@ -37,6 +37,7 @@ import AddBeer from "../views/AddBeer.vue";
 
 
 export default {
+    name: 'BreweryDetails',
     components: {
         BeerList,
         AddBeer,
@@ -137,6 +138,12 @@ export default {
 
 .brewery {
     grid-area: details;
+    border: 1px solid $black;
+    background-color: $white;
+    margin: 1rem;
+    padding: 1rem;
+    filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+    border-radius: 5px;
 }
 
 </style>
