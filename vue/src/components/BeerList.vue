@@ -23,7 +23,7 @@
 <script>
 import BreweryService from '../services/BreweryService.js'
 export default {
-
+    name: 'BeerList',
     
 
     computed: {
