@@ -31,26 +31,30 @@
 
     </div> 
 
-    <div class="beer-list">
+        <div class="beer-list">
         <div class="line" />
-                <div id="beer">
-                    <!-- all the beers show on the line below-->
-                    <router-link 
+            <div id="beer">
+            <!-- all the beers show on the line below-->
+                <router-link 
                         v-for="beer of allBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
-                        class="noline beer-card">
-                        <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
-                        <div class="beer-card-title">{{beer.name}}</div>
-                    </router-link>
-                </div>
-    </div>
+                        class="noline beers-card">
+                    <img class="beers-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
+                    <div class="beers-card-title">{{beer.name}}</div>
+                    <div class="beers-card-style">{{beer.style}}</div>
+                </router-link>
+            </div>
+        </div>
+    <Ad />
 </div>
 </template>
 
 <script>
 import BreweryService from '../services/BreweryService.js'
+import Ad from "../components/Ad.vue";
+
 export default {
     name: 'DisplayAllBeers',
 
@@ -63,7 +67,9 @@ export default {
 
     },
 
-    
+    components: {
+        Ad,
+    },
 
     computed: {
         allBeers(){
@@ -109,13 +115,21 @@ tr:nth-child(even){
     background-color: $blue;
     color: $black;
 }
+
 .beer-list{
     border: 1px solid $yellow;
-    width: 80%;
+    width: 100%;
     padding: 2rem;
+    grid-area: main;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-
+.beers-card-style {
+    font-size: medium;
+    font-weight: normal;
+}
 
 .container {
   border-radius: 5px;
@@ -155,6 +169,42 @@ input[type=text] {
   clear: both;
 }
 
+
+.beer-display {
+  display: grid;
+  grid-template-areas: "filt main ad";
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.beers-card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.beers-card-title {
+  color: $white;
+  text-transform: uppercase;
+  font-size: x-large;
+}
+
+.beers-card {
+  color: $white;
+  background: $blue;
+  text-align: center;
+  width: 15rem;
+  min-height: 300;
+  margin: 1rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75 {
@@ -162,5 +212,6 @@ input[type=text] {
     margin-top: 0;
   }
 }
+
 
 </style>
