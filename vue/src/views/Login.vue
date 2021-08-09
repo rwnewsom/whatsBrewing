@@ -85,3 +85,24 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "../styles/colors.scss";
+
+.form-signin{
+  margin-top: 5rem;
+}
+
+input#username.form-control, input#password.form-control{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 2px solid $black;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+}
+
+
+
+
+</style>

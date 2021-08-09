@@ -93,4 +93,23 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import "../styles/colors.scss";
+
+.form-register{
+  margin-top: 5rem;
+}
+
+input#username.form-control, input#password.form-control, input#confirmPassword.form-control{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 2px solid $black;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+}
+
+
+
+
+</style>

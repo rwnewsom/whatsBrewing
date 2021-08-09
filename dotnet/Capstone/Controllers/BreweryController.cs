@@ -1,10 +1,12 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Capstone.Controllers
 {
@@ -13,6 +15,7 @@ namespace Capstone.Controllers
     public class BreweryController : Controller
     {
         private readonly IBreweryDAO breweryDao;
+        
 
         public BreweryController(IBreweryDAO breweryDao)
         {
@@ -35,6 +38,21 @@ namespace Capstone.Controllers
                 return NotFound();
             }
             return Ok(breweryDetails);
+        }
+
+        [HttpPut("breweries/{id}")]
+        [Authorize]
+        public ActionResult EditBrewery(int id, BreweryDetails updatedBrewery)
+        {
+            BreweryDetails brewery = this.breweryDao.GetBreweryById(id);
+            if (brewery == null)
+            {
+                return NotFound("Brewery could not be found. It may have been deleted.");
+            }
+
+            BreweryDetails newBrewery = this.breweryDao.UpdateBrewery(updatedBrewery);
+
+            return Ok(newBrewery);
         }
     }
 }

@@ -13,23 +13,26 @@
       </router-link>
     </div>
     <div class="filter-box">
-      <h3>Filter By:</h3>
-      <div class="row">
-            <div>
-                <label for="searchName">Brewery: </label>
-            </div>
-            <div class>
-                <input id="searchName" type="text" v-model="searchName">
-            </div>
-      </div>
+      <div class="sticky">
 
-      <div class="row">
-            <div>
-                <label for="searchDescription">Description: </label>
-            </div>
-            <div class>
-                <input id="searchDescription" type="text" v-model="searchDescription">
-            </div>
+        <h3>Filter By:</h3>
+        <div class="row">
+              <div>
+                  <label for="searchName">Brewery: </label>
+              </div>
+              <div class>
+                  <input id="searchName" type="text" v-model="searchName">
+              </div>
+        </div>
+
+        <div class="row">
+              <div>
+                  <label for="searchDescription">Description: </label>
+              </div>
+              <div class>
+                  <input id="searchDescription" type="text" v-model="searchDescription">
+              </div>
+        </div>
       </div>
 
 
@@ -151,5 +154,7 @@ input[type=text] {
   border-radius: 4px;
   resize: vertical;
 }
+
+
 
 </style>
