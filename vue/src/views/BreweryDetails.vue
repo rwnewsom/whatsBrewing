@@ -21,15 +21,16 @@
                 <h4>Current Beers</h4>
                 <div class="line" />
                 <div id="beer">
-                    <!-- all the breweries show on the line below-->
+                    <!-- all the beers show on the line below-->
                     <router-link 
                         v-for="beer of allBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
-                            params: {id: beer.id}}"
+                            params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beer-card">
                         <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
                         <div class="beer-card-title">{{beer.name}}</div>
+                        <div class="beer-card-style">{{beer.style}}</div>
                     </router-link>
                 </div>
                 <div v-if="deleteOrAddAuth">
@@ -231,6 +232,12 @@ export default {
 .beer-card-title {
   color: $white;
   text-transform: uppercase;
+  font-size: x-large;
+}
+
+.beer-card-style {
+    font-size: medium;
+    font-weight: normal;
 }
 
 .beer-card {
@@ -238,7 +245,7 @@ export default {
   background: $blue;
   text-align: center;
   width: 20rem;
-  height: 355px;
+  min-height: 355px;
   margin: 1rem;
   margin-top: 2rem;
   font-size: 2rem;
