@@ -92,7 +92,7 @@ html {
     "footer";
   grid-template-rows: 8rem 1fr 5.5rem;
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 

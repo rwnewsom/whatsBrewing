@@ -77,6 +77,7 @@ export default {
   font-weight: bold;
   font-family: sans-serif;
   border-radius: 20px;
+  margin-bottom: 2rem;
 }
 
 .brewery-card-title {

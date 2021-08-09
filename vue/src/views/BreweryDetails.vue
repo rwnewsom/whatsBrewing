@@ -10,7 +10,7 @@
                     <p>{{currentBrewery.cityName}}, {{currentBrewery.state}} {{currentBrewery.zipCode}}</p>
                     <p>{{currentBrewery.phoneNumber}}</p>
                 </div>
-                <p class="url"><a v-bind:href="currentBrewery.url" > Visit Website for {{currentBrewery.name}} </a></p>
+                <p class="url"><a v-bind:href="currentBrewery.url" > Website </a></p>
             </div>
             
             <div class="beerDetails">

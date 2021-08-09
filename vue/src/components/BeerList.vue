@@ -17,19 +17,30 @@
             </tbody>
         </table>
     </div>
+    <div v-if="deleteOrAddAuth">
+      <add-beer />
+    </div>
 </div>
 </template>
 
 <script>
-import BreweryService from '../services/BreweryService.js'
+import BreweryService from '../services/BreweryService.js';
+import AddBeer from "../views/AddBeer.vue";
 export default {
     name: 'BeerList',
-    
+    components: {
+    AddBeer,
+  },
 
     computed: {
         allBeers(){
             return this.$store.state.beer;
-        }
+        },
+        deleteOrAddAuth(){
+            if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
+                return true;
+            } return false;
+        },
         
     },
 

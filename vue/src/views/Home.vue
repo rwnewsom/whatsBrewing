@@ -28,36 +28,33 @@
       Welcome to What's Brewin. Find local breweries in your area, search for your favorite beer, review the beers you've tried, 
             and enjoy what your local area has to offer. 
     </div>
-    <div v-if="deleteOrAddAuth">
-      <add-beer />
+    <div class="home-bottom-img-container">
+      <img class="bot-img" id="home-img-page-bottom-left" src="https://images.unsplash.com/photo-1623937228271-992646fb0fba?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGJyZXdlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" />
+      <img class="bot-img" id="home-img-page-bottom-middle" src="https://images.unsplash.com/photo-1603666413723-fd8b35434cba?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGJyZXdlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" />
+      <img class="bot-img" id="home-img-page-bottom-right" src="https://images.unsplash.com/photo-1532634733-cae1395e440f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YnJld2VyeXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" />
     </div>
   </div>
 </template>
 
 <script>
-import AddBeer from "../views/AddBeer.vue";
+
 export default {
   name: "home",
-  components: {
-    AddBeer,
-  },
-  computed: {
-    deleteOrAddAuth(){
-            if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
-                return true;
-            } return false;
-        },
-  }
+  
 };
 </script>
 
 <style lang="scss">
 @import "../styles/colors.scss";
 
+.home {
+  height: 100%;
+}
+
 .img-container {
   background: black;
   margin-bottom: 2rem;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
@@ -66,7 +63,7 @@ export default {
   width: 75%;
   height: 30rem;
   object-fit: cover;
-  mask-image: linear-gradient(to left, rgba(0,0,0,.1),white, white, white, rgba(0,0,0,.1));
+  mask-image: linear-gradient(to left, rgba(0,0,0,0),white, white, white, rgba(0,0,0,.1));
 
 } 
 
@@ -109,7 +106,7 @@ export default {
   border-radius: 1rem;
   min-width: 15rem;
   width:fit-content;  
-  margin-top: 1rem;
+  margin: 1.5rem;
 }
 
 .image-button:hover {
@@ -141,6 +138,22 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.home-bottom-img-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100%;
+  align-items: flex-end;
+  align-self: flex-end;
+  margin-bottom: 1rem;
+}
+
+.bot-img {
+  object-fit: contain;
+  width: 33.33%; // lol, 33.3 leaves a tiny white bar on the right
+  filter: drop-shadow(0 0 .25rem black);
 }
 
 </style>
