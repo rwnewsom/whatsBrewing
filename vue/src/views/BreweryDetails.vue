@@ -81,6 +81,24 @@ export default {
             } return false;
         },
     },
+
+    watch: {
+        allBeers(){
+        let breweryId = parseInt(this.$route.params.id);
+
+        BreweryService.beer(breweryId)
+        .then(result => {
+            console.log('Promise Resolved', result);
+
+            if(result.status === 200) {
+                this.$store.commit('LOADED_BEER', result.data);
+            }
+        });
+        }
+    },
+
+
+
     created(){
         console.log('Requesting brewery details.');
 
