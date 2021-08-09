@@ -36,7 +36,7 @@
             <div id="beer">
             <!-- all the beers show on the line below-->
                 <router-link 
-                        v-for="beer of allBeers" 
+                        v-for="beer of filteredBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
