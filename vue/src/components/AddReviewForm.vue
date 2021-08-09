@@ -176,6 +176,31 @@ export default {
   border-radius: 5px;
 }
 
+textarea{
+  width: 95%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+}
+
+select{
+  margin-left: 1rem;
+  border-radius: 5px;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+}
+
+input.btn.btn-primary{
+  margin-bottom: 1rem;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+}
+
 
 
 </style>

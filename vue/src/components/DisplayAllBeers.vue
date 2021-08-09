@@ -4,26 +4,26 @@
     <div class="container">
         <h3>Search by:</h3>
         <div class="row">
-            <div class="col-25">
+            <div>
                 <label for="searchBrewery">Brewery: </label>
             </div>
-            <div class="col-75">
+            <div class>
                 <input id="searchBrewery" type="text" v-model="searchBrewery">
             </div>
         </div>
         <div class="row">
-            <div class="col-25">
+            <div>
                 <label for="searchName">Beer Name: </label>
             </div>
-            <div class="col-75">
+            <div>
                 <input id="searchName" type="text" v-model="searchName">
             </div>
         </div>
         <div class="row">
-            <div class="col-25">
+            <div>
                 <label for="searchStyle">Beer Style: </label>
             </div>
-            <div class="col-75">
+            <div>
                 <input id="searchStyle" type="text" v-model="searchStyle">
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div id="beer">
             <!-- all the beers show on the line below-->
                 <router-link 
-                        v-for="beer of allBeers" 
+                        v-for="beer of filteredBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
@@ -137,21 +137,13 @@ tr:nth-child(even){
   padding: 20px;
 }
 
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+  font-style: oblique;
 }
 
 input[type=text] {
