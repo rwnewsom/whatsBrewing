@@ -24,7 +24,7 @@ export default {
         ReviewCard,
         AddReviewForm
     },
-     computed: {
+    computed: {
         allReviews(){
             return this.$store.state.reviews;
         },
@@ -48,6 +48,22 @@ export default {
             return (total / this.$store.state.reviews.length).toFixed(2);
         }
 
+    },
+
+    watch: {
+            allReviews() {
+                // Do something when the computed prop is updated
+                let beerId = parseInt(this.$route.params.beerId);
+
+        ReviewService.reviewList(beerId)
+        .then(result => {
+            console.log('Promise Resolved', result);
+
+            if(result.status === 200){
+                this.$store.commit('LOADED_REVIEWS', result.data);
+            }
+        });
+            }
     },
 
     created(){

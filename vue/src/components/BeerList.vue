@@ -44,6 +44,8 @@ export default {
         
     },
 
+    
+
     created(){
         console.log('Attempting beer request...');
         let breweryId = parseInt(this.$route.params.id);
@@ -51,11 +53,12 @@ export default {
         BreweryService.beer(breweryId)
         .then(result => {
             console.log('Promise Resolved', result);
-
             if(result.status === 200) {
                 this.$store.commit('LOADED_BEER', result.data);
             }
         });
+
+
     }
 
 }
