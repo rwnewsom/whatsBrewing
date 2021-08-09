@@ -47,7 +47,7 @@
                 </router-link>
             </div>
         </div>
-    <Ad />
+    <Ad/>   
 </div>
 </template>
 
