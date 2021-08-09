@@ -12,9 +12,9 @@
   grid-area: ad;
   display: flex;
   justify-content: space-around;
-  background-color: $babypowder;
-  color: $accentDark;
-  border: 1px solid $accentDark;
+  background-color: $white;
+  color: $black;
+  border: 1px solid $black;
 }
 
 </style>

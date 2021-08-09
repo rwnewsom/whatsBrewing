@@ -130,25 +130,25 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 .btn-primary{
-    background-color: $orangepeel;
+    background-color: $yellow;
 }
 .btn-primary:hover{
-    background-color:$babypowder;
-    color: $orangepeel;
+    background-color:$white;
+    color: $yellow;
 }
 .btn-success{
-    background-color: $orangepeel;
+    background-color: $yellow;
 }
 .btn-success:hover{
-    background-color:$babypowder;
-    color: $orangepeel;
+    background-color:$white;
+    color: $yellow;
 }
 .dropdown-item{
     font-size: 15px;
-    color: black;
+    color: $black;
 }
 .dropdown-toggle{
-    background-color: white;
+    background-color: $white;
     width: 29rem;
     text-align: left;
 }

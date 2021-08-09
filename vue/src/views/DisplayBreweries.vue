@@ -2,14 +2,15 @@
   <div class ="brew-display">
     <div id="breweries">
       <!-- all the breweries show on the line below-->
-      <div class="brewery-card" v-for="brewery of allBreweries" v-bind:key="brewery.id">
+      <router-link 
+        v-for="brewery of allBreweries" 
+        v-bind:key="brewery.id" 
+        v-bind:to="{name: 'breweryDetails', 
+        params: {id: brewery.id}}"
+        class="noline brewery-card">
         <img class="brewery-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
-        <div class="brewery-card-title">
-          <router-link v-bind:to="{name: 'breweryDetails', params: {id: brewery.id}}">
-            {{brewery.name}}
-          </router-link>
-        </div>
-      </div>
+        <div class="brewery-card-title">{{brewery.name}}</div>
+      </router-link>
     </div>
     <div class="filt">
       <p>filter</p>
@@ -60,12 +61,12 @@ export default {
 .filt {
   grid-area: filt;
   vertical-align: text-top;
-  background-color: $babypowder;
+  background-color: $white;
 }
 
-.brewery-card, .brewery-card > a {
-  color: #011627;
-  background: $babypowder;
+.brewery-card {
+  color: $white;
+  background: $blue;
   text-align: center;
   width: 65%;
   height: 355px;
@@ -76,17 +77,12 @@ export default {
   font-weight: bold;
   font-family: sans-serif;
   border-radius: 20px;
+  margin-bottom: 2rem;
 }
 
 .brewery-card-title {
+  color: $white;
   text-transform: uppercase;
-}
-
-.brewery-card-title > a {
-  text-decoration-line: none;
-}
-.brewery-card-title > a:hover {
-  text-decoration-line: underline;
 }
 
 #breweries {

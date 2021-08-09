@@ -13,9 +13,9 @@
           Breweries
         </router-link>
 
-        <router-link class="nav-item home" v-bind:to="{ name: 'home' }">
+        <router-link class="nav-item beers" v-bind:to="{ name: 'beers' }">
           <!-- This is a font awesome icon -->
-          Home
+          Beers
         </router-link>
         <a class="nav-item events">
           Events
@@ -47,9 +47,15 @@
           </router-link>
         </div>
     </div>
-
+    <router-link id="logo-container" v-bind:to="{ name: 'home' }">
+     <img id="primary-logo" src="./assets/officiallogo.png" />
+    </router-link>
     <div class="main">
       <router-view />
+    </div>
+    <div id="footer">
+      <div id="footer-top" />
+      <div id="footer-bottom" />
     </div>
   </div>
 </template>
@@ -69,23 +75,24 @@ export default {};
 // Your custom styles go below this point
 
 html {
-  background-color: $background;
-  color: $accentLight;
+  background-color: $white;
+  color: $black;
   /* margin: 0;
   padding: 0; */
 }
 
 #app {
-  background-color: $background;
-  color: $accentLight;
+  background-color: $white;
+  color: $black;
 
   display: grid;
   grid-template-areas:
     "head"
-    "main";
-  grid-template-rows: 8rem 1fr;
+    "main"
+    "footer";
+  grid-template-rows: 8rem 1fr 5.5rem;
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
@@ -93,13 +100,30 @@ html {
   grid-area: main;
 }
 
+#footer {
+  grid-area: footer;
+  display: grid;
+  grid-template-areas: "footer-top"
+                       "footer-bottom";
+  grid-template-rows: 1fr 3fr;
+}
+
+#footer-top {
+  grid-area: footer-top;
+  background-color: $blue;
+}
+
+#footer-bottom {
+  grid-area: footer-bottom;
+  background-color: $black;
+}
 // .ad {
 //   grid-area: ad;
 //   display: flex;
 //   justify-content: space-around;
 //   background-color: $babypowder;
-//   color: $accentDark;
-//   border: 1px solid $accentDark;
+//   color: $black;
+//   border: 1px solid $black;
 // }
 
 //override default body & html padding & margin to eliminate scrollbar
@@ -114,12 +138,11 @@ body {
   grid-template-areas:
     "top top top top"
     "middle middle middle middle"
-    "home breweries events news";
+    "breweries beers events news";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1.5fr .5fr 1fr;
 
   width: 100%;
-  text-align: center;
   align-items: center;
   filter: drop-shadow(0.25rem 0.1rem 0.5rem black);
 }
@@ -128,24 +151,24 @@ body {
   grid-area: top;
   width: 100%;
   height: 100%;
-  background-color: #E71D36;
+  background-color: $black;
 } 
 
 #nav-spacer-2 {
   grid-area: middle;
   width: 100%;
   height: 100%;
-  background-color: #2ec4b6;
+  background-color: $blue;
 }
 
 #nav router-link {
   align-content: center;
-  background-color: #FF9F1C;
+  background-color: $yellow;
 }
 
 .nav-item, a.nav-item {
-  background-color: #FF9F1C;
-  color: $babypowder;
+  background-color: $white;
+  color: $black;
   font-size: 1.5rem;
   height: 100%;
   text-transform: uppercase;
@@ -154,14 +177,16 @@ body {
   text-decoration-line: none;
 }
 
-.home {
-  grid-area: home;
+.beers {
+  grid-area: beers;
   font-weight: bold;
+  padding-left: 1rem;
 }
 
 .breweries {
   grid-area: breweries;
   font-weight: bold;
+  padding-left: 5rem;
 }
 
 .register {
@@ -176,27 +201,57 @@ body {
   grid-area: top;
   display: flex;
   flex-direction: row-reverse;
+  text-align: center;
 }
 
 .events {
   grid-area: events;
   font-weight: bold;
+  text-align: right;
+  padding-right: 1rem;
 }
 
 .news {
   grid-area: news;
   font-weight: bold;
+  text-align: right;
+  padding-right: 5rem;
 }
 
 .account-button {
-  border: 2px solid black;
+  border: 2px solid $black;
   text-decoration-line: none;
   margin-right: 1rem;
-  background-color: $babypowder;
-  color: $richblack;
+  background-color: $white;
+  color: $black;
   padding: 0 1rem;
   border-radius: 1rem;
   min-width: 8rem;
 }
 
+#logo-container {
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+#primary-logo {
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  margin-left: auto; 
+  margin-right: auto;
+  margin-top: 0.5rem; 
+  width: 11%;
+  border-radius: 10rem;
+  z-index: 2;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
+}
+
+#primary-logo:hover {
+  margin-top: 0.4rem;
+  width: 11.5rem;
+}
 </style>

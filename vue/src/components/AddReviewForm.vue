@@ -1,33 +1,48 @@
 <template>
-
-<div class="form-box">
-  <h2>Add a review</h2>
-  <form v-on:submit.prevent="handleSave"
-        > <!-- v-show keeps it in the DOM, but adds display: none. This is ALWAYS a good idea for forms -->
-
-        <input type="hidden" value="YourUserIDGoesHere" />
-        <div class="form-element">
-          <label for="rating">Rating:</label>
-          <select id="rating" v-model.number="newReview.rating">
-            <option value="1">1 Star</option>
-            <option value="2">2 Stars</option>
-            <option value="3">3 Stars</option>
-            <option value="4">4 Stars</option>
-            <option value="5">5 Stars</option>
-          </select>
+  <form v-on:submit.prevent="handleSave"> 
+    <div>
+      <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Leave a Review
+        </button>
+      </p>
+    <div class="collapse" id="collapseExample" v-if="addFormVisible===true">
+        <div class="card card-body">
+            <form v-on:submit.prevent="addBeer">
+                <input type="hidden" value="YourUserIDGoesHere" />
+                <div class="form-element">
+                  <select id="rating" v-model.number="newReview.rating">
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                  </select>
+                </div>
+                <div class="form-element">
+                  <label for="review" ></label>
+                  <textarea id="review" v-model="newReview.description" placeholder="Leave a review"></textarea>
+                </div>
+            </form>
+              <input type="submit" value="Save" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-bind:disabled="isSaveDisabled">
+              <input type="button" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
         </div>
-        <div class="form-element">
-          <label for="review">Review:</label>
-          <textarea id="review" v-model="newReview.description"></textarea>
-        </div>
-        <input type="submit" value="Save" v-bind:disabled="isSaveDisabled"> <!-- v-on:click.prevent="handleSave" -->
-        <input type="button" value="Cancel" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
-      </form>
-    </div> 
+      </div>
+
+      <div class="collapse" id="collapseExample" v-else>You must be signed in to leave a review.
+        <form v-on:submit.prevent="addBeer">
+                <input type="hidden" value="YourUserIDGoesHere" />
+                <div class="form-element">
+                </div>
+            </form>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script>
 import BreweryService from '../services/BreweryService.js'; 
+import ReviewService from '../services/ReviewService.js';
 export default {
     data() {
         return {
@@ -38,17 +53,57 @@ export default {
                 beerId: 0,
             },
         };
+        
     },
-    computed: {
-            isSaveDisabled() {
+    name: 'review-list',
+    components: {
+    },
+     computed: {
+        allReviews(){
+            return this.$store.state.reviews;
+        },
+        isSaveDisabled() {
                 return this.newReview.title === '';
             },
+
+        numberOfReviews(){
+            return this.$store.state.reviews.length;
         },
-        created() {
-        console.log('Here is my $route', this.$route);
-        console.log('Here is my $router', this.$router);
+
+        addFormVisible(){
+            if (this.$store.state.user.username){
+                return true;
+            } return false;
         },
+
+        averageRating(){
+            if(this.numberOfReviews <= 0){
+                return 'No Reviews';
+            }
+            let total = 0;
+            this.$store.state.reviews.forEach(rev=> total += rev.reviewerRating);
+            return (total / this.$store.state.reviews.length).toFixed(2);
+        }
+
+    },
+        
+        created(){
+        console.log('Attempting review request...');
+        let beerId = parseInt(this.$route.params.beerId);
+
+        ReviewService.reviewList(beerId)
+        .then(result => {
+            console.log('Promise Resolved', result);
+
+            if(result.status === 200){
+                this.$store.commit('LOADED_REVIEWS', result.data);
+            }
+        });
+    },
     methods: {
+        reloadPage() {
+        window.location.reload();
+        },
         handleSave(event) {
             console.log('Save was clicked!', event);
             this.newReview.name = this.$store.state.user.username;
@@ -84,7 +139,8 @@ export default {
               // Hide the form
               this.$store.commit('TOGGLE_ADD_FORM_VISIBLE');
             }
-        },        
+        },    
+            
     }
 }
 </script>
@@ -93,7 +149,7 @@ export default {
 @import "../styles/colors.scss";
 
 .form-box{
-  border: 1px solid $babypowder;
+  border: 1px solid $white;
   margin: 2rem;
   padding: 1rem;
   border-radius: 5px;
