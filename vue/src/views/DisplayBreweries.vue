@@ -12,8 +12,27 @@
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
     </div>
-    <div class="filt">
-      <p>filter</p>
+    <div class="filter-box">
+      <h3>Filter By:</h3>
+      <div class="row">
+            <div>
+                <label for="searchName">Brewery: </label>
+            </div>
+            <div class>
+                <input id="searchName" type="text" v-model="searchName">
+            </div>
+      </div>
+
+      <div class="row">
+            <div>
+                <label for="searchDescription">Description: </label>
+            </div>
+            <div class>
+                <input id="searchDescription" type="text" v-model="searchDescription">
+            </div>
+      </div>
+
+
     </div>
     <Ad />
   </div>
@@ -24,11 +43,28 @@ import BreweryService from "../services/BreweryService.js";
 import Ad from "../components/Ad.vue";
 
 export default {
+  name: 'DisplayBreweries',
+  data(){
+    return {
+      searchName: '',
+      searchDescription: '',
+    };
+
+  },
   computed: {
     allBreweries() {
       return this.$store.state.breweries;
     },
+    filteredBreweries(){
+      let result = this.allBreweries.slice();
+
+      if(this.searchName || this.searchDescription){
+        result = result.filter(brewery => brewery.name.toLowerCase().includes(this.searchName.toLowerCase()) && brewery.description.toLowerCase().includes(this.searchDescription.toLowerCase()));
+      }
+      return result;
+      },
   },
+
 
   components: {
         Ad,
@@ -58,7 +94,7 @@ export default {
   grid-template-columns: 1fr 3fr 1fr;
 }
 
-.filt {
+.filter-box {
   grid-area: filt;
   vertical-align: text-top;
   background-color: $white;
@@ -97,6 +133,23 @@ export default {
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
 }
 
 </style>

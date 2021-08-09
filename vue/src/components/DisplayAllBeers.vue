@@ -1,8 +1,8 @@
 <template>
 <div class="beer-display">
 
-    <div class="container">
-        <h3>Search by:</h3>
+    <div class="filter-box">
+        <h3>Filter by:</h3>
         <div class="row">
             <div>
                 <label for="searchBrewery">Brewery: </label>
@@ -32,7 +32,7 @@
     </div> 
 
         <div class="beer-list">
-        <div class="line" />
+            <div class="line" />
             <div id="beer">
             <!-- all the beers show on the line below-->
                 <router-link 
@@ -42,6 +42,7 @@
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beers-card">
                     <img class="beers-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
+                    <div class="beers-card-brewery">{{beer.breweryName}}</div>
                     <div class="beers-card-title">{{beer.name}}</div>
                     <div class="beers-card-style">{{beer.style}}</div>
                 </router-link>
@@ -84,7 +85,10 @@ export default {
             }
 
             return result;
-        }
+        },
+        // currentBrewery(){
+        //     return this.$store.state.breweries;
+        // }
         
     },
 
@@ -117,13 +121,14 @@ tr:nth-child(even){
 }
 
 .beer-list{
-    border: 1px solid $yellow;
+    border: 1px solid $black;
     width: 100%;
     padding: 2rem;
     grid-area: main;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .beers-card-style {
@@ -131,7 +136,12 @@ tr:nth-child(even){
     font-weight: normal;
 }
 
-.container {
+.beers-card-brewery {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.filter-box {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -187,7 +197,7 @@ input[type=text] {
   background: $blue;
   text-align: center;
   width: 15rem;
-  min-height: 300;
+  max-height: 350px;
   margin: 1rem;
   margin-top: 2rem;
   font-size: 2rem;

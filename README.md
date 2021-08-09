@@ -66,6 +66,8 @@ In the dotnet database folder, you'll find the database creation script `capston
 
 
 
+![Database schema](/vue/src/assets/readme/troubleshoot.jpg)
+
 ## API Debugging Tips
 
 - Test your server frequently in Postman

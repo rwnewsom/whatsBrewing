@@ -46,9 +46,10 @@ export default {
 .card {
     border: 2px solid $white;
     border-radius: 10px;
-    width: 500px;
+    width: 90%;
     height: auto;
-    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: $black;
     color: $white;    
 }

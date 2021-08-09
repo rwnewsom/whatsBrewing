@@ -9,16 +9,19 @@
 
 @import "../styles/colors.scss";
 
+.ad {
+  background-color: #f2f2f2;
+}
+
 .ad img {
   grid-area: ad;
   display: flex;
   flex-wrap: wrap; 
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 4rem;
-  background-color: $white;
+  margin-top: 1rem;
   color: $black;
-  border: 1px solid $black;
+  border: 2px solid $black;
   margin-left: auto;
   margin-right: auto;
 }
