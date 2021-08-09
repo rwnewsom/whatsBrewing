@@ -11,9 +11,9 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBreweries = "SELECT brewery_id, brewery_name, brewery_description FROM breweries";
+        private string sqlListBreweries = "SELECT brewery_id, brewery_name, brewery_description, image_url FROM breweries";
 
-        private string sqlBreweryDetails = "SELECT br.brewery_name, br.brewery_description, a.street_number, a.street_name, a.city_name, a.state, a.zip_code, a.phone_number, a.url, a.map_url " +
+        private string sqlBreweryDetails = "SELECT br.brewery_name, br.brewery_description, a.street_number, a.street_name, a.city_name, a.state, a.zip_code, a.phone_number, a.url, a.map_url, br.image_url " +
                                             "FROM breweries br INNER JOIN address a ON br.brewery_id = a.brewery WHERE br.brewery_id = @id"; //TODO: Parameter
         public BrewerySqlDAO(string dbConnectionString)
         {
@@ -90,6 +90,7 @@ namespace Capstone.DAO
                 Id = Convert.ToInt32(reader["brewery_id"]),
                 Name = Convert.ToString(reader["brewery_name"]),
                 Description = Convert.ToString(reader["brewery_description"]),
+                ImageURL = Convert.ToString(reader["image_url"]),
             };
 
             return brewery;

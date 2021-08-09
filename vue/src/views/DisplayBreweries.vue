@@ -8,7 +8,7 @@
         v-bind:to="{name: 'breweryDetails', 
         params: {id: brewery.id}}"
         class="noline brewery-card">
-        <img class="brewery-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
+        <img class="brewery-card-img" v-bind:src="brewery.imageURL"  />
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
     </div>
