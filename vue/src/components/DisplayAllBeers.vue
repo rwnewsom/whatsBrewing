@@ -32,9 +32,8 @@
     </div> 
 
         <div class="beer-list">
-            <div class="line" />
-            <div id="beer">
-            <!-- all the beers show on the line below-->
+            <div id="beers">
+                <!-- all the beers show on the line below-->
                 <router-link 
                         v-for="beer of filteredBeers" 
                         v-bind:key="beer.id" 
@@ -122,13 +121,20 @@ tr:nth-child(even){
 
 .beer-list{
     border: 1px solid $black;
-    width: 100%;
     padding: 2rem;
     grid-area: main;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+    justify-content: center;
+}
+
+#beers {
+    display:flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .beers-card-style {
@@ -175,7 +181,7 @@ input[type=text] {
 .beer-display {
   display: grid;
   grid-template-areas: "filt main ad";
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 17.5rem auto 17.5rem;
 }
 
 .beers-card-img {

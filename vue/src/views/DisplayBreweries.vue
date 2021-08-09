@@ -94,7 +94,7 @@ export default {
 .brew-display {
   display: grid;
   grid-template-areas: "filt main ad";
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 17.5rem auto 17.5rem;
 }
 
 .filter-box {
@@ -107,7 +107,8 @@ export default {
   color: $white;
   background: $blue;
   text-align: center;
-  width: 65%;
+  width: 66%;
+  max-width: 35rem;
   height: 355px;
   margin-left: 17.5%;
   margin-right: 17.5%;

@@ -246,7 +246,7 @@ body {
   margin-left: auto; 
   margin-right: auto;
   margin-top: 0.5rem; 
-  width: 11%;
+  width: 9rem;
   border-radius: 10rem;
   z-index: 2;
   filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
