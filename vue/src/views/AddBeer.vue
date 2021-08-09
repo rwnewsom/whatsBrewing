@@ -54,6 +54,7 @@
                         ></span>
                     Add
                 </button>
+                <input type="cancel" value="Cancel" class="btn btn-primary" id="cancel" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
@@ -156,5 +157,10 @@ export default {
     width: 29rem;
     max-height: 280px;
     overflow-y:auto;
+}
+#cancel{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    width: 10%;
 }
 </style>

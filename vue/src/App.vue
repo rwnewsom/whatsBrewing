@@ -134,6 +134,8 @@ body {
 
 #nav {
   grid-area: head;
+  position: fixed;
+  z-index: 2;
   display: grid;
   grid-template-areas:
     "top top top top"
@@ -238,7 +240,7 @@ body {
 }
 
 #primary-logo {
-  position: absolute; 
+  position: fixed; 
   left: 0; 
   right: 0;
   margin-left: auto; 
@@ -252,6 +254,6 @@ body {
 
 #primary-logo:hover {
   margin-top: 0.4rem;
-  width: 11.5rem;
+  width: 11rem;
 }
 </style>

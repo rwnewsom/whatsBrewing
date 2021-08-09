@@ -80,6 +80,7 @@ CREATE TABLE beer_reviews (
 -- These values should not be kept when going to Production
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('brewer','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','brewer');
 
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('BrewDog', 'No-nonsense chain bar specializing in the Scottish brewery''s craft beers, with regular guest brews.');
 INSERT INTO breweries (brewery_name, brewery_description) VALUES ('Seventh Son Brewing Co.', 'Brewery specializing in ales & IPAs with a bright, rustic tasting room & visiting food trucks.');
