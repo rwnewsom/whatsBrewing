@@ -31,7 +31,7 @@
             </summary>
             <param name="userParam">The new user to create</param>
         </member>
-        <member name="P:Capstone.Models.Brewery.Name">
+        <member name="P:Capstone.Models.Brewery.Id">
             <summary>
             Id represents primary key of database
             </summary>

@@ -91,6 +91,7 @@ namespace Capstone.DAO
         {
             Brewery brewery = new Brewery()
             {
+                Id = Convert.ToInt32(reader["brewery_id"]),
                 Name = Convert.ToString(reader["brewery_name"]),
                 Description = Convert.ToString(reader["brewery_description"]),
                 ImageURL = Convert.ToString(reader["image_url"]),
