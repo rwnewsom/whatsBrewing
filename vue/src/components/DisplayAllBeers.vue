@@ -32,22 +32,19 @@
     </div> 
 
     <div class="beer-list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Brewery</th>
-                    <th>Name</th>
-                    <th>Style</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="beer of filteredBeers" v-bind:key="beer.beerId">
-                    <td> <router-link class="beerlink" v-bind:to="{name:'breweryDetails', params: {id: beer.breweryId}}"> {{ beer.breweryName }} </router-link></td>
-                    <td> <router-link class="beerlink" v-bind:to="{name:'beerDetails', params: {id: beer.breweryId, beerId: beer.beerId}}"> {{beer.name}} </router-link></td>
-                    <td>{{beer.style}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="line" />
+                <div id="beer">
+                    <!-- all the beers show on the line below-->
+                    <router-link 
+                        v-for="beer of allBeers" 
+                        v-bind:key="beer.id" 
+                        v-bind:to="{name: 'beerDetails', 
+                            params: {id: beer.breweryId, beerId: beer.beerId}}"
+                        class="noline beer-card">
+                        <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
+                        <div class="beer-card-title">{{beer.name}}</div>
+                    </router-link>
+                </div>
     </div>
 </div>
 </template>

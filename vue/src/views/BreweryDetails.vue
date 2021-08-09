@@ -21,12 +21,12 @@
                 <h4>Current Beers</h4>
                 <div class="line" />
                 <div id="beer">
-                    <!-- all the breweries show on the line below-->
+                    <!-- all the beers show on the line below-->
                     <router-link 
                         v-for="beer of allBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
-                            params: {id: beer.id}}"
+                            params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beer-card">
                         <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
                         <div class="beer-card-title">{{beer.name}}</div>
