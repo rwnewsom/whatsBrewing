@@ -94,26 +94,5 @@ namespace Capstone.DAO
 
             return brewery;
         }
-
-        public bool AddBrewery(Brewery brewery)
-        {
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand(, conn);
-                cmd.Parameters.AddWithValue("@name", beer.Name);
-                cmd.Parameters.AddWithValue("@style", beer.Style);
-                cmd.Parameters.AddWithValue("@description", beer.Description);
-                cmd.Parameters.AddWithValue("@ABV", beer.ABV);
-                cmd.Parameters.AddWithValue("@IBU", beer.IBU);
-                cmd.Parameters.AddWithValue("@brewery", beer.BreweryId);
-                int added = cmd.ExecuteNonQuery();
-                return added == 1;
-            }
-
-
-        }
     }
 }

@@ -1,8 +1,8 @@
 <template>
 <div class="beer-display">
 
-    <div class="container">
-        <h3>Search by:</h3>
+    <div class="filter-box">
+        <h3>Filter by:</h3>
         <div class="row">
             <div>
                 <label for="searchBrewery">Brewery: </label>
@@ -42,7 +42,7 @@
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beers-card">
                     <img class="beers-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
-                    <div class="beers-card-brewery">{{currentBrewery.name}}</div>
+                    <div class="beers-card-brewery">{{beer.breweryName}}</div>
                     <div class="beers-card-title">{{beer.name}}</div>
                     <div class="beers-card-style">{{beer.style}}</div>
                 </router-link>
@@ -86,9 +86,9 @@ export default {
 
             return result;
         },
-        currentBrewery(){
-            return this.$store.state.breweries;
-        }
+        // currentBrewery(){
+        //     return this.$store.state.breweries;
+        // }
         
     },
 
@@ -141,7 +141,7 @@ tr:nth-child(even){
     font-weight: normal;
 }
 
-.container {
+.filter-box {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
