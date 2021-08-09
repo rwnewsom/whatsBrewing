@@ -31,6 +31,7 @@
                         <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
                         <div class="beer-card-title">{{beer.name}}</div>
                         <div class="beer-card-style">{{beer.style}}</div>
+                        <div class="beer-card-brewery">{{beer.brewery}}</div>
                     </router-link>
                 </div>
                 <div v-if="deleteOrAddAuth">
@@ -236,6 +237,11 @@ export default {
 }
 
 .beer-card-style {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.beer-card-brewery {
     font-size: medium;
     font-weight: normal;
 }
