@@ -13,7 +13,10 @@
         <img class="brewery-card-img" v-bind:src="brewery.imageURL"  />
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
-q
+      <div id="pagination-breweries">
+        <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
+      </div>
+
     </div>
     <div class="filter-box">
       <div class="sticky">
@@ -35,6 +38,7 @@ q
               <div class>
                   <input id="searchDescription" type="text" v-model="searchDescription">
               </div>
+
         </div>
       </div>
     </div>
@@ -126,6 +130,9 @@ export default {
 #brewery-result-count {
   margin-left: 2rem;
   text-decoration-line: underline;
+  align-self: left;
+  justify-self: left;
+  margin-top: 1rem;
 }
 
 .brewery-card {

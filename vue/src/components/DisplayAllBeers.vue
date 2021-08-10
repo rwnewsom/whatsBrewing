@@ -32,10 +32,13 @@
     </div> 
 
         <div class="beer-list">
+            <div v-if="resultCount > 1" id="brewery-result-count">{{resultCount}} results</div>
+            <div v-else id="brewery-result-count">{{resultCount}} result</div>
             <div id="beers">
+
                 <!-- all the beers show on the line below-->
                 <router-link 
-                        v-for="beer of filteredBeers" 
+                        v-for="beer of pageBeers" 
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
@@ -47,6 +50,9 @@
                         <div class="beers-card-style">{{beer.style}}</div>
                     </div>
                 </router-link>
+                <div id="pagination-breweries">
+                    <jw-pagination :pageSize="20" :items="filteredBeers" @changePage="onChangePage" />
+                </div>
             </div>
         </div>
     <Ad/>   
@@ -65,6 +71,8 @@ export default {
             searchBrewery: '',
             searchName: '',
             searchStyle:'',
+            pageBeers: [],
+            resultCount: 0
         };
 
     },
@@ -84,16 +92,9 @@ export default {
             if(this.searchBrewery || this.searchName || this.searchStyle){
                 result = result.filter(beer => beer.breweryName.toLowerCase().includes(this.searchBrewery.toLowerCase()) && beer.name.toLowerCase().includes(this.searchName.toLowerCase()) && beer.style.toLowerCase().includes(this.searchStyle.toLowerCase()) );
             }
+            this.updateResultCount(result.length)
 
-            // left align last row
-            result.push("")
-            result.push("")
-            result.push("")
-            result.push("")
-            result.push("")
-            result.push("")
-
-return result;
+            return result;
         },
         // currentBrewery(){
         //     return this.$store.state.breweries;
@@ -112,8 +113,15 @@ return result;
                 this.$store.commit('LOADED_BEER', result.data);
             }
         });
+    },
+    methods: {
+        onChangePage(pageBeers) {
+        this.pageBeers = pageBeers;
+        },
+        updateResultCount(count) {
+        this.resultCount = count;
+        },
     }
-
 }
 </script>
 
@@ -136,7 +144,6 @@ return result;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: center;
 }
 
 #beers {
