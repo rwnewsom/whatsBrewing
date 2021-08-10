@@ -14,16 +14,6 @@
                         required 
                         placeholder="Beer name">
                 </div>
-                <!-- <div class="mb-3">
-                        <div class="btn-group">
-                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Brewery
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#" v-for="brewery of displayAllBreweries" v-bind:key="brewery.id"> {{brewery.name}} </a>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="mb-3">
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="newBeer.style"
@@ -108,22 +98,7 @@ export default {
                 abv: '',
                 ibu: ''
             }
-
-
-              /*   .then(response => {
-                    // We want the ID of the item from the server
-                    this.$store.commit('ADD_BEER', response.data);
-
-                    this.$router.push({name: 'BeerList'});
-                })
-                .catch(response => {
-                    console.error(response);
-                    alert('Could not save the item. Contact support for more information.');
-                    this.isSaving = false;
-                }) */
-            
         },
-        
     }
 }
 </script>

@@ -9,6 +9,7 @@ import DisplayBreweries from "../views/DisplayBreweries.vue";
 import BreweryDetails from "../views/BreweryDetails.vue";
 import BeerDetails from "../views/BeerDetails.vue";
 import DisplayAllBeers from "../components/DisplayAllBeers.vue";
+import DeleteBeer from "../views/DeleteBeer.vue";
 Vue.use(Router);
 
 /**
@@ -80,6 +81,11 @@ const router = new Router({
       path: "/beers",
       name: "beers",
       component: DisplayAllBeers,
+    },
+    {
+      path: "/breweries/:id/beer/:beerId/delete",
+      name: "deleteBeer",
+      component: DeleteBeer,
     }
   ],
 });

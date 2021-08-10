@@ -61,6 +61,12 @@
                     <h3>Not Listed</h3>
                 </div>
             </div>
+            
+                    <div class="deleteButton">
+                        <router-link v-bind:to="{ name: 'deleteBeer' }">
+                        <button type="button" id="deleteButton" class="btn btn-outline-danger">Delete Beer</button>
+                        </router-link>
+                    </div>
 
 
             

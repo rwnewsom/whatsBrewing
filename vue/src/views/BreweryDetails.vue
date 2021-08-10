@@ -34,11 +34,14 @@
                         <div class="beer-card-brewery">{{beer.brewery}}</div>
                     </router-link>
                 </div>
-                <div v-if="deleteOrAddAuth">
+                <div v-if="deleteOrAddAuth" class="buttonsDiv">
                     <add-beer />
                 </div>
                 <div v-else>
                     <p>If you are a brewer and would like edit privileges, please contact support.</p>
+                </div>
+                <div>
+                    
                 </div>
             </div>
         </div>
@@ -59,7 +62,7 @@ export default {
     components: {
         //BeerList,
         AddBeer,
-        Ad
+        Ad,
     },
 
     computed: {
@@ -265,5 +268,15 @@ export default {
     height: .5rem;
     background: $blue;
     border-radius: 2rem;
+}
+#deleteButton{
+        background-color: $yellow;
+        color: white;
+        border: 1;
+        border-color: black;
+}
+#deleteButton:hover{
+    background-color: red;
+    outline-color: black;
 }
 </style>
