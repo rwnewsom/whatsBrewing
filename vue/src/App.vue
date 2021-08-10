@@ -90,7 +90,7 @@ html {
     "head"
     "main"
     "footer";
-  grid-template-rows: 8rem 1fr 5.5rem;
+  grid-template-rows: 6.8rem 1fr 5.5rem;
 
   height: 100vh;
   width: 100%;
