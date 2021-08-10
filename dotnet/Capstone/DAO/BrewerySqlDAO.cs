@@ -16,7 +16,7 @@ namespace Capstone.DAO
         private string sqlBreweryDetails = "SELECT br.brewery_id, br.brewery_name, br.brewery_description, a.street_number, a.street_name, a.city_name, a.state, a.zip_code, a.phone_number, a.url, a.map_url, br.image_url " +
                                             "FROM breweries br INNER JOIN address a ON br.brewery_id = a.brewery WHERE br.brewery_id = @id"; //TODO: Parameter
 
-        private string sqlUpdateBrewery = "BEGIN TRANSACTION UPDATE breweries SET brewery_name = @brewery_name, brewery_description = @brewery_description WHERE brewery_id = @brewery_id UPDATE address SET street_number = @street_number, street_name = @street_name, city_name = @city_name, state = @state, zip_code = @zip_code, phone_number = @phone_number, map_url = @map_url, url = @url WHERE brewery = @brewery_id COMMIT TRANSACTION";
+        private string sqlUpdateBrewery = "BEGIN TRANSACTION UPDATE breweries SET brewery_name = @brewery_name, brewery_description = @brewery_description, image_url = @image_url WHERE brewery_id = @brewery_id UPDATE address SET street_number = @street_number, street_name = @street_name, city_name = @city_name, state = @state, zip_code = @zip_code, phone_number = @phone_number, map_url = @map_url, url = @url WHERE brewery = @brewery_id COMMIT TRANSACTION";
         private string sqlNewBrewery = "INSERT INTO breweries (brewery_name, brewery_description, image_url) VALUES (@brewery_name, @brewery_description, @image_url); " +
             "INSERT INTO address(street_number, street_name, city_name, state, zip_code, phone_number, brewery, url, map_url) VALUES(@street_number, @street_name, @city_name, @state, @zip_code, @phone_number, (SELECT @@IDENTITY), @url, @map_url)";
         
@@ -109,6 +109,7 @@ namespace Capstone.DAO
                 SqlCommand command = new SqlCommand(sqlUpdateBrewery, conn);
                 command.Parameters.AddWithValue("@brewery_name", brewery.Name);
                 command.Parameters.AddWithValue("@brewery_description", brewery.Description);
+                command.Parameters.AddWithValue("@image_url", brewery.ImageUrl);
                 command.Parameters.AddWithValue("@brewery_id", brewery.Id);
                 command.Parameters.AddWithValue("@street_number", brewery.StreetNumber);
                 command.Parameters.AddWithValue("@street_name", brewery.StreetName);
@@ -135,7 +136,7 @@ namespace Capstone.DAO
                 SqlCommand command = new SqlCommand(sqlNewBrewery, conn);
                 command.Parameters.AddWithValue("@brewery_name", brewery.Name);
                 command.Parameters.AddWithValue("@brewery_description", brewery.Description);
-                command.Parameters.AddWithValue("@image_url", brewery.ImageUrl); ;
+                command.Parameters.AddWithValue("@image_url", brewery.ImageUrl);
                 command.Parameters.AddWithValue("@street_number", brewery.StreetNumber);
                 command.Parameters.AddWithValue("@street_name", brewery.StreetName);
                 command.Parameters.AddWithValue("@city_name", brewery.CityName);
