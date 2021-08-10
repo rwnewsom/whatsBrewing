@@ -26,6 +26,8 @@ namespace Capstone.Models
         /// From the Google Maps HTML Generator, code that would be within src=""
         /// </summary>
         public string? MapUrl { get; set; }
+        public string? ImageUrl { get; set; }
+        public int Brewery { get; set; }
 
     }
 }

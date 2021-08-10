@@ -54,5 +54,19 @@ namespace Capstone.Controllers
 
             return Ok(newBrewery);
         }
+
+        [HttpPost("newBrewery")]
+        public ActionResult NewBrewery(BreweryDetails brewery)
+        {
+            bool success = breweryDao.NewBrewery(brewery);
+            if (success)
+            {
+                return Ok();
+            }
+            else
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }
