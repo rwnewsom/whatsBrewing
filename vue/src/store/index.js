@@ -71,5 +71,12 @@ export default new Vuex.Store({
     ADD_REVIEW(state, payload){
       state.reviews.push(payload);
     },
+    // DELETE_BEER(state, beerId) {
+    //   let index = state.beerDetails.findIndex(beer => beer.beerId === beerId);
+
+    //   if (index >= 0) {
+    //     state.beerDetails.splice(index, 1);
+    //   }
+    // }
   }
 })
