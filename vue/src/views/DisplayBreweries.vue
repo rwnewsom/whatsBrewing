@@ -1,9 +1,11 @@
 <template>
   <div class ="brew-display">
     <div id="breweries">
+      <div v-if="resultCount > 1" id="brewery-result-count">{{resultCount}} results</div>
+      <div v-else id="brewery-result-count">{{resultCount}} result</div>
       <!-- all the breweries show on the line below-->
       <router-link 
-        v-for="brewery of allBreweries" 
+        v-for="brewery of pageBreweries" 
         v-bind:key="brewery.id" 
         v-bind:to="{name: 'breweryDetails', 
         params: {id: brewery.id}}"
@@ -11,10 +13,12 @@
         <img class="brewery-card-img" v-bind:src="brewery.imageURL"  />
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
+      <div id="pagination-breweries">
+        <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
+      </div>
     </div>
     <div class="filter-box">
       <div class="sticky">
-
         <h3>Filter By:</h3>
         <div class="row">
               <div>
@@ -34,8 +38,6 @@
               </div>
         </div>
       </div>
-
-
     </div>
     <Ad />
   </div>
@@ -51,7 +53,9 @@ export default {
     return {
       searchName: '',
       searchDescription: '',
-    };
+      pageBreweries: [],
+      resultCount: 0,
+  };
 
   },
   computed: {
@@ -64,6 +68,7 @@ export default {
       if(this.searchName || this.searchDescription){
         result = result.filter(brewery => brewery.name.toLowerCase().includes(this.searchName.toLowerCase()) && brewery.description.toLowerCase().includes(this.searchDescription.toLowerCase()));
       }
+      this.updateResultCount(result.length)
       return result;
       },
   },
@@ -84,6 +89,14 @@ export default {
       }
     });
   },
+  methods: {
+    onChangePage(pageBreweries) {
+      this.pageBreweries = pageBreweries;
+    },
+    updateResultCount(count) {
+      this.resultCount = count;
+    },
+  }
 };
 </script>
 
@@ -101,6 +114,11 @@ export default {
   grid-area: filt;
   vertical-align: text-top;
   background-color: $white;
+}
+
+#brewery-result-count {
+  margin-left: 2rem;
+  text-decoration-line: underline;
 }
 
 .brewery-card {
@@ -128,7 +146,8 @@ export default {
 #breweries {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .brewery-card-img {
@@ -156,6 +175,9 @@ input[type=text] {
   resize: vertical;
 }
 
-
+#pagination-breweries {
+  display: flex;
+  justify-content: center;
+}
 
 </style>

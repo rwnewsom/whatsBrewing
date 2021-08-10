@@ -254,6 +254,6 @@ body {
 
 #primary-logo:hover {
   margin-top: 0.4rem;
-  width: 11rem;
+  width: 9.5rem;
 }
 </style>

@@ -39,7 +39,8 @@
                         v-bind:key="beer.id" 
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
-                        class="noline beers-card">
+                        class="noline beers-card"
+                        :class="(beer.name)? '':'hidden'">
                     <img class="beers-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
                     <div class="beers-card-brewery">{{beer.breweryName}}</div>
                     <div class="beers-card-title">{{beer.name}}</div>
@@ -83,7 +84,15 @@ export default {
                 result = result.filter(beer => beer.breweryName.toLowerCase().includes(this.searchBrewery.toLowerCase()) && beer.name.toLowerCase().includes(this.searchName.toLowerCase()) && beer.style.toLowerCase().includes(this.searchStyle.toLowerCase()) );
             }
 
-            return result;
+            // left align last row
+            result.push("")
+            result.push("")
+            result.push("")
+            result.push("")
+            result.push("")
+            result.push("")
+
+return result;
         },
         // currentBrewery(){
         //     return this.$store.state.breweries;
@@ -114,9 +123,8 @@ export default {
     color: $white
 }
 
-tr:nth-child(even){
-    background-color: $blue;
-    color: $black;
+.hidden {
+    visibility: hidden;
 }
 
 .beer-list{
@@ -134,15 +142,18 @@ tr:nth-child(even){
     display:flex;
     margin: 0 auto;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .beers-card-style {
+    color: $white;
     font-size: medium;
     font-weight: normal;
 }
 
 .beers-card-brewery {
+    color: $white;
     font-size: medium;
     font-weight: normal;
 }
