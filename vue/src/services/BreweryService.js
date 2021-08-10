@@ -29,5 +29,8 @@ export default {
       },
       addBeer(newBeer){
         return client.post('Beer/addBeer', newBeer);
-      }
+      },
+      //addBrewery(newBrewery){
+        //return client.post('')
+      //}
 }

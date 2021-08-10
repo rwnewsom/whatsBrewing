@@ -1,6 +1,7 @@
 <template>
     <div id="brewery-details">
         <div class="brewery">
+            <div v-if="showUpdate"><update-brewery /></div>
             <div class="breweryDetails">
                 <h2 class="name"><span>{{currentBrewery.name}}</span></h2>
                 <p class="description">{{currentBrewery.description}}</p>
@@ -52,6 +53,7 @@ import BreweryService from '../services/BreweryService.js'
 //import BeerList from '../components/BeerList.vue'
 import Ad from "../components/Ad.vue"
 import AddBeer from "../views/AddBeer.vue";
+import UpdateBrewery from "../components/UpdateBrewery.vue";
 
 
 export default {
@@ -59,7 +61,8 @@ export default {
     components: {
         //BeerList,
         AddBeer,
-        Ad
+        Ad,
+        UpdateBrewery
     },
 
     computed: {
@@ -75,13 +78,17 @@ export default {
             }
             return false;
         },
-
-        
         deleteOrAddAuth(){
             if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
                 return true;
             } return false;
         },
+        showUpdate(){
+        if(this.$store.state.user.role == "admin" || this.$store.state.user.role == "brewer") {
+          return true;
+        }
+        return false;
+      }
     },
 
     watch: {
