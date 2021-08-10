@@ -65,6 +65,7 @@
 import BreweryService from '../services/BreweryService.js';
 
 export default {
+    name: 'AddBeer',
     computed: {
         displayAllBreweries() {
         return this.$store.state.breweries;

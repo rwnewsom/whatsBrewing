@@ -19,6 +19,7 @@
     </div>
     <div class="filter-box">
       <div class="sticky">
+        <div v-if="showAdd"><add-brewery /></div>
         <h3>Filter By:</h3>
         <div class="row">
               <div>
@@ -46,6 +47,7 @@
 <script>
 import BreweryService from "../services/BreweryService.js";
 import Ad from "../components/Ad.vue";
+import AddBrewery from "../views/AddBrewery.vue";
 
 export default {
   name: 'DisplayBreweries',
@@ -71,11 +73,18 @@ export default {
       this.updateResultCount(result.length)
       return result;
       },
+      showAdd(){
+        if(this.$store.state.user.role == "admin" || this.$store.state.user.role == "brewer") {
+          return true;
+        }
+        return false;
+      }
   },
 
 
   components: {
         Ad,
+        AddBrewery
     },
 
   created() {
