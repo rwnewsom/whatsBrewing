@@ -94,7 +94,7 @@ export default {
       }
     },
 
-    watch: {
+    /* watch: {
         allBeers(){
         let breweryId = parseInt(this.$route.params.id);
 
@@ -107,7 +107,7 @@ export default {
             }
         });
         }
-    },
+    }, */
 
 
 

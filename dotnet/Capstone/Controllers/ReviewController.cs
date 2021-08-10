@@ -28,16 +28,10 @@ namespace Capstone.Controllers
         [HttpPost("addReview")]
         public ActionResult AddBeerReview(ReviewBeers review)
         {
-            bool success = reviewDAO.AddBeerReview(review);
-            if (success)
-            {
-
-                return Ok();
-            }
-            else
-            {
-                return StatusCode(500);
-            }
+            ReviewBeers success = reviewDAO.AddBeerReview(review);
+            
+                return Ok(success);
+           
         }
 
 
