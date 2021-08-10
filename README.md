@@ -1,5 +1,8 @@
 # .NET OSCAR  Capstone - Brewery App
 
+## !DEPENDENCY NEEDED!
+- npm install --save jw-vue-pagination
+
 ## Team Members
 - Sally Wood
 - Jamie Mullins
@@ -7,6 +10,9 @@
 - Rob Newsom
 
 ## Current TODOs
+### Key
+  -**[DONE]** : Ready for review by product owner
+  -**[COMPLETE]** : Product owner approved
 
 ### In Progress
 
@@ -14,12 +20,12 @@
     - Button background - danger 
     - Have a confirmation pop-up
     - Refresh Data following delete
-2. Review a Beer
+2. **[DONE]** Review a Beer
     - Refresh Data following delete
-3. Add a Beer
+3. **[DONE]**Add a Beer
     - Refresh Data following delete
 
-4. Dedicated view or button to list all beers
+4. **[DONE]**Dedicated view or button to list all beers
 
 ## Use cases
 

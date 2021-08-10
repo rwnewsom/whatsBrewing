@@ -1,8 +1,8 @@
 <template>
-<div>
+  <div>
     <p>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Add New Beer
+        Add New Brewery
     </button>
     </p>
     <div class="collapse" id="collapseExample">
@@ -10,30 +10,19 @@
             <form v-on:submit.prevent="handleSave">
                 <div class="mb-3">
                     <input type="text" class="form-control" id="title" 
-                            v-model.trim="newBeer.name"
+                            v-model.trim="newBrewery.name"
                         required 
-                        placeholder="Beer name">
+                        placeholder="Brewery Name">
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" id="title" 
-                            v-model.trim="newBeer.style"
+                            v-model.trim="newBrewery.imageURL"
                         required 
-                        placeholder="Style">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="title" 
-                            v-model.trim="newBeer.abv"
-                        required 
-                        placeholder="ABV">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="title" 
-                            v-model.trim="newBeer.ibu"
-                        placeholder="IBU">
+                        placeholder="imageURL">
                 </div>
                 <div class="mb-3">
                     <textarea class="form-control" id="description" rows="3"
-                            v-model.trim="newBeer.description" placeholder="Description"></textarea>
+                            v-model.trim="newBrewery.description" placeholder="Description"></textarea>
                 </div>
                 <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
@@ -44,7 +33,7 @@
                         ></span>
                     Add
                 </button>
-                <input type="cancel" value="Cancel" class="btn btn-primary" id="cancel" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <input type="cancel" value="Cancel" class="btn btn-primary pull-down" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
@@ -55,7 +44,7 @@
 import BreweryService from '../services/BreweryService.js';
 
 export default {
-    name: 'AddBeer',
+    name: 'AddBrewery',
     computed: {
         displayAllBreweries() {
         return this.$store.state.breweries;
@@ -63,14 +52,10 @@ export default {
     },
     data() {
         return {
-            newBeer: {
-                // beerId: 0,
+            newBrewery: {
                 name: '',
-                style: '',
-                breweryId: 0,
                 description: '',
-                abv: '',
-                ibu: ''
+                imageURL: '',
             },
             isSaving: false
         }
@@ -81,25 +66,19 @@ export default {
             // Don't allow double click on save
             if (this.isSaving) return;
             this.isSaving = true;
-            this.newBeer.breweryId = +this.$route.params.id;
-            this.newBeer.abv = +this.newBeer.abv;
-            this.newBeer.ibu = +this.newBeer.ibu;
-
-            BreweryService.addBeer(this.newBeer);
+            BreweryService.addBrewery(this.newBrewery);
 
             this.isSaving = false;
             
 
-            this.newBeer = {
-                // beerId: 0,
+            this.newBrewery = {
                 name: '',
-                style: '',
-                breweryId: 0,
                 description: '',
-                abv: '',
-                ibu: ''
+                imageURL: '',
             }
+            
         },
+        
     }
 }
 </script>
@@ -135,8 +114,8 @@ export default {
     overflow-y:auto;
 }
 #cancel{
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-top: 1rem;
-    width: 10%;
+    width: 25%;
 }
 </style>
