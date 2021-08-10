@@ -13,9 +13,7 @@
         <img class="brewery-card-img" v-bind:src="brewery.imageURL"  />
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
-      <div id="pagination-breweries">
-        <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
-      </div>
+q
     </div>
     <div class="filter-box">
       <div class="sticky">

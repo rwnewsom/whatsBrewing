@@ -41,10 +41,11 @@
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beers-card"
                         :class="(beer.name)? '':'hidden'">
-                    <img class="beers-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
-                    <div class="beers-card-brewery">{{beer.breweryName}}</div>
-                    <div class="beers-card-title">{{beer.name}}</div>
-                    <div class="beers-card-style">{{beer.style}}</div>
+                    <div class="beer-card">
+                        <div class="beers-card-brewery">{{beer.breweryName}}</div>
+                        <div class="beers-card-title">{{beer.name}}</div>
+                        <div class="beers-card-style">{{beer.style}}</div>
+                    </div>
                 </router-link>
             </div>
         </div>
@@ -195,21 +196,13 @@ input[type=text] {
   grid-template-columns: 17.5rem auto 17.5rem;
 }
 
-.beers-card-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-}
-
 .beers-card-title {
   color: $white;
   text-transform: uppercase;
   font-size: x-large;
 }
 
-.beers-card {
+.beer-card {
   color: $white;
   background: $blue;
   text-align: center;
