@@ -17,8 +17,10 @@ namespace Capstone.DAO
                                             "FROM breweries br INNER JOIN address a ON br.brewery_id = a.brewery WHERE br.brewery_id = @id"; //TODO: Parameter
 
         private string sqlUpdateBrewery = "BEGIN TRANSACTION UPDATE breweries SET brewery_name = @brewery_name, brewery_description = @brewery_description, image_url = @image_url WHERE brewery_id = @brewery_id UPDATE address SET street_number = @street_number, street_name = @street_name, city_name = @city_name, state = @state, zip_code = @zip_code, phone_number = @phone_number, map_url = @map_url, url = @url WHERE brewery = @brewery_id COMMIT TRANSACTION";
-        private string sqlNewBrewery = "INSERT INTO breweries (brewery_name, brewery_description, image_url) VALUES (@brewery_name, @brewery_description, @image_url); " +
-            "INSERT INTO address(street_number, street_name, city_name, state, zip_code, phone_number, brewery, url, map_url) VALUES(@street_number, @street_name, @city_name, @state, @zip_code, @phone_number, (SELECT @@IDENTITY), @url, @map_url)";
+
+        private string sqlNewBrewery = "INSERT INTO breweries (brewery_name, brewery_description, image_url) VALUES (@brewery_name, @brewery_description, @image_url); SELECT @@IDENTITY";
+                                                                                                                            //'Must declare the scalar variable "@street_number".'
+        private string sqlNewAddress = "INSERT INTO address(street_number, street_name, city_name, state, zip_code, phone_number, brewery, url, map_url) VALUES(@street_number, @street_name, @city_name, @state, @zip_code, @phone_number, @brewery, @url, @map_url);";
         
         public BrewerySqlDAO(string dbConnectionString)
         {
@@ -127,28 +129,42 @@ namespace Capstone.DAO
             return updatedBrewery;
         }
 
-        public bool NewBrewery(BreweryDetails brewery)
+        public Brewery NewBrewery(BreweryDetails brewery)
         {
+            int newId = 0;
+            Brewery newBrewery = new Brewery();
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Open();
+                conn.Open(); //(@brewery_name, @brewery_description, @image_url)
 
                 SqlCommand command = new SqlCommand(sqlNewBrewery, conn);
                 command.Parameters.AddWithValue("@brewery_name", brewery.Name);
                 command.Parameters.AddWithValue("@brewery_description", brewery.Description);
                 command.Parameters.AddWithValue("@image_url", brewery.ImageUrl);
+                newId = Convert.ToInt32(command.ExecuteScalar());
+                newBrewery.Id = newId;
+                newBrewery.Description = brewery.Description;
+                newBrewery.ImageURL = brewery.ImageUrl;
+                
+            }
+
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(sqlNewAddress, conn);
                 command.Parameters.AddWithValue("@street_number", brewery.StreetNumber);
                 command.Parameters.AddWithValue("@street_name", brewery.StreetName);
                 command.Parameters.AddWithValue("@city_name", brewery.CityName);
                 command.Parameters.AddWithValue("@state", brewery.State);
                 command.Parameters.AddWithValue("@zip_code", brewery.ZipCode);
                 command.Parameters.AddWithValue("@phone_number", brewery.PhoneNumber);
-                command.Parameters.AddWithValue("@brewery", brewery.Id);
+                command.Parameters.AddWithValue("@brewery", newId);
                 command.Parameters.AddWithValue("@url", brewery.Url);
                 command.Parameters.AddWithValue("@map_url", brewery.MapUrl);
-                int added = command.ExecuteNonQuery();
-                return added == 2;
+                command.ExecuteNonQuery();
+                return newBrewery;
             }
+            
         }
     }
 }

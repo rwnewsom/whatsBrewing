@@ -11,7 +11,7 @@
             <form v-on:submit.prevent="addBeer">
                 <input type="hidden" value="YourUserIDGoesHere" />Star Rating
                 <div class="form-element">
-                  <select id="rating" v-model.number="newReview.rating">
+                  <select id="rating" v-model.number="newReview.reviewerRating">
                     <option value="1">1 Star</option>
                     <option value="2">2 Stars</option>
                     <option value="3">3 Stars</option>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-element">Review
                   <label for="review" ></label>
-                  <textarea id="review" v-model="newReview.description" placeholder="Leave a review"></textarea>
+                  <textarea id="review" v-model="newReview.reviewDescription" placeholder="Leave a review"></textarea>
                 </div>
             </form>
             <div class="addReviewButtons">
@@ -50,10 +50,10 @@ export default {
     data() {
         return {
             newReview: {
-                rating: 1,
-                description: '',
-                name: this.$store.state.user.username,
-                beerId: 0,
+                reviewerName: this.$store.state.user.username,
+                reviewerRating: '',
+                reviewDescription: '',                
+                beer: +this.$route.params.beerId,
             },
         };
         
@@ -104,14 +104,17 @@ export default {
         });
     },
     methods: {
-        reloadPage() {
+       /*  reloadPage() {
         window.location.reload();
-        },
+        }, */
         handleSave(event) {
             console.log('Save was clicked!', event);
-            this.newReview.name = this.$store.state.user.username;
+            // this.newReview.reviewerRating = +this.newReview.reviewerRating;
             this.newReview.beerId= +this.$route.params.beerId;
-            BreweryService.submitReview(this.newReview);
+            BreweryService.submitReview(this.newReview)
+            .then(response => {
+              this.$store.commit('ADD_REVIEW', response.data);
+            });
 
             // Identify an object representing the new review
             //let reviewToAdd = this.newReview;
@@ -124,9 +127,10 @@ export default {
 
             // Clear the form for the next addition (and prevents odd bugs in adding data multiple times)
             this.newReview = {
-                rating: 1,
-                description: '',
-                name: ''
+                name: this.$store.state.user.username,
+                rating: '',
+                description: '',                
+                beerId: +this.$route.params.beerId,
             }
 
             //  if (this.$route.name === 'new') 

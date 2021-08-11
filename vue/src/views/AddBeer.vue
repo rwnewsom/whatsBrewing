@@ -85,7 +85,10 @@ export default {
             this.newBeer.abv = +this.newBeer.abv;
             this.newBeer.ibu = +this.newBeer.ibu;
 
-            BreweryService.addBeer(this.newBeer);
+            BreweryService.addBeer(this.newBeer)
+            .then(response => {
+                this.$store.commit('ADD_BEER', response.data);
+            });
 
             this.isSaving = false;
             

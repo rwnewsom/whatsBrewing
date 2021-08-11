@@ -16,6 +16,7 @@
       <div id="pagination-breweries">
         <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
       </div>
+
     </div>
     <div class="filter-box">
       <div class="sticky">
@@ -37,6 +38,7 @@
               <div class>
                   <input id="searchDescription" type="text" v-model="searchDescription">
               </div>
+
         </div>
       </div>
     </div>
@@ -128,6 +130,7 @@ export default {
 #brewery-result-count {
   margin-left: 2rem;
   text-decoration-line: underline;
+  margin-top: 1rem;
 }
 
 .brewery-card {

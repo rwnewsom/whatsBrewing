@@ -130,22 +130,23 @@ namespace Capstone.DAO
             return beers;
         }
 
-        public bool AddBeer(BeerDetails beer)
+        public BeerDetails AddBeer(BeerDetails beer)
         {
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery); SELECT @@IDENTITY", conn) ;
                 cmd.Parameters.AddWithValue("@name", beer.Name);
                 cmd.Parameters.AddWithValue("@style", beer.Style);
                 cmd.Parameters.AddWithValue("@description", beer.Description);
                 cmd.Parameters.AddWithValue("@ABV", beer.ABV);
                 cmd.Parameters.AddWithValue("@IBU", beer.IBU);
                 cmd.Parameters.AddWithValue("@brewery", beer.BreweryId);
-                int added = cmd.ExecuteNonQuery();
-                return added == 1;
+                int newId = Convert.ToInt32(cmd.ExecuteScalar());
+                beer.BeerId = newId;
+                return beer;
             }
 
 

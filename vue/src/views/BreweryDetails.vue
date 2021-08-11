@@ -1,7 +1,7 @@
 <template>
     <div id="brewery-details">
         <div class="brewery">
-            <div v-if="showUpdate"><update-brewery /></div>
+            <div v-if="showUpdate"><update-brewery v-bind:updatedBrewery="currentBrewery" /></div>
             <div class="breweryDetails">
                 <h2 class="name"><span>{{currentBrewery.name}}</span></h2>
                 <p class="description">{{currentBrewery.description}}</p>
@@ -94,7 +94,7 @@ export default {
       }
     },
 
-    watch: {
+    /* watch: {
         allBeers(){
         let breweryId = parseInt(this.$route.params.id);
 
@@ -107,7 +107,7 @@ export default {
             }
         });
         }
-    },
+    }, */
 
 
 
