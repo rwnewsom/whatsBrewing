@@ -14,13 +14,8 @@
                         required >
                 </div>
 
-<<<<<<< HEAD
-                <div class="mb-3">
-                    <textarea class="form-control" id="description" rows="3" 
-=======
                 <div class="mb-3">Description
                     <textarea class="form-control" id="description" rows="3"
->>>>>>> e07a4535dd51189f724ceeef7e40f28330eb4a30
                             v-model.trim="updatedBrewery.description" placeholder="Description"></textarea>
                 </div>
 
@@ -79,13 +74,6 @@
                         required 
                         placeholder="Image URL">
                 </div>
-
-                <div class="mb-3">Map URL
-                    <input type="text" class="form-control" 
-                            v-model.trim="updatedBrewery.mapUrl"
-                        required 
-                        placeholder="Map url">
-                </div>
                 
                 <button type="submit" id="updateBreweryAddButton" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
@@ -123,15 +111,9 @@ export default {
         updatedBrewery: Object
     },
 
-<<<<<<< HEAD
-
-
-    
-=======
     // created(){
     //     this.updatedBrewery = this.displayAllBreweries
     // },
->>>>>>> e07a4535dd51189f724ceeef7e40f28330eb4a30
     
     data() {
         return {
