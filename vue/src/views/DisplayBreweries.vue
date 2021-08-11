@@ -130,8 +130,6 @@ export default {
 #brewery-result-count {
   margin-left: 2rem;
   text-decoration-line: underline;
-  align-self: left;
-  justify-self: left;
   margin-top: 1rem;
 }
 
