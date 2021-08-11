@@ -4,15 +4,16 @@
         <div class="card-content">
            
             <h4>Reviewer: {{review.reviewerName}}</h4>
+            <div class="ratingScoreAndHopImages">
+                <div class="starReviews">
+                    <img src="../assets/filledHop.png"
+                        v-for="i of review.reviewerRating" v-bind:key="i"  />
+                    <img class="empty" src="../assets/emptyHop.png"
+                        v-for="i of emptyIcons" v-bind:key="i"  />
+                </div>
 
-             <div class="starReviews">
-                <img src="../assets/filledHop.png"
-                    v-for="i of review.reviewerRating" v-bind:key="i"  />
-                <img class="empty" src="../assets/emptyHop.png"
-                    v-for="i of emptyIcons" v-bind:key="i"  />
+                <h4 class="reviewer-rating"> {{ review.reviewerRating}}/5</h4>
             </div>
-
-            <h4 class="reviewer-rating">Rating: {{ review.reviewerRating}}</h4>
             <p class="review-author">Review: {{ review.reviewDescription }}</p>
         </div>
     </div>   
@@ -66,6 +67,12 @@ export default {
 
 .starReviews img .empty {
     opacity: .5;
+}
+.ratingScoreAndHopImages{
+    display: flex;
+}
+.reviewer-rating{
+    margin-left: 5px;
 }
 
 

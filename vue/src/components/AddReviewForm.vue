@@ -2,14 +2,14 @@
   <form v-on:submit.prevent="handleSave"> 
     <div>
       <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-primary" id="addReviewButton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Leave a Review
         </button>
       </p>
     <div class="collapse" id="collapseExample" v-if="addFormVisible===true">
         <div class="card card-body">
             <form v-on:submit.prevent="addBeer">
-                <input type="hidden" value="YourUserIDGoesHere" />
+                <input type="hidden" value="YourUserIDGoesHere" />Star Rating
                 <div class="form-element">
                   <select id="rating" v-model.number="newReview.rating">
                     <option value="1">1 Star</option>
@@ -19,13 +19,16 @@
                     <option value="5">5 Stars</option>
                   </select>
                 </div>
-                <div class="form-element">
+                <div class="form-element">Review
                   <label for="review" ></label>
                   <textarea id="review" v-model="newReview.description" placeholder="Leave a review"></textarea>
                 </div>
             </form>
-              <input type="submit" value="Save" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-bind:disabled="isSaveDisabled">
-              <input type="button" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
+            <div class="addReviewButtons">
+
+              <input type="submit" id="addReviewSaveButton" value="Save" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-bind:disabled="isSaveDisabled">
+              <input type="button" id="addReviewCancelButton" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" v-on:click="$store.commit('TOGGLE_ADD_FORM_VISIBLE')">
+            </div>
         </div>
       </div>
 
@@ -147,6 +150,42 @@ export default {
 
 <style lang="scss">
 @import "../styles/colors.scss";
+.addReviewButtons{
+  display: flex;
+}
+
+#addReviewButton{
+  background-color: $blue;
+    width: 9rem;
+}
+#addReviewButton:hover{
+  background-color:$white;
+    color: $blue;
+}
+#addReviewSaveButton{
+  display: inline-block;
+  background-color: $blue;
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 0;
+}
+#addReviewSaveButton:hover{
+  background-color:$white;
+    color: $blue;
+    display: block;
+}
+#addReviewCancelButton{
+  display: inline-block;
+  background-color: $blue;
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    float: right;
+}
+#addReviewCancelButton:hover{
+  background-color:$white;
+    color: $blue;
+}
 
 .form-box{
   border: 1px solid $white;
@@ -177,29 +216,32 @@ export default {
 }
 
 textarea{
-  width: 95%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: auto;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 0;
+  margin-left: 0px;
   margin-right: auto;
   border-radius: 5px;
-  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+  //filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
 }
 
 select{
-  margin-left: 1rem;
+  width: 5rem;
+  margin-left: 0px;
+  margin-top: 2px;
   border-radius: 5px;
-  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+  margin-bottom: 5px;
+  //filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
 }
 
-input.btn.btn-primary{
-  margin-bottom: 1rem;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 5px;
-  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
-}
+// input.btn.btn-primary{
+//   margin-bottom: 1rem;
+//   width: 70%;
+//   margin-left: auto;
+//   margin-right: auto;
+//   border-radius: 5px;
+//   filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+// }
 
 
 

@@ -67,6 +67,13 @@ export default new Vuex.Store({
     },
     ADD_BEER(state, payload){
       state.beer.push(payload);
+    },
+    DELETE_BEER(state, id){
+      let index = state.beers.findIndex(beer => beer.id === id);
+
+      if (index >= 0) {
+        state.beer.splice(index, 1);
+      }
     }
   }
 })

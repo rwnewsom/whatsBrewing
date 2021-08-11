@@ -1,30 +1,30 @@
 <template>
   <div>
     <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" type="button" id="updateBreweryButton" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Update Brewery
     </button>
     </p>
     <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            <form v-on:submit.prevent="handleSave">
-                <div class="mb-3">
+        <div class="card card-body" id="updateBreweryDiv">
+            <form v-on:submit.prevent="handleSave" id="updateBreweryForm">
+                <div class="mb-3">Brewery Name
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="updatedBrewery.name"
                         required 
                         placeholder="Brewery Name">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">Image URL
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="updatedBrewery.imageURL"
                         required 
-                        placeholder="imageURL">
+                        placeholder="Image URL">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">Description
                     <textarea class="form-control" id="description" rows="3"
                             v-model.trim="updatedBrewery.description" placeholder="Description"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                <button type="submit" class="btn btn-success" id="updateBreweryAddButton" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
                         class="spinner-border spinner-border-sm" 
@@ -33,7 +33,7 @@
                         ></span>
                     Add
                 </button>
-                <input type="cancel" value="Cancel" class="btn btn-primary pull-down" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <input type="cancel" id="updateBreweryCancelButton" value="Cancel" class="btn btn-primary pull-down" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
@@ -88,20 +88,58 @@ export default {
 
 <style lang="scss">
 @import "../styles/colors.scss";
-.btn-primary{
-    background-color: $yellow;
+#updateBreweryButton{
+    background-color: $blue;
+    margin-top: 1rem;
+    margin-left: 2rem;
 }
-.btn-primary:hover{
+#updateBreweryButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
-.btn-success{
-    background-color: $yellow;
+#updateBreweryAddButton{
+    background-color: $blue;
+    width: 6rem;
 }
-.btn-success:hover{
+#updateBreweryAddButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
+#updateBreweryCancelButton{
+    background-color: $blue;
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+#updateBreweryCancelButton:hover{
+    background-color:$white;
+    color: $blue;
+}
+#updateBreweryForm{
+    width: 39rem;
+    padding-top: 1rem;
+}
+#updateBreweryDiv{
+    width: 41rem;
+    border-left: 1rem;
+}
+
+
+// .btn-primary{
+//     background-color: $yellow;
+// }
+// .btn-primary:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
+// .btn-success{
+//     background-color: $yellow;
+// }
+// .btn-success:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
 .dropdown-item{
     font-size: 15px;
     color: $black;

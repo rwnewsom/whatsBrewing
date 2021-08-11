@@ -21,6 +21,12 @@
             <div class="beerDetails">
                 <h4>Current Beers</h4>
                 <div class="line" />
+                <div v-if="deleteOrAddAuth" class="buttonsDiv">
+                    <add-beer />
+                </div>
+                <div v-else>
+                    <p>If you are a brewer and would like edit privileges, please contact support.</p>
+                </div>
                 <div id="beer">
                     <!-- all the beers show on the line below-->
                     <router-link 
@@ -34,12 +40,6 @@
                         <div class="beer-card-style">{{beer.style}}</div>
                         <div class="beer-card-brewery">{{beer.brewery}}</div>
                     </router-link>
-                </div>
-                <div v-if="deleteOrAddAuth" class="buttonsDiv">
-                    <add-beer />
-                </div>
-                <div v-else>
-                    <p>If you are a brewer and would like edit privileges, please contact support.</p>
                 </div>
                 <div>
                     
