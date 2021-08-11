@@ -142,7 +142,7 @@ export default {
     data() {
         return {
             newBrewery: {
-                id: 0,
+                
                 name: '',
                 description: '',
                 streetNumber: '',
@@ -155,6 +155,13 @@ export default {
                 mapUrl: '',
                 imageUrl: '',
             },
+
+            storeBrewery: {
+                    description:'',
+                    id: null,
+                    imageURL: '',
+                    name: '',
+                },
             
             isSaving: false
         }
@@ -172,14 +179,12 @@ export default {
 
             
             .then(response => {
-                let storeBrewery = {
-                    description: this.newBrewery.description,
-                    id: null,
-                    imageURL: this.newBrewery.imageUrl,
-                    name: this.newBrewery.name,
-                };
+                
+                this.storeBrewery.description = response.data.description;
                 this.storeBrewery.id = response.data.id;
-                this.$store.commit('ADD_BREWERY', storeBrewery);
+                this.storeBrewery.imageURL = response.data.imageUrl;
+                this.storeBrewery.name = response.data.name;
+                this.$store.commit('ADD_BREWERY', this.storeBrewery);
             });
 
             this.isSaving = false;
