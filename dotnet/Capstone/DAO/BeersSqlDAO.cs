@@ -11,9 +11,9 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private string sqlListBeers = "SELECT beer_id, name, style, brewery FROM beers WHERE brewery = @id";
-        private string sqlBeerDetails = "SELECT beer_id, brewery, name, style, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
-        private string sqlDisplayAllBeers = "SELECT beers.beer_id, beers.name, beers.style, breweries.brewery_name, breweries.brewery_id FROM beers JOIN breweries ON beers.brewery = breweries.brewery_id";
+        private string sqlListBeers = "SELECT beer_id, name, style, beer_image_url, brewery FROM beers WHERE brewery = @id";
+        private string sqlBeerDetails = "SELECT beer_id, brewery, name, style, beer_image_url, description, ABV, IBU FROM beers WHERE brewery = @id AND beer_id = @beerId";
+        private string sqlDisplayAllBeers = "SELECT beers.beer_id, beers.name, beers.beer_image_url, beers.style, breweries.brewery_name, breweries.brewery_id FROM beers JOIN breweries ON beers.brewery = breweries.brewery_id";
 
 
         public BeersSqlDAO(string dbConnectionString)
@@ -113,6 +113,7 @@ namespace Capstone.DAO
                 Style = Convert.ToString(reader["style"]),
                 BeerId = Convert.ToInt32(reader["beer_id"]),
                 BreweryId = Convert.ToInt32(reader["brewery"]),
+                BeerImageUrl = Convert.ToString(reader["beer_image_url"])
             };
             return beers;
         }
@@ -125,7 +126,8 @@ namespace Capstone.DAO
                 Style = Convert.ToString(reader["style"]),
                 BeerId = Convert.ToInt32(reader["beer_id"]),
                 BreweryName = Convert.ToString(reader["brewery_name"]),
-                BreweryId = Convert.ToInt32(reader["brewery_id"])
+                BreweryId = Convert.ToInt32(reader["brewery_id"]),
+                BeerImageUrl = Convert.ToString(reader["beer_image_url"])
             };
             return beers;
         }

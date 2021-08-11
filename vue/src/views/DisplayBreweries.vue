@@ -131,6 +131,8 @@ export default {
   margin-left: 2rem;
   text-decoration-line: underline;
   margin-top: 1rem;
+  display: flex;
+  align-self: flex-start;
 }
 
 .brewery-card {

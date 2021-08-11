@@ -17,6 +17,7 @@
           v-if="this.$route.query.registration">
           Thank you for registering, please sign in.
         </div>
+        <div class="username-password">
         <div class="form-group">
           <input
             type="text"
@@ -36,8 +37,9 @@
             v-model="user.password"
             required />
         </div>
+        </div>
         <div class="form-group">
-          <router-link :to="{ name: 'register' }">Need an account?</router-link>
+          <router-link class="need-account" :to="{ name: 'register' }">Need an account?</router-link>
         </div>
         <button class="btn btn-primary" type="submit">Sign in</button>
       </form>
@@ -92,20 +94,20 @@ export default {
 @import "../styles/colors.scss";
 
 .form-signin{
-  padding-top: 5rem;
+  padding-top: 10rem;
 }
 
-input#username.form-control, input#password.form-control{
-  width: 50%;
+.username-password {
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
-  border: 2px solid $white;
-  filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .h3 {
   color: $white;
+  font-size:xx-large;
 }
 
 .alert {
@@ -116,7 +118,7 @@ input#username.form-control, input#password.form-control{
   color: $white;
 }
 
-.form-group {
+.need-account {
   color: $white;
 }
 
@@ -127,4 +129,9 @@ input#username.form-control, input#password.form-control{
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.btn {
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
+}
+
 </style>
