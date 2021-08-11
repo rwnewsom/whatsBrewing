@@ -27,7 +27,7 @@
                 <div v-else>
                     <p>If you are a brewer and would like edit privileges, please contact support.</p>
                 </div>
-                <div id="beer">
+                <div id="beers">
                     <!-- all the beers show on the line below-->
                     <router-link 
                         v-for="beer of allBeers" 
@@ -225,16 +225,17 @@ export default {
     border-radius: 5px;
 }
 
-#beer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+#beers {
+    display:flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .beer-card-img {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -247,21 +248,31 @@ export default {
 }
 
 .beer-card-style {
+    color: $white;
     font-size: medium;
     font-weight: normal;
 }
 
 .beer-card-brewery {
+    color: $white;
     font-size: medium;
     font-weight: normal;
+}
+
+.beers-card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .beer-card {
   color: $white;
   background: $blue;
   text-align: center;
-  width: 20rem;
-  min-height: 355px;
+  width: 15rem;
+  min-height: 350px;
   margin: 1rem;
   margin-top: 2rem;
   font-size: 2rem;

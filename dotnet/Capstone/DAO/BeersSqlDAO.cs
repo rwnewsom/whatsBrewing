@@ -139,8 +139,9 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, style, description, ABV, IBU, brewery) VALUES (@name, @style, @description, @ABV, @IBU, @brewery); SELECT @@IDENTITY", conn) ;
+                SqlCommand cmd = new SqlCommand("INSERT INTO beers (name, beer_image_url, style, description, ABV, IBU, brewery) VALUES (@name, @beerUrl, @style, @description, @ABV, @IBU, @brewery); SELECT @@IDENTITY", conn) ;
                 cmd.Parameters.AddWithValue("@name", beer.Name);
+                cmd.Parameters.AddWithValue("@beerUrl", beer.BeerImageUrl);
                 cmd.Parameters.AddWithValue("@style", beer.Style);
                 cmd.Parameters.AddWithValue("@description", beer.Description);
                 cmd.Parameters.AddWithValue("@ABV", beer.ABV);
