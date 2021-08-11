@@ -35,7 +35,7 @@
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beer-card">
-                        <img class="beer-card-img" src="../assets/proriat-hospitality-unsplash.jpg" />
+                        <img class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
                         <div class="beer-card-title">{{beer.name}}</div>
                         <div class="beer-card-style">{{beer.style}}</div>
                         <div class="beer-card-brewery">{{beer.brewery}}</div>
