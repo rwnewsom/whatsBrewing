@@ -35,5 +35,8 @@ export default {
       },
       addBrewery(newBrewery){
         return client.post('Brewery/newBrewery', newBrewery)
-      }
+      },
+      deleteBeer(id){
+        return client.delete('/Beer/'+id)
+      },
 }
