@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import BreweryService from '../services/BreweryService.js';
 
 export default {
     name: 'deleteBeer',
@@ -17,9 +18,10 @@ export default {
             let confirmed = confirm('Are you sure you want to delete this beer? This cannot be undone.');
 
             if (confirmed) {
-                this.$store.commit('DELETE_BEER', this.beer.id);
-
-                this.$router.push({name: 'breweries'});
+                // this.$store.commit('DELETE_BEER', this.beer.id);
+                // this.$router.push({name: 'breweries'});
+                BreweryService.deleteBeer(this.$route.params.beerId)
+                .then(this.$router.push({name: 'breweries'}))
             }
         }
     }
