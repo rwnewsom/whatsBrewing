@@ -104,7 +104,7 @@ export default {
         displayAllBreweries() {
         return this.$store.state.breweries;
         },
-
+        //taking user address input and translating into IFrame URL for Google Maps - RN
         formattedStreetName(){
             const streetNameWords = this.newBrewery.streetName.split(' ');
             if(streetNameWords.length == 1){
@@ -155,13 +155,6 @@ export default {
                 mapUrl: '',
                 imageUrl: '',
             },
-
-            storeBrewery: {
-                    description:'',
-                    id: null,
-                    imageURL: '',
-                    name: '',
-                },
             
             isSaving: false
         }
@@ -179,12 +172,7 @@ export default {
 
             
             .then(response => {
-                
-                this.storeBrewery.description = response.data.description;
-                this.storeBrewery.id = response.data.id;
-                this.storeBrewery.imageURL = response.data.imageUrl;
-                this.storeBrewery.name = response.data.name;
-                this.$store.commit('ADD_BREWERY', this.storeBrewery);
+                this.$store.commit('ADD_BREWERY', response.data);
             });
 
             this.isSaving = false;
