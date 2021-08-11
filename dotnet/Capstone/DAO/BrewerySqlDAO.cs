@@ -127,7 +127,7 @@ namespace Capstone.DAO
             return updatedBrewery;
         }
 
-        public bool NewBrewery(BreweryDetails brewery)
+        public BreweryDetails NewBrewery(BreweryDetails brewery)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
@@ -146,8 +146,11 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@brewery", brewery.Id);
                 command.Parameters.AddWithValue("@url", brewery.Url);
                 command.Parameters.AddWithValue("@map_url", brewery.MapUrl);
-                int added = command.ExecuteNonQuery();
-                return added == 2;
+                int newId = Convert.ToInt32(command.ExecuteScalar());
+
+                brewery.Id = newId;
+
+                return brewery;
             }
         }
     }

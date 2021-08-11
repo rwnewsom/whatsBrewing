@@ -45,16 +45,8 @@ namespace Capstone.Controllers
         [HttpPost("addBeer")]
         public ActionResult AddBeer (BeerDetails beer)
         {
-            bool success = beersDao.AddBeer(beer);
-            if (success)
-            {
-
-                return Ok();
-            }
-            else
-            {
-                return StatusCode(500);
-            }
+            BeerDetails success = beersDao.AddBeer(beer);
+            return Ok(success);
         }
 
         [HttpDelete("/Beer/{id}")]

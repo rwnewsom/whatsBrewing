@@ -50,7 +50,7 @@ export default {
 
     },
 
-    watch: {
+    /* watch: {
             allReviews() {
                 // Do something when the computed prop is updated
                 let beerId = parseInt(this.$route.params.beerId);
@@ -64,7 +64,7 @@ export default {
             }
         });
             }
-    },
+    }, */
 
     created(){
         console.log('Attempting review request...');

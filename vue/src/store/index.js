@@ -67,6 +67,12 @@ export default new Vuex.Store({
     },
     ADD_BEER(state, payload){
       state.beer.push(payload);
+    },
+    ADD_REVIEW(state, payload){
+      state.reviews.push(payload);
+    },
+    ADD_BREWERY(state, payload){
+      state.breweries.push(payload);
     }
   }
 })

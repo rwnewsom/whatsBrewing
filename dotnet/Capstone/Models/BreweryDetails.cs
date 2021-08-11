@@ -27,7 +27,7 @@ namespace Capstone.Models
         /// </summary>
         public string? MapUrl { get; set; }
         public string? ImageUrl { get; set; }
-        public int Brewery { get; set; }
+        //public int Brewery { get; set; }
 
     }
 }

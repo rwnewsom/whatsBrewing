@@ -30,7 +30,10 @@ export default {
       addBeer(newBeer){
         return client.post('Beer/addBeer', newBeer);
       },
-      //addBrewery(newBrewery){
-        //return client.post('')
-      //}
+      updateBrewery(id, updatedBrewery){
+        return client.put('Brewery/breweries/'+id, updatedBrewery)
+      },
+      addBrewery(newBrewery){
+        return client.post('Brewery/newBrewery', newBrewery)
+      }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,3 +26,5 @@ namespace Capstone.Models
         public int BeerId { get; set; }
     }
 }
+
+*/

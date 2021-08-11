@@ -102,6 +102,17 @@ export default {
         Ad,
         ReviewList,
     },
+    // methods: {
+    //     deleteBeer() {
+    //         let confirmed = confirm('Are you sure you want to delete this beer? This cannot be undone.');
+
+    //         if (confirmed) {
+    //             this.$store.commit('DELETE_BEER', this.beer.beerId);
+
+    //             this.$router.push({name: 'BeerList'});
+    //         }
+    //     }
+    // },
     created(){
         console.log('Requesting beer details...');
 

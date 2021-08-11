@@ -13,7 +13,7 @@ namespace Capstone.DAO
         BeerDetails GetBeerById(int id, int beerId);
         List<Beers> DisplayAllBeers();
 
-        bool AddBeer(BeerDetails beer);
+        BeerDetails AddBeer(BeerDetails beer);
         bool DeleteBeer(int id);
     }
 }

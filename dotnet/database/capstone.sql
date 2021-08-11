@@ -28,7 +28,7 @@ CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_name varchar(50) NOT NULL,
 	brewery_description varchar(500) NOT NULL,
-	image_url nvarchar(200) NULL,
+	image_url nvarchar(2400) NULL,
 	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id)
 );
 
