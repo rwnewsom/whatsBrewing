@@ -62,11 +62,7 @@
                 </div>
             </div>
             
-                    <div class="deleteButton">
-                        <router-link v-bind:to="{ name: 'deleteBeer' }">
-                        <button type="button" id="deleteButton" class="btn btn-outline-danger">Delete Beer</button>
-                        </router-link>
-                    </div>
+            <delete-beer />
 
 
             
@@ -86,6 +82,7 @@
 import BreweryService from '../services/BreweryService.js'
 import Ad from "../components/Ad.vue";
 import ReviewList from '../components/ReviewList.vue';
+import DeleteBeer from '../views/DeleteBeer.vue';
 
 
 export default {
@@ -101,6 +98,7 @@ export default {
       components: {
         Ad,
         ReviewList,
+        DeleteBeer,
     },
     // methods: {
     //     deleteBeer() {

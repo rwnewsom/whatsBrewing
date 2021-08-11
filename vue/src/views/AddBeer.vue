@@ -1,41 +1,41 @@
 <template>
 <div>
     <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" id="addBeerButton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Add New Beer
     </button>
     </p>
     <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            <form v-on:submit.prevent="handleSave">
-                <div class="mb-3">
+        <div class="card card-body" id="addBeerDiv">
+            <form v-on:submit.prevent="handleSave" id="addBeerForm">
+                <div class="mb-3">Beer Name
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="newBeer.name"
                         required 
                         placeholder="Beer name">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">Style
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="newBeer.style"
                         required 
                         placeholder="Style">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">ABV
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="newBeer.abv"
                         required 
                         placeholder="ABV">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">IBU
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="newBeer.ibu"
                         placeholder="IBU">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3">Description
                     <textarea class="form-control" id="description" rows="3"
                             v-model.trim="newBeer.description" placeholder="Description"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                <button type="submit" class="btn btn-success" id="addBeerAddButton" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
                         class="spinner-border spinner-border-sm" 
@@ -44,7 +44,7 @@
                         ></span>
                     Add
                 </button>
-                <input type="cancel" value="Cancel" class="btn btn-primary" id="cancel" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <input type="cancel" id="addBeerCancelButton" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
@@ -109,20 +109,60 @@ export default {
 
 <style lang="scss">
 @import "../styles/colors.scss";
-.btn-primary{
-    background-color: $yellow;
+#addBeerButton{
+    background-color: $blue;
+    margin-top: 1rem;
+    width: 8rem;
 }
-.btn-primary:hover{
+#addBeerButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
-.btn-success{
-    background-color: $yellow;
+#addBeerAddButton{
+    background-color: $blue;
+    margin-top: 1rem;
+    width: 6rem;
 }
-.btn-success:hover{
+#addBeerAddButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
+#addBeerCancelButton{
+    background-color: $blue;
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+#addBeerCancelButton:hover{
+    background-color:$white;
+    color: $blue;
+}
+#addBeerForm{
+    width: 39rem;
+    padding-top: 1rem;
+}
+#addBeerDiv{
+    width: 41rem;
+    border-left: 1rem;
+}
+
+
+
+
+// .btn-primary{
+//     background-color: $yellow;
+// }
+// .btn-primary:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
+// .btn-success{
+//     background-color: $yellow;
+// }
+// .btn-success:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
 .dropdown-item{
     font-size: 15px;
     color: $black;
@@ -137,9 +177,9 @@ export default {
     max-height: 280px;
     overflow-y:auto;
 }
-#cancel{
-    margin-left: 2rem;
-    margin-top: 1rem;
-    width: 10%;
-}
+// #cancel{
+//     margin-left: 2rem;
+//     margin-top: 1rem;
+//     width: 10%;
+// }
 </style>
