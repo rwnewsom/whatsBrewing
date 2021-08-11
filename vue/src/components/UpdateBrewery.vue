@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" id="description" rows="3"
+                    <textarea class="form-control" id="description" rows="3" 
                             v-model.trim="updatedBrewery.description" placeholder="Description"></textarea>
                 </div>
 
@@ -104,11 +104,19 @@ import BreweryService from '../services/BreweryService.js';
 
 export default {
     name: 'UpdateBrewery',
+    
+
     computed: {
         displayAllBreweries() {
         return this.$store.state.breweries;
         },
+        currentBrewery(){
+            return this.$store.state.brewery;
+        },
+        
     },
+
+
 
     
     
@@ -131,6 +139,9 @@ export default {
             isSaving: false
         }
     },
+
+    
+
     methods: {
         handleSave(event) {
             console.log('Save was clicked!', event);
