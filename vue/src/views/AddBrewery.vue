@@ -137,17 +137,6 @@ export default {
             return "https://maps.google.com/maps?q=" + this.newBrewery.streetNumber +this.formattedStreetName + this.formattedCityName + this.newBrewery.state + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
         },
 
-        storeBrewery(){
-            return {
-                pushBrewery: {
-                    description: this.newBrewery.description,
-                    id: 0,
-                    imageURL: this.newBrewery.imageUrl,
-                    name: this.newBrewery.name,
-                }
-            }
-        }
-
 
     },
     data() {
@@ -180,9 +169,17 @@ export default {
             this.newBrewery.zipCode = +this.newBrewery.zipCode;
             this.newBrewery.mapUrl = this.formattedMapUrl;
             BreweryService.addBrewery(this.newBrewery)
+
+            
             .then(response => {
+                let storeBrewery = {
+                    description: this.newBrewery.description,
+                    id: null,
+                    imageURL: this.newBrewery.imageUrl,
+                    name: this.newBrewery.name,
+                };
                 this.storeBrewery.id = response.data.id;
-                this.$store.commit('ADD_BREWERY', this.storeBrewery);
+                this.$store.commit('ADD_BREWERY', storeBrewery);
             });
 
             this.isSaving = false;
