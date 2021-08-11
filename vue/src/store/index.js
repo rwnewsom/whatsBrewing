@@ -22,6 +22,7 @@ if(currentToken && currentToken != 'undefined') {
 
 export default new Vuex.Store({
   state: {
+    brewery: [],
     breweries: [],
     beer: [],
     beerDetails:[],
@@ -52,6 +53,10 @@ export default new Vuex.Store({
     },
     LOADED_BREWERIES(state, payload){
       state.breweries = payload;
+    },
+
+    LOADED_BREWERY(state, payload){
+      state.brewery = payload;
     },
     LOADED_BEER(state, payload){
       state.beer = payload;
