@@ -26,9 +26,9 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("addReview")]
-        public ActionResult AddBeerReview(ReviewBeers review)
+        public ActionResult AddBeerReview(Review review)
         {
-            ReviewBeers success = reviewDAO.AddBeerReview(review);
+            Review success = reviewDAO.AddBeerReview(review);
             
                 return Ok(success);
            

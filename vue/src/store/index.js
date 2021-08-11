@@ -71,5 +71,8 @@ export default new Vuex.Store({
     ADD_REVIEW(state, payload){
       state.reviews.push(payload);
     },
+    ADD_BREWERY(state, payload){
+      state.breweries.push(payload);
+    }
   }
 })

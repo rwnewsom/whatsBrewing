@@ -47,10 +47,10 @@ export default {
     data() {
         return {
             newReview: {
-                reviewerRating: '',
-                reviewDescription: '',
                 reviewerName: this.$store.state.user.username,
-                beerId: +this.$route.params.beerId,
+                reviewerRating: '',
+                reviewDescription: '',                
+                beer: +this.$route.params.beerId,
             },
         };
         
@@ -124,10 +124,10 @@ export default {
 
             // Clear the form for the next addition (and prevents odd bugs in adding data multiple times)
             this.newReview = {
-                rating: '',
-                description: '',
                 name: this.$store.state.user.username,
-                beerId: this.$route.params.beerId,
+                rating: '',
+                description: '',                
+                beerId: +this.$route.params.beerId,
             }
 
             //  if (this.$route.name === 'new') 

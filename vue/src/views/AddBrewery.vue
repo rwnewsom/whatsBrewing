@@ -14,16 +14,71 @@
                         required 
                         placeholder="Brewery Name">
                 </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="title" 
-                            v-model.trim="newBrewery.imageURL"
-                        required 
-                        placeholder="imageURL">
-                </div>
-                <div class="mb-3">
+
+                 <div class="mb-3">
                     <textarea class="form-control" id="description" rows="3"
                             v-model.trim="newBrewery.description" placeholder="Description"></textarea>
                 </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.streetNumber"
+                        required 
+                        placeholder="Street Number">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.streetName"
+                        required 
+                        placeholder="Street Name">
+                </div>
+
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.cityName"
+                        required 
+                        placeholder="City Name">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.state"
+                        required 
+                        placeholder="State">
+                </div>
+
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.zipCode"
+                        required 
+                        placeholder="Zip Code">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control"
+                            v-model.trim="newBrewery.phoneNumber"
+                        required 
+                        placeholder="Phone Number">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" 
+                            v-model.trim="newBrewery.url"
+                        required 
+                        placeholder="url">
+                </div>
+
+
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" 
+                            v-model.trim="newBrewery.imageUrl" 
+                        placeholder="imageURL">
+                </div>
+               
                 <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
@@ -49,14 +104,58 @@ export default {
         displayAllBreweries() {
         return this.$store.state.breweries;
         },
+
+        formattedStreetName(){
+            const streetNameWords = this.newBrewery.streetName.split(' ');
+            if(streetNameWords.length == 1){
+                return "%20" + streetNameWords[0] + "%20";
+            }
+            else{
+                let streetNameFormatted = '%20';
+                streetNameWords.forEach(word => {
+                    streetNameFormatted = streetNameFormatted + word + "%20";
+            });
+            return streetNameFormatted;
+        }
+        },
+
+        formattedCityName(){
+            const cityNameWords = this.newBrewery.cityName.split(' ');
+            if(cityNameWords.length ==1){
+                return cityNameWords[0] + "%20";
+            }
+            else{
+                let cityNameFormatted = '';
+                cityNameWords.forEach(word => {
+                    cityNameFormatted = cityNameFormatted + word + "%20";
+                });
+                return cityNameFormatted;
+            }
+        },
+
+        formattedMapUrl(){
+            return "https://maps.google.com/maps?q=" + this.newBrewery.streetNumber +this.formattedStreetName + this.formattedCityName + this.newBrewery.state + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+        },
+
+
     },
     data() {
         return {
             newBrewery: {
+                id: 0,
                 name: '',
                 description: '',
-                imageURL: '',
+                streetNumber: '',
+                streetName: '',
+                cityName: '',
+                state: '',
+                zipCode: '',
+                phoneNumber: '',
+                url: '',
+                mapUrl: '',
+                imageUrl: '',
             },
+            
             isSaving: false
         }
     },
@@ -66,7 +165,13 @@ export default {
             // Don't allow double click on save
             if (this.isSaving) return;
             this.isSaving = true;
-            BreweryService.addBrewery(this.newBrewery);
+            this.newBrewery.streetNumber= +this.newBrewery.streetNumber;
+            this.newBrewery.zipCode = +this.newBrewery.zipCode;
+            this.newBrewery.mapUrl = this.formattedMapUrl;
+            BreweryService.addBrewery(this.newBrewery)
+            .then(response => {
+                this.$store.commit('ADD_BREWERY', response.data);
+            });
 
             this.isSaving = false;
             
@@ -74,7 +179,15 @@ export default {
             this.newBrewery = {
                 name: '',
                 description: '',
-                imageURL: '',
+                streetNumber: '',
+                streetName: '',
+                cityName: '',
+                state: '',
+                zipCode: '',
+                phoneNumber: '',
+                url: '',
+                imageUrl: '',
+                mapUrl: '', 
             }
             
         },

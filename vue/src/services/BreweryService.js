@@ -33,7 +33,7 @@ export default {
       updateBrewery(id, updatedBrewery){
         return client.put('Brewery/breweries/'+id, updatedBrewery)
       },
-      //addBrewery(newBrewery){
-        //return client.post('')
-      //}
+      addBrewery(newBrewery){
+        return client.post('Brewery/newBrewery', newBrewery)
+      }
 }

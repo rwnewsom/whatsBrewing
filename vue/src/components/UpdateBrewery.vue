@@ -69,6 +69,13 @@
                         placeholder="url">
                 </div>
 
+                  <div class="mb-3">
+                    <input type="text" class="form-control" id="title" 
+                            v-model.trim="updatedBrewery.imageUrl"
+                        required 
+                        placeholder="imageURL">
+                </div>
+
                 <div class="mb-3">
                     <input type="text" class="form-control" 
                             v-model.trim="updatedBrewery.mapUrl"
@@ -118,6 +125,7 @@ export default {
                 zipCode: '',
                 phoneNumber: '',
                 url: '',
+                imageUrl: '',
                 mapUrl: '',       
             },
             isSaving: false

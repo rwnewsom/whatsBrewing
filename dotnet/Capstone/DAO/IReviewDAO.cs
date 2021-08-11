@@ -10,6 +10,6 @@ namespace Capstone.DAO
     {
         List<Review> GetReviews(int Beer);
 
-        ReviewBeers AddBeerReview(ReviewBeers review);
+        Review AddBeerReview(Review review);
     }
 }
