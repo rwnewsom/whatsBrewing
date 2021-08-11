@@ -1,89 +1,93 @@
 <template>
   <div>
     <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" type="button" id="updateBreweryButton" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Update Brewery
     </button>
     </p>
     <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            <form v-on:submit.prevent="handleSave">
+        <div class="card card-body">Brewery Name
+            <form v-on:submit.prevent="handleSave"> <!--  value="{{this.$store.state.breweries.name}}" -->
                 <div class="mb-3">
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.name"
-                        required 
-                        placeholder="Brewery Name">
+                        required >
                 </div>
 
+<<<<<<< HEAD
                 <div class="mb-3">
+                    <textarea class="form-control" id="description" rows="3" 
+=======
+                <div class="mb-3">Description
                     <textarea class="form-control" id="description" rows="3"
+>>>>>>> e07a4535dd51189f724ceeef7e40f28330eb4a30
                             v-model.trim="updatedBrewery.description" placeholder="Description"></textarea>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Street Number
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.streetNumber"
                         required 
                         placeholder="Street Number">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Street Name
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.streetName"
                         required 
                         placeholder="Street Name">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">City
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.cityName"
                         required 
                         placeholder="City Name">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">State
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.state"
                         required 
                         placeholder="State">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Zip Code
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.zipCode"
                         required 
                         placeholder="Zip Code">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Phone Number
                     <input type="text" class="form-control"
                             v-model.trim="updatedBrewery.phoneNumber"
                         required 
                         placeholder="Phone Number">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Website
                     <input type="text" class="form-control" 
                             v-model.trim="updatedBrewery.url"
                         required 
                         placeholder="url">
                 </div>
 
-                  <div class="mb-3">
+                  <div class="mb-3">Image URL
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="updatedBrewery.imageUrl"
                         required 
-                        placeholder="imageURL">
+                        placeholder="Image URL">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3">Map URL
                     <input type="text" class="form-control" 
                             v-model.trim="updatedBrewery.mapUrl"
                         required 
                         placeholder="Map url">
                 </div>
                 
-                <button type="submit" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                <button type="submit" id="updateBreweryAddButton" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
                         class="spinner-border spinner-border-sm" 
@@ -92,7 +96,7 @@
                         ></span>
                     Update
                 </button>
-                <input v-on:click="handleCancel" type="cancel" value="Cancel" class="btn btn-primary pull-down" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <input v-on:click="handleCancel" type="cancel" id="updateBreweryCancelButton" value="Cancel" class="btn btn-primary pull-down" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
@@ -104,33 +108,53 @@ import BreweryService from '../services/BreweryService.js';
 
 export default {
     name: 'UpdateBrewery',
+    
+
     computed: {
         displayAllBreweries() {
         return this.$store.state.breweries;
         },
+        currentBrewery(){
+            return this.$store.state.brewery;
+        },
+        
+    },
+    props:{
+        updatedBrewery: Object
     },
 
+<<<<<<< HEAD
+
+
     
+=======
+    // created(){
+    //     this.updatedBrewery = this.displayAllBreweries
+    // },
+>>>>>>> e07a4535dd51189f724ceeef7e40f28330eb4a30
     
     data() {
         return {
-            updatedBrewery: {
-                id: this.$route.params.id,
-                name: '',
-                description: '',
-                streetNumber: '',
-                streetName: '',
-                cityName: '',
-                state: '',
-                zipCode: '',
-                phoneNumber: '',
-                url: '',
-                imageUrl: '',
-                mapUrl: '',       
-            },
+            // updatedBrewery: {
+            //     id: this.$route.params.id,
+            //     name: '',
+            //     description: '',
+            //     streetNumber: '',
+            //     streetName: '',
+            //     cityName: '',
+            //     state: '',
+            //     zipCode: '',
+            //     phoneNumber: '',
+            //     url: '',
+            //     imageUrl: '',
+            //     mapUrl: '',       
+            // },
             isSaving: false
         }
     },
+
+    
+
     methods: {
         handleSave(event) {
             console.log('Save was clicked!', event);
@@ -140,24 +164,30 @@ export default {
             this.updatedBrewery.id = +this.$route.params.id,
             this.updatedBrewery.streetNumber = +this.updatedBrewery.streetNumber;
             this.updatedBrewery.zipCode = +this.updatedBrewery.zipCode;
-            BreweryService.updateBrewery(this.updatedBrewery.id,this.updatedBrewery);
+            BreweryService.updateBrewery(this.updatedBrewery.id,this.updatedBrewery)
+            .then((response) => {
+                if(response.status === 200){
+                    
+                    this.isSaving = false;
+                    
+        
+                    this.updatedBrewery = {
+                        id: '',
+                        name: '',
+                        description: '',
+                        streetNumber: '',
+                        streetName: '',
+                        cityName: '',
+                        state: '',
+                        zipCode: '',
+                        phoneNumber: '',
+                        url: '',
+                        imageUrl: '',
+                        mapUrl: '',  
+                    }
+                }
+            })
 
-            this.isSaving = false;
-            
-
-            this.updatedBrewery = {
-                id: '',
-                name: '',
-                description: '',
-                streetNumber: '',
-                streetName: '',
-                cityName: '',
-                state: '',
-                zipCode: '',
-                phoneNumber: '',
-                url: '',
-                mapUrl: '',  
-            }
             
         },
 
@@ -174,6 +204,7 @@ export default {
                 zipCode: '',
                 phoneNumber: '',
                 url: '',
+                imageUrl: '',
                 mapUrl: '', 
             }
         }
@@ -184,20 +215,58 @@ export default {
 
 <style lang="scss">
 @import "../styles/colors.scss";
-.btn-primary{
-    background-color: $yellow;
+#updateBreweryButton{
+    background-color: $blue;
+    margin-top: 1rem;
+    margin-left: 2rem;
 }
-.btn-primary:hover{
+#updateBreweryButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
-.btn-success{
-    background-color: $yellow;
+#updateBreweryAddButton{
+    background-color: $blue;
+    width: 6rem;
 }
-.btn-success:hover{
+#updateBreweryAddButton:hover{
     background-color:$white;
-    color: $yellow;
+    color: $blue;
 }
+#updateBreweryCancelButton{
+    background-color: $blue;
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+#updateBreweryCancelButton:hover{
+    background-color:$white;
+    color: $blue;
+}
+#updateBreweryForm{
+    width: 39rem;
+    padding-top: 1rem;
+}
+#updateBreweryDiv{
+    width: 41rem;
+    border-left: 1rem;
+}
+
+
+// .btn-primary{
+//     background-color: $yellow;
+// }
+// .btn-primary:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
+// .btn-success{
+//     background-color: $yellow;
+// }
+// .btn-success:hover{
+//     background-color:$white;
+//     color: $yellow;
+// }
 .dropdown-item{
     font-size: 15px;
     color: $black;
