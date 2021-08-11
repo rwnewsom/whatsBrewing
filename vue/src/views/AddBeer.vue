@@ -64,7 +64,7 @@ export default {
     data() {
         return {
             newBeer: {
-                // beerId: 0,
+                beerImageUrl: '',
                 name: '',
                 style: '',
                 breweryId: 0,
