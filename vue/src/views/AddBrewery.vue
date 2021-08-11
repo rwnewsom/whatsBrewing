@@ -137,6 +137,17 @@ export default {
             return "https://maps.google.com/maps?q=" + this.newBrewery.streetNumber +this.formattedStreetName + this.formattedCityName + this.newBrewery.state + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
         },
 
+        storeBrewery(){
+            return {
+                pushBrewery: {
+                    description: this.newBrewery.description,
+                    id: 0,
+                    imageURL: this.newBrewery.imageUrl,
+                    name: this.newBrewery.name,
+                }
+            }
+        }
+
 
     },
     data() {
@@ -170,7 +181,8 @@ export default {
             this.newBrewery.mapUrl = this.formattedMapUrl;
             BreweryService.addBrewery(this.newBrewery)
             .then(response => {
-                this.$store.commit('ADD_BREWERY', response.data);
+                this.storeBrewery.id = response.data.id;
+                this.$store.commit('ADD_BREWERY', this.storeBrewery);
             });
 
             this.isSaving = false;

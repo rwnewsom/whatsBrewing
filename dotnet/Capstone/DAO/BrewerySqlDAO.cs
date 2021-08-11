@@ -148,6 +148,8 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@map_url", brewery.MapUrl);
                 int newId = Convert.ToInt32(command.ExecuteScalar());
 
+                brewery.Id = newId;
+
                 return brewery;
             }
         }
