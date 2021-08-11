@@ -10,7 +10,7 @@
             <div class>
                 <input id="searchBrewery" type="text" v-model="searchBrewery">
             </div>
-        </div>
+        </div> 
         <div class="row">
             <div>
                 <label for="searchName">Beer Name: </label>
@@ -45,6 +45,7 @@
                         class="noline beers-card"
                         :class="(beer.name)? '':'hidden'">
                     <div class="beer-card">
+                        <img class="beers-card-img" v-bind:src="beer.beerImageUrl"  />
                         <div class="beers-card-brewery">{{beer.breweryName}}</div>
                         <div class="beers-card-title">{{beer.name}}</div>
                         <div class="beers-card-style">{{beer.style}}</div>
@@ -165,6 +166,15 @@ export default {
     font-size: medium;
     font-weight: normal;
 }
+
+.beers-card-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
 
 .filter-box {
   border-radius: 5px;

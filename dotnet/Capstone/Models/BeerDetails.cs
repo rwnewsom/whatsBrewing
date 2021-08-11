@@ -14,5 +14,7 @@ namespace Capstone.Models
         public decimal ABV { get; set; }
         public int? IBU { get; set; }
         public int BreweryId { get; set; }
+
+        public string? BeerImageUrl { get; set; }
     }
 }

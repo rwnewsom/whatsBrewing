@@ -92,7 +92,7 @@ export default {
             return this.$store.state.beerDetails;
         },
         currentBrewery(){
-            return this.$store.state.breweries;
+            return this.$store.state.brewery;
         }
     },
       components: {
@@ -132,7 +132,7 @@ export default {
         .then(result => {
             console.log('Promise resolved.', result);
             if(result.status === 200){
-                this.$store.commit('LOADED_BREWERIES', result.data);
+                this.$store.commit('LOADED_BREWERY', result.data);
             }
         });
     }

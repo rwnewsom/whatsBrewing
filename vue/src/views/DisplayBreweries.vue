@@ -62,12 +62,20 @@ export default {
   };
 
   },
+
+   components: {
+        Ad,
+        AddBrewery
+    },
+
+
+
   computed: {
     allBreweries() {
       return this.$store.state.breweries;
     },
     filteredBreweries(){
-      let result = this.allBreweries.slice();
+      let result = this.$store.state.breweries.slice();
 
       if(this.searchName || this.searchDescription){
         result = result.filter(brewery => brewery.name.toLowerCase().includes(this.searchName.toLowerCase()) && brewery.description.toLowerCase().includes(this.searchDescription.toLowerCase()));
@@ -84,10 +92,7 @@ export default {
   },
 
 
-  components: {
-        Ad,
-        AddBrewery
-    },
+ 
 
   created() {
     console.log("Attempting brewery request..."); //this is the last loggged message
@@ -131,6 +136,8 @@ export default {
   margin-left: 2rem;
   text-decoration-line: underline;
   margin-top: 1rem;
+  display: flex;
+  align-self: flex-start;
 }
 
 .brewery-card {
