@@ -1,11 +1,11 @@
 <template>
 <div>
     <p>
-    <button class="btn btn-primary" id="addBeerButton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" id="addBeerButton" type="button" data-toggle="collapse" data-target="#collapseAddBeer" aria-expanded="false" aria-controls="collapseExample">
         Add New Beer
     </button>
     </p>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="collapseAddBeer">
         <div class="card card-body" id="addBeerDiv">
             <form v-on:submit.prevent="handleSave" id="addBeerForm">
                 <div class="mb-3">Beer Name
@@ -35,7 +35,7 @@
                     <textarea class="form-control" id="description" rows="3"
                             v-model.trim="newBeer.description" placeholder="Description"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success" id="addBeerAddButton" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                <button type="submit" class="btn btn-success" id="addBeerAddButton" data-toggle="collapse" data-target="#collapseAddBeer" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
                     <span v-if="isSaving" 
                         class="spinner-border spinner-border-sm" 
@@ -44,7 +44,7 @@
                         ></span>
                     Add
                 </button>
-                <input type="cancel" id="addBeerCancelButton" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <input type="cancel" id="addBeerCancelButton" value="Cancel" class="btn btn-primary" data-toggle="collapse" data-target="#collapseAddBeer" aria-expanded="false" aria-controls="collapseExample">
             </form>
             </div>
         </div>
