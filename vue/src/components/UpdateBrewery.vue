@@ -74,13 +74,6 @@
                         required 
                         placeholder="Image URL">
                 </div>
-
-                <div class="mb-3">Map URL
-                    <input type="text" class="form-control" 
-                            v-model.trim="updatedBrewery.mapUrl"
-                        required 
-                        placeholder="Map url">
-                </div>
                 
                 <button type="submit" id="updateBreweryAddButton" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
                         v-bind:disabled="isSaving">
