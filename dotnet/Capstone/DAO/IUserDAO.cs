@@ -11,5 +11,9 @@ namespace Capstone.DAO
         List<ReturnUser> DisplayAllUsers();
 
         bool DeleteUser(int id);
+
+        ReturnUser EditUser(ReturnUser user);
+
+        ReturnUser GetUserById(int id);
     }
 }
