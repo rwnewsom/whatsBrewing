@@ -68,11 +68,18 @@
                         placeholder="url">
                 </div>
 
-                  <div class="mb-3">Image URL
+                  <div class="mb-3">Venue Image URL
                     <input type="text" class="form-control" id="title" 
                             v-model.trim="updatedBrewery.imageUrl"
                         required 
-                        placeholder="Image URL">
+                        placeholder="Venue Image URL">
+                </div>
+
+                <div class="mb-3">Brewery Logo URL
+                    <input type="text" class="form-control" id="title" 
+                            v-model.trim="updatedBrewery.logo"
+                        required 
+                        placeholder="Brewery Logo URL">
                 </div>
                 
                 <button type="submit" id="updateBreweryAddButton" class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"

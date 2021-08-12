@@ -162,7 +162,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("DELETE FROM beers WHERE beer_id = @id", conn);
+                SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION DELETE FROM beers WHERE beer_id = @id DELETE FROM beer_reviews WHERE beer = @id COMMIT TRANSACTION", conn);
                 cmd.Parameters.AddWithValue("@id", id);
 
                 int added = cmd.ExecuteNonQuery();
