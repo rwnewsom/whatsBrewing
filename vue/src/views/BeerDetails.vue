@@ -1,7 +1,7 @@
 <template>
   <div id="beer-details">
       <div class="capsule">
-        <delete-beer class="indent" />
+        <delete-beer v-if="deleteOrAddAuth" class="indent" />
         <h1 class="header"> Beer: The Devil is in the Details.... </h1>
         <!-- if not working check case -->
         <div class = "detailGroup">
@@ -59,7 +59,12 @@ export default {
         },
         currentBrewery(){
             return this.$store.state.brewery;
-        }
+        },
+        deleteOrAddAuth(){
+            if (this.$store.state.user.role == "admin" ||this.$store.state.user.role == "brewer"){
+                return true;
+            } return false;
+        },
     },
       components: {
         Ad,
@@ -132,6 +137,7 @@ export default {
     height: 100%;
     padding-top: 2rem;
     padding-left: 2rem;
+    background-color: rgb(231, 230, 230);
 
 }
 

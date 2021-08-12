@@ -222,6 +222,7 @@ input[type=text] {
     font-family: sans-serif;
     border-radius: 20px;
     margin-bottom: 2rem;
+    filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
     
     :hover, img:hover ~ .beer-card-text {
         color: $black;
