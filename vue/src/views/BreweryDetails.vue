@@ -37,7 +37,7 @@
                                 params: {id: beer.breweryId, beerId: beer.beerId}}"
                             class="noline beer-card">
                             <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
-                            <div class="beer-card-brewery">{{beer.breweryName}}</div>
+                            <div class="beer-card-brewery">{{currentBrewery.name}}</div>
                             <div class="beer-card-title">{{beer.name}}</div>
                             <div class="beer-card-style">{{beer.style}}</div>
                         </router-link>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <Ad />
+        <Ad v-bind:numAds="3" />
     </div>
 
 </template>
