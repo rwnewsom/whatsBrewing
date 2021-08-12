@@ -93,6 +93,9 @@ export default {
         return false;
       }
     },
+    mounted () {
+        window.scrollTo(0, 0)
+    },
 
     /* watch: {
         allBeers(){
