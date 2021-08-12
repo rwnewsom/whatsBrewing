@@ -118,6 +118,45 @@ namespace Capstone.DAO
             return u;
         }
 
+        public ReturnUser GetUserById(int id)
+        {
+            ReturnUser returnUser = new ReturnUser();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT user_id, username, user_role FROM users WHERE user_id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        returnUser.UserId = Convert.ToInt32(reader["user_id"]);
+                        returnUser.Username = Convert.ToString(reader["username"]);
+                        returnUser.Role = Convert.ToString(reader["user_role"]);
+                    }
+                }
+                return returnUser;
+            }
+ 
+        }
+
+        public ReturnUser EditUser(ReturnUser user)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("UPDATE users SET user_role=@role WHERE user_id =@id", conn);
+                command.Parameters.AddWithValue("@role", user.Role);
+                command.Parameters.AddWithValue("@id", user.UserId);
+                command.ExecuteNonQuery();
+                
+            }
+            return user;
+            
+        }
+
         public bool DeleteUser(int id)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

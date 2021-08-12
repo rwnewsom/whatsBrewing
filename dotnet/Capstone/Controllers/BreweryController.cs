@@ -56,6 +56,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost("newBrewery")]
+        [Authorize]
         public ActionResult NewBrewery(BreweryDetails brewery)
         {
             Brewery success = this.breweryDao.NewBrewery(brewery);

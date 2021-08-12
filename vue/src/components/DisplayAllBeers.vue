@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-    <Ad v-bind:numAds="5" />   
+    <Ad v-bind:numAds="6" />   
 </div>
 </template>
 
