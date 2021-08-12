@@ -25,5 +25,18 @@ namespace Capstone.Controllers
             return Ok(userDAO.DisplayAllUsers());
         }
         
+        [HttpDelete("admin/users/{id}")]
+        public ActionResult DeleteUser(int id)
+        {
+            bool success = userDAO.DeleteUser(id);
+            if (success)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
     }
 }

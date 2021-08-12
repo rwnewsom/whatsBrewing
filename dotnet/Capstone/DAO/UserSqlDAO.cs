@@ -117,5 +117,21 @@ namespace Capstone.DAO
             };
             return u;
         }
+
+        public bool DeleteUser(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM users WHERE user_id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                int deleted = cmd.ExecuteNonQuery();
+
+                return deleted ==1;
+
+            }
+
+        }
+
     }
 }
