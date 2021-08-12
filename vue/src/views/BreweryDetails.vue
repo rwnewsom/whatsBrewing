@@ -35,7 +35,7 @@
                         v-bind:to="{name: 'beerDetails', 
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beer-card">
-                        <img class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
+                        <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
                         <div class="beer-card-title">{{beer.name}}</div>
                         <div class="beer-card-style">{{beer.style}}</div>
                         <div class="beer-card-brewery">{{beer.brewery}}</div>
@@ -265,6 +265,12 @@ export default {
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+}
+#breweryDeetsBeerCardPic{
+    background-color: rgba(245, 245, 245, 0.945);
+}
+#beers:hover{
+    width: 110%;
 }
 
 .beer-card {

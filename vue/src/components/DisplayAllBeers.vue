@@ -45,7 +45,7 @@
                         class="noline beers-card"
                         :class="(beer.name)? '':'hidden'">
                     <div class="beer-card">
-                        <img class="beers-card-img" v-bind:src="beer.beerImageUrl"  />
+                        <img id="beerCardPic" class="beers-card-img" v-bind:src="beer.beerImageUrl"  />
                         <div class="beers-card-brewery">{{beer.breweryName}}</div>
                         <div class="beers-card-title">{{beer.name}}</div>
                         <div class="beers-card-style">{{beer.style}}</div>
@@ -167,7 +167,7 @@ export default {
     font-weight: normal;
 }
 
-.beers-card-img {
+#beerCardPic {
   width: 100%;
   height: 250px;
   object-fit: cover;
