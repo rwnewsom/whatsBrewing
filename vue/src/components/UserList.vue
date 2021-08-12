@@ -1,10 +1,11 @@
 <template>
   <div class="user-list">
       <div class="container">
-          <table id="tblUsers">
+
+      <table id="tblUsers">
       <thead>
         <tr>
-          <!-- <th>&nbsp;</th> -->
+           <th>&nbsp;</th>
           <th>Username</th>
           <th>Role</th>
           
@@ -12,9 +13,9 @@
       </thead>
       <tbody>
         <tr>
-          <!-- <td>
-            <input type="checkbox" id="selectAll" />
-          </td> -->
+          <td>
+            &nbsp;
+          </td> 
           
           <td>
               <!-- v-model="filter.username"  -->
@@ -29,7 +30,7 @@
         
            
           
-          <!-- <td>&nbsp;</td> -->
+           
         </tr>        
       </tbody>
 
@@ -37,12 +38,24 @@
       v-for="user of filteredUsers"
       v-bind:key="user.userId"
       >
+      <td>
+            <input type="checkbox" v-bind:id="user.userId" v-bind:value="user.userId" v-model="selectedUserIds" />
+          </td>
       <td>{{user.username}}</td>
       <td>{{user.role}}</td>
 
       </tr>
     </table>
+
+    <div class="deleteButton">
+         <button type="button" id="deleteButton" class="btn btn-outline-danger" v-on:click="deleteUser">
+                            Delete User</button>
+    </div>
+    
       </div>
+
+     
+      
   </div>
 </template>
 
@@ -51,12 +64,27 @@ import UserService from '../services/UserService.js'
 export default {
     name: 'UserList',
 
+     methods: {
+        deleteUser() {
+            let confirmed = confirm('Are you sure you want to delete this beer? This cannot be undone.');
+
+            if (confirmed) {
+
+              for(let i = 0; i < this.selectedUserIds.length; i++){
+                 UserService.deleteUser(this.selectedUserIds[i]);
+                }    
+            }
+            this.$router.push({name: 'admin'});
+        }
+    },
+
     data(){
       return {
         filter:{
           searchUserName: '',
           searchRole: ''
-        }
+        },
+        selectedUserIds: [],
       }
 
     },
@@ -122,6 +150,22 @@ tr:nth-child(odd){
 td {
     padding: 10px;
     border: 1px solid $black;
+}
+
+button {
+  margin-right: 5px;
+}
+.all-actions {
+  margin-bottom: 40px;
+}
+
+#deleteButton{
+    background-color: $blue;
+    margin-top: 1rem;
+}
+#deleteButton:hover{
+   background-color:$white;
+    color: $blue;
 }
 
 </style>
