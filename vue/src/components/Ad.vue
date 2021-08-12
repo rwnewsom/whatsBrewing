@@ -10,7 +10,7 @@
 @import "../styles/colors.scss";
 
 .ad {
-  background-color: #f2f2f2;
+  background-color: $black;
 }
 
 .ad img {

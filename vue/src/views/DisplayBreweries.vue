@@ -124,6 +124,9 @@ export default {
   display: grid;
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://images.pexels.com/photos/2824173/pexels-photo-2824173.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
 }
 
 .filter-box {

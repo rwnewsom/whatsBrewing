@@ -152,7 +152,7 @@ export default {
     background-color: $white;
     margin: 1rem;
     padding: 1rem;
-    filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
+    filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
     border-radius: 5px;
 }
 

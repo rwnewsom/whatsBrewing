@@ -179,8 +179,13 @@ export default {
 
 .filter-box {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: $black;
   padding: 20px;
+  color: $white;
+}
+
+.row {
+    color: $white;
 }
 
 label {
