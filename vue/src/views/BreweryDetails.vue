@@ -42,6 +42,7 @@
                             <div class="beer-card-title">{{beer.name}}</div>
                             <div class="beer-card-style">{{beer.style}}</div>
                         </router-link>
+                    </div>
                 </div>
             </div>
         </div>
