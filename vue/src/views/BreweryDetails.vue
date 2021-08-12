@@ -21,28 +21,27 @@
             <div class="beerDetails">
                 <h4>Current Beers</h4>
                 <div class="line" />
-                <div v-if="deleteOrAddAuth" class="buttonsDiv">
-                    <add-beer />
+                <div class="beer-background">
+                    <div v-if="deleteOrAddAuth" class="buttonsDiv">
+                        <add-beer />
+                    </div>
+                    <div v-else>
+                        <p>If you are a brewer and would like edit privileges, please contact support.</p>
+                    </div>
+                    <div id="beers">
+                        <!-- all the beers show on the line below-->
+                        <router-link 
+                            v-for="beer of allBeers" 
+                            v-bind:key="beer.id" 
+                            v-bind:to="{name: 'beerDetails', 
+                                params: {id: beer.breweryId, beerId: beer.beerId}}"
+                            class="noline beer-card">
+                            <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
+                            <div class="beer-card-brewery">{{beer.breweryName}}</div>
+                            <div class="beer-card-title">{{beer.name}}</div>
+                            <div class="beer-card-style">{{beer.style}}</div>
+                        </router-link>
                 </div>
-                <div v-else>
-                    <p>If you are a brewer and would like edit privileges, please contact support.</p>
-                </div>
-                <div id="beers">
-                    <!-- all the beers show on the line below-->
-                    <router-link 
-                        v-for="beer of allBeers" 
-                        v-bind:key="beer.id" 
-                        v-bind:to="{name: 'beerDetails', 
-                            params: {id: beer.breweryId, beerId: beer.beerId}}"
-                        class="noline beer-card">
-                        <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
-                        <div class="beer-card-brewery">{{beer.breweryName}}</div>
-                        <div class="beer-card-title">{{beer.name}}</div>
-                        <div class="beer-card-style">{{beer.style}}</div>
-                    </router-link>
-                </div>
-                <div>
-                    
                 </div>
             </div>
         </div>
@@ -140,7 +139,6 @@ export default {
 @import "../styles/colors.scss";
 
 .beerDetails{
-    padding-left: 2rem;
     padding-top: 1rem;
     margin-top: 2rem;
 }
@@ -225,9 +223,14 @@ export default {
     border-radius: 5px;
 }
 
+.beer-background {
+    background-size: cover;
+    background-image: url("https://thumbs.dreamstime.com/z/vector-modern-abstract-geometry-triangle-pattern-black-white-seamless-geometric-background-subtle-pillow-bed-sheet-design-79029924.jpg");
+}
+
 #beers {
     display:flex;
-    margin: 0 auto;
+    padding: 0 auto;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
