@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <Ad />
+        <Ad v-bind:numAds="3" />
     </div>
 
 </template>
