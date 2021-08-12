@@ -22,6 +22,7 @@ namespace Capstone.Models
         public int ZipCode { get; set; }
         public string PhoneNumber { get; set; }
         public string Url { get; set; }
+        public string Logo { get; set; }
         /// <summary>
         /// From the Google Maps HTML Generator, code that would be within src=""
         /// </summary>

@@ -154,6 +154,7 @@ export default {
                 url: '',
                 mapUrl: '',
                 imageUrl: '',
+                logo: ''
             },
             
             isSaving: false

@@ -2,8 +2,9 @@
     <div id="brewery-details">
         <div class="brewery">
             <div v-if="showUpdate"><update-brewery v-bind:updatedBrewery="currentBrewery" /></div>
+                <div id="logoDiv"><img id="breweryLogo" class="beer-card-img" v-bind:src="currentBrewery.logo"  /></div>
             <div class="breweryDetails">
-                <h2 class="name"><span>{{currentBrewery.name}}</span></h2>
+                <h2 class="name"></h2>
                 <p class="description">{{currentBrewery.description}}</p>
                 <div class="address">
                     <p>Street Address:</p>
@@ -138,6 +139,22 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 
+#logoDiv{
+    margin-top: 1rem;
+    margin-bottom: -4rem;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#breweryLogo{
+    text-align: center;
+    width:100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+}
+
 .beerDetails{
     padding-top: 1rem;
     margin-top: 2rem;
@@ -183,10 +200,11 @@ export default {
 }
 
 .name{
+    border-radius: 2rem;
     grid-area: name;
     margin-bottom: 2rem;
-    padding: 2rem;
-    height: 3rem;
+    padding: .5rem;
+    height: .5rem;
     background-color: $blue;
     display: flex;
     align-items: center;
