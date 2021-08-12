@@ -179,14 +179,14 @@ export default {
 
 .filter-box {
   border-radius: 5px;
-  background-color: #023047;
+  background-color: $white;
   padding: 20px;
-  color: $white;
+  color: $black;
   filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .row {
-    color: $white;
+    color: $black;
 }
 
 label {
@@ -218,6 +218,8 @@ input[type=text] {
   display: grid;
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem;
+  background-size: contain;
+  background-image: url("https://thumbs.dreamstime.com/z/vector-modern-abstract-geometry-triangle-pattern-black-white-seamless-geometric-background-subtle-pillow-bed-sheet-design-79029924.jpg");
 }
 
 .beers-card-title {
@@ -239,10 +241,6 @@ input[type=text] {
   font-family: sans-serif;
   border-radius: 20px;
   margin-bottom: 2rem;
-}
-.beer-card:hover{
-    margin-top: 2.3rem;
-    width: 16rem;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
