@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
@@ -13,6 +14,7 @@ namespace Capstone.DAO
         private string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
         private string sqlAddUser = "INSERT INTO users (username, password_hash, salt, user_role) VALUES " +
             "(@username, @password_hash, @salt, @user_role)";
+        private string sqlDisplayAllUsers = "SELECT user_id, username, user_role FROM users";
 
         public UserSqlDAO(string dbConnectionString)
         {
@@ -72,6 +74,47 @@ namespace Capstone.DAO
                 Role = Convert.ToString(reader["user_role"]),
             };
 
+            return u;
+        }
+
+
+        public List<ReturnUser> DisplayAllUsers()
+        {
+            List<ReturnUser> users = new List<ReturnUser>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlDisplayAllUsers, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ReturnUser userToDisplay = GetAllUsersFromReader(reader);
+                        users.Add(userToDisplay);
+                    }
+                }
+            }
+            return users;
+        }
+
+
+        /// <summary>
+        /// For admin control panel, need user object without credentials
+        /// </summary>
+        /// <param name="reader">SQL Datareader</param>
+        /// <returns>A user object to be added to a list</returns>
+        private ReturnUser GetAllUsersFromReader(SqlDataReader reader)
+        {
+            ReturnUser u = new ReturnUser()
+            {
+                UserId = Convert.ToInt32(reader["user_id"]),
+                Username = Convert.ToString(reader["username"]),
+                Role = Convert.ToString(reader["user_role"]),
+            };
             return u;
         }
     }

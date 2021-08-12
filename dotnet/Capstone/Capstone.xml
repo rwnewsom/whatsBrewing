@@ -31,6 +31,13 @@
             </summary>
             <param name="userParam">The new user to create</param>
         </member>
+        <member name="M:Capstone.DAO.UserSqlDAO.GetAllUsersFromReader(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            For admin control panel, need user object without credentials
+            </summary>
+            <param name="reader">SQL Datareader</param>
+            <returns>A user object to be added to a list</returns>
+        </member>
         <member name="P:Capstone.Models.Brewery.Id">
             <summary>
             Id represents primary key of database
