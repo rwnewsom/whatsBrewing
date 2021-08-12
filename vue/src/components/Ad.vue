@@ -13,7 +13,8 @@
 @import "../styles/colors.scss";
 
 .ad {
-  background-color: $black;
+  background-color: #023047;
+  filter: drop-shadow(-0.2rem 0.1rem 0.8rem $black);
 }
 
 .ad img {

@@ -137,10 +137,13 @@ export default {
 
 #brewery-result-count {
   margin-left: 2rem;
-  text-decoration-line: underline;
+  text-decoration-line: none;
   margin-top: 1rem;
   display: flex;
   align-self: flex-start;
+  color: $black;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .brewery-card {
@@ -158,6 +161,7 @@ export default {
   font-family: sans-serif;
   border-radius: 20px;
   margin-bottom: 2rem;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .brewery-card-title {
