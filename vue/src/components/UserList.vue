@@ -15,22 +15,26 @@
           <!-- <td>
             <input type="checkbox" id="selectAll" />
           </td> -->
-          <td>
-              <!-- v-model="filter.firstName" -->
-            <input type="text" id="roleFilter"  />  
-          </td>
-        
+          
           <td>
               <!-- v-model="filter.username"  -->
-            <input type="text" id="usernameFilter" />
-          </td>   
+            <input type="text" id="usernameFilter" v-model="filter.searchUserName" />
+          </td>  
+          
+          
+          <td>
+              <!-- v-model="filter.firstName" -->
+            <input type="text" id="roleFilter" v-model="filter.searchRole" />  
+          </td>
+        
+           
           
           <!-- <td>&nbsp;</td> -->
         </tr>        
       </tbody>
 
       <tr
-      v-for="user of allUsers"
+      v-for="user of filteredUsers"
       v-bind:key="user.userId"
       >
       <td>{{user.username}}</td>
@@ -47,9 +51,28 @@ import UserService from '../services/UserService.js'
 export default {
     name: 'UserList',
 
+    data(){
+      return {
+        filter:{
+          searchUserName: '',
+          searchRole: ''
+        }
+      }
+
+    },
+
     computed: {
         allUsers(){
             return this.$store.state.allUsers;
+        },
+
+        filteredUsers(){
+          let result = this.allUsers.slice();
+
+          if(this.filter.searchUserName || this.filter.searchRole){
+            result = result.filter(user => user.username.toLowerCase().includes(this.filter.searchUserName.toLowerCase()) && user.role.toLowerCase().includes(this.filter.searchRole.toLowerCase()) );
+          }
+          return result;
         }
     },
 
