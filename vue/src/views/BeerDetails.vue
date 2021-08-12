@@ -100,6 +100,9 @@ export default {
         ReviewList,
         DeleteBeer,
     },
+    mounted () {
+        window.scrollTo(0, 0)
+    },
     // methods: {
     //     deleteBeer() {
     //         let confirmed = confirm('Are you sure you want to delete this beer? This cannot be undone.');
