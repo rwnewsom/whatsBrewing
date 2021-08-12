@@ -143,10 +143,12 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@brewery_name", brewery.Name);
                 command.Parameters.AddWithValue("@brewery_description", brewery.Description);
                 command.Parameters.AddWithValue("@image_url", brewery.ImageUrl);
+                command.Parameters.AddWithValue("@logo", brewery.Logo);
                 newId = Convert.ToInt32(command.ExecuteScalar());
                 newBrewery.Id = newId;
                 newBrewery.Description = brewery.Description;
                 newBrewery.ImageURL = brewery.ImageUrl;
+                newBrewery.Logo = brewery.Logo;
                 
             }
 
