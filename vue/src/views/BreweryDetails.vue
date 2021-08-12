@@ -36,9 +36,9 @@
                             params: {id: beer.breweryId, beerId: beer.beerId}}"
                         class="noline beer-card">
                         <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
+                        <div class="beer-card-brewery">{{beer.breweryName}}</div>
                         <div class="beer-card-title">{{beer.name}}</div>
                         <div class="beer-card-style">{{beer.style}}</div>
-                        <div class="beer-card-brewery">{{beer.brewery}}</div>
                     </router-link>
                 </div>
                 <div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <Ad />
+        <Ad v-bind:numAds="3" />
     </div>
 
 </template>
@@ -269,8 +269,16 @@ export default {
 #breweryDeetsBeerCardPic{
     background-color: rgba(245, 245, 245, 0.945);
 }
-#beers:hover{
-    width: 110%;
+
+.beer-card-title:hover{
+    color: black;
+}
+.beer-card-style:hover{
+    color: black;
+}
+
+.beer-card-brewery:hover{
+    color: black;
 }
 
 .beer-card {
