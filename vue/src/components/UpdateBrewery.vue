@@ -165,7 +165,8 @@ export default {
                         phoneNumber: '',
                         url: '',
                         imageUrl: '',
-                        mapUrl: '',  
+                        mapUrl: '', 
+                        logo: '' 
                     }
                 }
             })
