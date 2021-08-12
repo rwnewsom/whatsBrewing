@@ -50,6 +50,11 @@ export default {
     computed: {
         allUsers(){
             return this.$store.state.allUsers;
+        },
+
+        filteredUsers(){
+          let result = this.allUsers.slice();
+          return result;
         }
     },
 
