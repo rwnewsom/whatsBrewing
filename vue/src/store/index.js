@@ -82,6 +82,9 @@ export default new Vuex.Store({
     },
     LOADED_USERS(state, payload){
       state.allUsers = payload;
+    },
+    DELETE_USER(state, payload){
+      state.allUsers.splice(payload, 1)
     }
   }
 })

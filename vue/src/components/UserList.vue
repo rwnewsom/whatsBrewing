@@ -51,6 +51,11 @@
          <button type="button" id="deleteButton" class="btn btn-outline-danger" v-on:click="deleteUser">
                             Delete User</button>
     </div>
+
+    <div class="brewerButton">
+         <button type="button" id="brewerButton" class="btn btn-outline-danger" v-on:click="toggleBrewer">
+                            Toggle Brewer</button>
+    </div>
     
       </div>
 
@@ -70,14 +75,21 @@ export default {
 
             if (confirmed) {
 
+              
+
               for(let i = 0; i < this.selectedUserIds.length; i++){
-                 UserService.deleteUser(this.selectedUserIds[i]);
+                let index = this.allUsers.findIndex(user => user.userId == this.selectedUserIds[i]);
+                  UserService.deleteUser(this.selectedUserIds[i])
+                 .then(result => {
+                   console.log('Promise Resolved', result);
+
+                   if(result.status ===200){
+                     this.$store.commit('DELETE_USER', index);
+                   }
+                 });
                 }    
             }
-            this.created();
-            this.allUsers();
-            this.filteredUsers();
-            
+            //change store
         }
     },
 
@@ -131,6 +143,9 @@ table{
     margin-bottom: 20px;
     border: 2px solid $black;
     border-radius: 5px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th{
@@ -144,6 +159,9 @@ tbody{
 
 tr {
     border: 1px solid $black;
+    overflow: hidden;
+    height: 14px;
+    white-space: nowrap;
 }
 
 tr:nth-child(odd){
@@ -163,10 +181,21 @@ button {
 }
 
 #deleteButton{
-    background-color: $blue;
+    background-color: $red;
+    color: $blue;
     margin-top: 1rem;
 }
 #deleteButton:hover{
+   background-color:$black;
+    color: $blue;
+}
+
+#brewerButton{
+    background-color: $blue;
+    margin-top: 1rem;
+}
+
+#brewerButton:hover{
    background-color:$white;
     color: $blue;
 }
