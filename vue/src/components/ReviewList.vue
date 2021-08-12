@@ -6,7 +6,7 @@
             
             <h4 v-if="numberOfReviews >= 1">{{numberOfReviews}} Reviews</h4>
             <div> 
-                <add-review-form /> 
+                <add-review-form v-if="addFormVisible" /> 
             </div>
         </div>
         <review-card  v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
