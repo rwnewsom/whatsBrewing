@@ -1,5 +1,6 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Capstone.Controllers
         {
             this.userDAO = userDAO;
         }
-
+        [Authorize]
         [HttpGet("admin/users")]
         public ActionResult<List<User>> ListAllUsers()
         {
@@ -26,6 +27,7 @@ namespace Capstone.Controllers
         }
         
         [HttpDelete("admin/users/{id}")]
+        [Authorize]
         public ActionResult DeleteUser(int id)
         {
             bool success = userDAO.DeleteUser(id);
@@ -37,6 +39,20 @@ namespace Capstone.Controllers
             {
                 return NoContent();
             }
+        }
+
+        [HttpPut("admin/users/{id}")]
+        [Authorize]
+        public ActionResult EditUser(int id, ReturnUser user)
+        {
+            ReturnUser existingUser = this.userDAO.GetUserById(id);
+            if(existingUser == null)
+            {
+                return NotFound("User could not be found. It may have been deleted.");
+            }
+            ReturnUser updatedUser = this.userDAO.EditUser(user);
+
+            return Ok(updatedUser);
         }
     }
 }
