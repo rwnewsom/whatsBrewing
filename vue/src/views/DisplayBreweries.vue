@@ -124,6 +124,9 @@ export default {
   display: grid;
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://images.pexels.com/photos/2824173/pexels-photo-2824173.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
 }
 
 .filter-box {
@@ -134,10 +137,13 @@ export default {
 
 #brewery-result-count {
   margin-left: 2rem;
-  text-decoration-line: underline;
+  text-decoration-line: none;
   margin-top: 1rem;
   display: flex;
   align-self: flex-start;
+  color: $black;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .brewery-card {
@@ -155,6 +161,7 @@ export default {
   font-family: sans-serif;
   border-radius: 20px;
   margin-bottom: 2rem;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .brewery-card-title {

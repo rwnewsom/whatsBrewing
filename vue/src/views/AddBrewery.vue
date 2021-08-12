@@ -201,7 +201,7 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 #addBreweryButton{
-    background-color: $blue;
+    background-color: $yellow;
 }
 #addBreweryButton:hover{
     background-color:$white;
