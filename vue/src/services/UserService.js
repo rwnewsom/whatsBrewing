@@ -9,6 +9,10 @@ let client = axios.create(options); // Creating the equivalent of a RestClient i
 export default {
     listAllUsers(){
         return client.get('/User/admin/users');
-    }
+    },
+
+    deleteUser(id){
+        return client.delete('User/admin/users/'+id)
+    },
 
 }
