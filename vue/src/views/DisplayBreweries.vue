@@ -14,7 +14,7 @@
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
       <div id="pagination-breweries">
-        <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
+        <jw-pagination :pageSize="7" :items="filteredBreweries" @changePage="onChangePage" />
       </div>
 
     </div>
