@@ -74,7 +74,10 @@ export default {
                  UserService.deleteUser(this.selectedUserIds[i]);
                 }    
             }
-            this.$router.push({name: 'admin'});
+            this.created();
+            this.allUsers();
+            this.filteredUsers();
+            
         }
     },
 
