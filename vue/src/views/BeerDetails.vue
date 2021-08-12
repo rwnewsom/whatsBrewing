@@ -1,77 +1,43 @@
 <template>
   <div id="beer-details">
       <div class="capsule">
+        <delete-beer class="indent" />
         <h1 class="header"> Beer: The Devil is in the Details.... </h1>
         <!-- if not working check case -->
         <div class = "detailGroup">
-            <div class="row">
-                <div class="col-25">
-                    <h3>Name:</h3>
-                </div>
-                <div class="col-75">
-                    <h3>{{currentBeer.name}}</h3>
-                </div>
+            <div class="beer-details">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{currentBeer.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Brewery:</td>
+                        <td>{{currentBrewery.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Style:</td>
+                        <td>{{currentBeer.style}}</td>
+                    </tr>
+                    <tr>
+                        <td>ABV:</td>
+                        <td>{{currentBeer.abv}}</td>
+                    </tr>
+                    <tr v-if="currentBeer.ibu">
+                        <td>IBU:</td>
+                        <td>{{currentBeer.ibu}}</td>
+                    </tr>
+                </table>
             </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <h3>Brewery:</h3>
-                </div>
-                <div class="col-75">
-                    <h3>{{currentBrewery.name}}</h3>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <h3>Style:</h3>
-                </div>
-                <div class="col-75">
-                    <h3>{{currentBeer.style}}</h3>
-                </div>
+            <div class="beer-image">
+                <img v-bind:src="currentBeer.beerImageUrl" />
             </div>
         </div>
-        
-        <h5 class="desc">Description: {{currentBeer.description}}</h5>
-
-        <div class="abv-ibu">   
-            <div class="row">
-                <div class="col-25">         
-                    <h3 class="abv" data-toggle="tooltip" href="#" data-placement="right" title="Alcohol By Volume">ABV:</h3>
-                </div>
-                <div class="col-75">
-                    <h3> {{currentBeer.abv}}</h3>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">         
-                    <h3 class="ibu" v-if="currentBeer.ibu" data-toggle="tooltip" href="#" data-placement="right" title="International Bitterness Units">IBU:</h3>
-                </div>
-                <div class="col-75">
-                    <h3 v-if="currentBeer.ibu"> {{currentBeer.ibu}}</h3>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">         
-                    <h3 v-if="!currentBeer.ibu" data-toggle="tooltip" href="#" data-placement="right" title="International Bitterness Units">IBU:</h3>
-                </div>
-                <div class="col-75">
-                    <h3>Not Listed</h3>
-                </div>
-            </div>
-            
-            <delete-beer />
-
-
-            
-            
-            
+        <div class="indent">
+            <h5 class="desc">Description: {{currentBeer.description}}</h5>
         </div>
-         <div class="ReviewDetails">
-                <review-list />
-
+        <div class="ReviewDetails">
+            <review-list />
         </div>
       </div>
   <Ad v-bind:numAds="3" />    
@@ -166,7 +132,9 @@ export default {
     height: 100%;
     padding-top: 2rem;
     padding-left: 2rem;
+
 }
+
 
 .header {
     text-align: center;
@@ -185,6 +153,7 @@ export default {
     opacity:0;
     filter:alpha(opacity=0)
 }
+
 .tooltip.in{
     opacity:.8;
     filter:alpha(opacity=80)
@@ -201,18 +170,6 @@ background-color:#CC0000;
 border-radius:15px 
 }
 
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
 .row:after {
   content: "";
   display: table;
@@ -220,8 +177,61 @@ border-radius:15px
 }
 
 .detailGroup {
-    margin: 0;
-    padding: 0;
+    // background-color:red;
+    display: grid;
+    grid-template-areas: "details image";
+    grid-template-columns: 1fr 1fr;
+
+    .beer-details {
+        grid: details;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // background-color: lime;
+        margin-left: 8rem;
+        margin-right: 1rem;
+        table {
+            border-collapse: collapse;
+            border: none;
+            margin: 0;
+            // background-color: peachpuff;
+            tr, td {
+                border: none;
+                font-size: x-large;
+            }
+
+            td:nth-child(1){
+                font-weight: bold;
+            }
+
+            tr:nth-child(odd) {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .beer-image{
+        grid: image;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 8rem;
+        img {
+            border-radius: 10px;
+            overflow: hidden;
+            min-width: 25rem;
+            width: 33%;
+            max-width: 40rem;
+        }
+    }
+}
+
+.indent {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.desc {
+    padding: 2rem 0;
 }
 
 .abv-ibu{

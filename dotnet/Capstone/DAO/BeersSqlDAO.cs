@@ -88,6 +88,7 @@ namespace Capstone.DAO
                         beerDetails.Style = Convert.ToString(reader["style"]);
                         beerDetails.Description = Convert.ToString(reader["description"]);
                         beerDetails.ABV = Convert.ToDecimal(reader["ABV"]);
+                        beerDetails.BeerImageUrl = Convert.ToString(reader["beer_image_url"]);
                         if (reader["IBU"] != DBNull.Value)
                         {
                             beerDetails.IBU = Convert.ToInt32(reader["IBU"]);

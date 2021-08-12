@@ -1,16 +1,16 @@
 <template>
     <div class="review-container">
-        <h4 v-if="numberOfReviews >= 1">This beer has an average rating of {{averageRating}} </h4>
-        <h4 v-else>This beer has no reviews.</h4>
-        
-        <h4 v-if="numberOfReviews >= 1">There are {{numberOfReviews}} reviews for this beer:</h4>
-        <div class="wrapper" > 
-            <add-review-form /> 
+        <div class="indent">
+            <h4 v-if="numberOfReviews >= 1">Average rating {{averageRating}} </h4>
+            <h4 v-else>No reviews.</h4>
+            
+            <h4 v-if="numberOfReviews >= 1">{{numberOfReviews}} Reviews</h4>
+            <div> 
+                <add-review-form /> 
+            </div>
         </div>
-    <review-card  v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
-    
-  </div> 
-  
+        <review-card  v-bind:review="review" v-for="review in $store.state.reviews" v-bind:key="review.reviewId" />
+    </div> 
 </template>
 
 <script>
