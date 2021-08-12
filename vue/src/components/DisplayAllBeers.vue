@@ -173,6 +173,7 @@ export default {
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  background-color: rgba(245, 245, 245, 0.945);
 }
 
 
@@ -232,6 +233,10 @@ input[type=text] {
   font-family: sans-serif;
   border-radius: 20px;
   margin-bottom: 2rem;
+}
+.beer-card:hover{
+    margin-top: .7rem;
+    width: 19rem;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
