@@ -236,9 +236,9 @@ input[type=text] {
   background: $blue;
   text-align: center;
   width: 15rem;
-  max-height: 350px;
+  min-height: 375px;
   margin: 1rem;
-  margin-top: 2rem;
+  margin-top: 2 rem;
   font-size: 2rem;
   font-weight: bold;
   font-family: sans-serif;

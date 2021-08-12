@@ -43,7 +43,6 @@
                             <div class="beer-card-style">{{beer.style}}</div>
                         </router-link>
                 </div>
-                </div>
             </div>
         </div>
         <Ad v-bind:numAds="3" />
