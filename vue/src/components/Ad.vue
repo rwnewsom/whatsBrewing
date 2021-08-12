@@ -1,39 +1,71 @@
 <template>
     <div class="ad">
-      <img id="ad1" class="ad-img" src="">
-      <img id="ad2" class="ad-img" src="">
-      <img id="ad3" class="ad-img-2" src="" />
-      <img id="ad4" class="ad-img" src="" />
-      <img id="ad5" class="ad-img" src="">
-      <img id="ad6" class="ad-img" src="">
+      <img v-for="url in array" v-bind:key="url" class="ad-img" v-bind:src="url">
     </div>
 </template>
 
 <script>
 export default {
-  mounted(){
-    var array = ['https://i.ibb.co/vk7vX5L/Better-Call-Saul.jpg',
-                'https://i.pinimg.com/originals/f7/fe/39/f7fe39708b9d1b585304dcea08197719.jpg',
-                'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/16d9dc86194045.5d9250eb67932.jpg',
-                'https://s3-prod.adage.com/s3fs-public/beer-cases-sold-sidebar.jpg',
-                'https://www.americancraftbeer.com/wp-content/uploads/2018/12/Coors-Light-min.png',
-                'https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2020/07/web1_Drive-Sober-or-Get-Pulled-Over.jpg'];
-      function shuffle(array) {
-      var currentIndex = array.length;
-      var temporaryValue;
-      var randomIndex;
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-      return array;
+  // mounted(){
+  //   var array = ['https://i.ibb.co/vk7vX5L/Better-Call-Saul.jpg',
+  //               'https://i.pinimg.com/originals/f7/fe/39/f7fe39708b9d1b585304dcea08197719.jpg',
+  //               'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/16d9dc86194045.5d9250eb67932.jpg',
+  //               'https://s3-prod.adage.com/s3fs-public/beer-cases-sold-sidebar.jpg',
+  //               'https://www.americancraftbeer.com/wp-content/uploads/2018/12/Coors-Light-min.png',
+  //               'https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2020/07/web1_Drive-Sober-or-Get-Pulled-Over.jpg'];
+  //     function shuffle(array) {
+  //     var currentIndex = array.length;
+  //     var temporaryValue;
+  //     var randomIndex;
+  //     while (0 !== currentIndex) {
+  //       randomIndex = Math.floor(Math.random() * currentIndex);
+  //       currentIndex -= 1;
+  //       temporaryValue = array[currentIndex];
+  //       array[currentIndex] = array[randomIndex];
+  //       array[randomIndex] = temporaryValue;
+  //     }
+  //     return array.slice(0,4);
+  //   }
+  //   var shuffled_images = shuffle(array);
+  //   for(var i=0;i<shuffled_images.length-2;i++) {
+  //   document.getElementById('ad' + (i+1)).src = shuffled_images[i] ;
+  //   }
+  //},
+  data(){
+    return {
+      array: ['https://i.ibb.co/vk7vX5L/Better-Call-Saul.jpg',
+                 'https://i.pinimg.com/originals/f7/fe/39/f7fe39708b9d1b585304dcea08197719.jpg',
+                 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/16d9dc86194045.5d9250eb67932.jpg',
+                 'https://s3-prod.adage.com/s3fs-public/beer-cases-sold-sidebar.jpg',
+                 'https://www.americancraftbeer.com/wp-content/uploads/2018/12/Coors-Light-min.png',
+                 'https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2020/07/web1_Drive-Sober-or-Get-Pulled-Over.jpg']
     }
-    var shuffled_images = shuffle(array);
-    for(var i=0;i<6;i++) {
-    document.getElementById('ad' + (i+1)).src = shuffled_images[i] ;
+  },
+  computed: {
+    showAd(){
+      return this.$route.params.name == 'beers';
+    }
+  },
+  created(){
+    function shuffle(array, numAds) {
+       var currentIndex = array.length;
+       var temporaryValue;
+       var randomIndex;
+       while (0 !== currentIndex) {
+         randomIndex = Math.floor(Math.random() * currentIndex);
+         currentIndex -= 1;
+         temporaryValue = array[currentIndex];
+         array[currentIndex] = array[randomIndex];
+         array[randomIndex] = temporaryValue;
+       }
+       return array.slice(0, numAds);
+     }
+    this.array = shuffle(this.array, this.numAds)
+  },
+  props:{
+    numAds: {
+      type: Number,
+      default: 4,
     }
   }
 }
