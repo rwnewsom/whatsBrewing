@@ -5,17 +5,19 @@
       <img id="ad3" class="ad-img-2" src="" />
       <img id="ad4" class="ad-img" src="" />
       <img id="ad5" class="ad-img" src="">
+      <img id="ad6" class="ad-img" src="">
     </div>
 </template>
 
 <script>
 export default {
   mounted(){
-    var array = ['../assets/BetterCallSaul.jpg',
+    var array = ['https://i.ibb.co/vk7vX5L/Better-Call-Saul.jpg',
                 'https://i.pinimg.com/originals/f7/fe/39/f7fe39708b9d1b585304dcea08197719.jpg',
                 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/16d9dc86194045.5d9250eb67932.jpg',
                 'https://s3-prod.adage.com/s3fs-public/beer-cases-sold-sidebar.jpg',
-                'https://www.americancraftbeer.com/wp-content/uploads/2018/12/Coors-Light-min.png'];
+                'https://www.americancraftbeer.com/wp-content/uploads/2018/12/Coors-Light-min.png',
+                'https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2020/07/web1_Drive-Sober-or-Get-Pulled-Over.jpg'];
       function shuffle(array) {
       var currentIndex = array.length;
       var temporaryValue;
@@ -30,8 +32,7 @@ export default {
       return array;
     }
     var shuffled_images = shuffle(array);
-    for(var i=0;i<5;i++) {
-      console.log(shuffled_images[i])
+    for(var i=0;i<6;i++) {
     document.getElementById('ad' + (i+1)).src = shuffled_images[i] ;
     }
   }
