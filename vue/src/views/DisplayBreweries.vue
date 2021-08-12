@@ -67,6 +67,9 @@ export default {
         Ad,
         AddBrewery
     },
+    mounted () {
+        window.scrollTo(0, 0)
+    },
 
 
 

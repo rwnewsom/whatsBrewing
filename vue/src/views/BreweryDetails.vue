@@ -2,8 +2,9 @@
     <div id="brewery-details">
         <div class="brewery">
             <div v-if="showUpdate"><update-brewery v-bind:updatedBrewery="currentBrewery" /></div>
+                <div id="logoDiv"><img id="breweryLogo" class="beer-card-img" v-bind:src="currentBrewery.logo"  /></div>
             <div class="breweryDetails">
-                <h2 class="name"><span>{{currentBrewery.name}}</span></h2>
+                <h2 class="name"></h2>
                 <p class="description">{{currentBrewery.description}}</p>
                 <div class="address">
                     <p>Street Address:</p>
@@ -21,30 +22,26 @@
             <div class="beerDetails">
                 <h4>Current Beers</h4>
                 <div class="line" />
-                <div v-if="deleteOrAddAuth" class="buttonsDiv">
-                    <add-beer />
-                </div>
-                <div v-else>
-                    <p>If you are a brewer and would like edit privileges, please contact support.</p>
-                </div>
-                <div id="beers">
-                    <!-- all the beers show on the line below-->
-                    <router-link 
-                        v-for="beer of allBeers" 
-                        v-bind:key="beer.id" 
-                        v-bind:to="{name: 'beerDetails', 
-                            params: {id: beer.breweryId, beerId: beer.beerId}}"
-                        class="noline beer-card">
-                        <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
-                        <div class="beer-card-brewery">{{currentBrewery.name}}</div>
-                        <div class="beer-card-title">{{beer.name}}</div>
-                        <div class="beer-card-style">{{beer.style}}</div>
-                        
-                        
-                    </router-link>
-                </div>
-                <div>
-                    
+                <div class="beer-background">
+                    <div v-if="deleteOrAddAuth" class="buttonsDiv">
+                        <add-beer />
+                    </div>
+                    <div v-else>
+                        <p>If you are a brewer and would like edit privileges, please contact support.</p>
+                    </div>
+                    <div id="beers">
+                        <!-- all the beers show on the line below-->
+                        <router-link 
+                            v-for="beer of allBeers" 
+                            v-bind:key="beer.id" 
+                            v-bind:to="{name: 'beerDetails', 
+                                params: {id: beer.breweryId, beerId: beer.beerId}}"
+                            class="noline beer-card">
+                            <img id="breweryDeetsBeerCardPic" class="beer-card-img" v-bind:src="beer.beerImageUrl"  />
+                            <div class="beer-card-brewery">{{currentBrewery.name}}</div>
+                            <div class="beer-card-title">{{beer.name}}</div>
+                            <div class="beer-card-style">{{beer.style}}</div>
+                        </router-link>
                 </div>
             </div>
         </div>
@@ -95,6 +92,9 @@ export default {
         return false;
       }
     },
+    mounted () {
+        window.scrollTo(0, 0)
+    },
 
     /* watch: {
         allBeers(){
@@ -141,8 +141,23 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 
+#logoDiv{
+    margin-top: 1rem;
+    margin-bottom: -4rem;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#breweryLogo{
+    text-align: center;
+    width:100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+}
+
 .beerDetails{
-    padding-left: 2rem;
     padding-top: 1rem;
     margin-top: 2rem;
 }
@@ -187,10 +202,11 @@ export default {
 }
 
 .name{
+    border-radius: 2rem;
     grid-area: name;
     margin-bottom: 2rem;
-    padding: 2rem;
-    height: 3rem;
+    padding: .5rem;
+    height: .5rem;
     background-color: $blue;
     display: flex;
     align-items: center;
@@ -227,9 +243,14 @@ export default {
     border-radius: 5px;
 }
 
+.beer-background {
+    background-size: cover;
+    background-image: url("https://thumbs.dreamstime.com/z/vector-modern-abstract-geometry-triangle-pattern-black-white-seamless-geometric-background-subtle-pillow-bed-sheet-design-79029924.jpg");
+}
+
 #beers {
     display:flex;
-    margin: 0 auto;
+    padding: 0 auto;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
@@ -296,6 +317,7 @@ export default {
   font-family: sans-serif;
   border-radius: 20px;
   margin-bottom: 2rem;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .line {

@@ -13,12 +13,12 @@ namespace Capstone.DAO
 
         private string sqlListBreweries = "SELECT brewery_id, brewery_name, brewery_description, image_url FROM breweries";
 
-        private string sqlBreweryDetails = "SELECT br.brewery_id, br.brewery_name, br.brewery_description, a.street_number, a.street_name, a.city_name, a.state, a.zip_code, a.phone_number, a.url, a.map_url, br.image_url " +
+        private string sqlBreweryDetails = "SELECT br.brewery_id, br.logo, br.brewery_name, br.brewery_description, a.street_number, a.street_name, a.city_name, a.state, a.zip_code, a.phone_number, a.url, a.map_url, br.image_url " +
                                             "FROM breweries br INNER JOIN address a ON br.brewery_id = a.brewery WHERE br.brewery_id = @id"; //TODO: Parameter
 
-        private string sqlUpdateBrewery = "BEGIN TRANSACTION UPDATE breweries SET brewery_name = @brewery_name, brewery_description = @brewery_description, image_url = @image_url WHERE brewery_id = @brewery_id UPDATE address SET street_number = @street_number, street_name = @street_name, city_name = @city_name, state = @state, zip_code = @zip_code, phone_number = @phone_number, map_url = @map_url, url = @url WHERE brewery = @brewery_id COMMIT TRANSACTION";
+        private string sqlUpdateBrewery = "BEGIN TRANSACTION UPDATE breweries SET brewery_name = @brewery_name, logo = @logo, brewery_description = @brewery_description, image_url = @image_url WHERE brewery_id = @brewery_id UPDATE address SET street_number = @street_number, street_name = @street_name, city_name = @city_name, state = @state, zip_code = @zip_code, phone_number = @phone_number, map_url = @map_url, url = @url WHERE brewery = @brewery_id COMMIT TRANSACTION";
 
-        private string sqlNewBrewery = "INSERT INTO breweries (brewery_name, brewery_description, image_url) VALUES (@brewery_name, @brewery_description, @image_url); SELECT @@IDENTITY";
+        private string sqlNewBrewery = "INSERT INTO breweries (brewery_name, logo, brewery_description, image_url) VALUES (@brewery_name, @logo, @brewery_description, @image_url); SELECT @@IDENTITY";
                                                                                                                             //'Must declare the scalar variable "@street_number".'
         private string sqlNewAddress = "INSERT INTO address(street_number, street_name, city_name, state, zip_code, phone_number, brewery, url, map_url) VALUES(@street_number, @street_name, @city_name, @state, @zip_code, @phone_number, @brewery, @url, @map_url);";
         
@@ -76,6 +76,7 @@ namespace Capstone.DAO
                         breweryDetails.ZipCode = Convert.ToInt32(reader["zip_code"]);
                         breweryDetails.PhoneNumber = Convert.ToString(reader["phone_number"]);
                         breweryDetails.Url = Convert.ToString(reader["url"]);
+                        breweryDetails.Logo = Convert.ToString(reader["logo"]);
                         if (reader["map_url"] != DBNull.Value)
                         {
                             breweryDetails.MapUrl = Convert.ToString(reader["map_url"]);
@@ -121,6 +122,7 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@phone_number", brewery.PhoneNumber);
                 command.Parameters.AddWithValue("@map_url", brewery.MapUrl);
                 command.Parameters.AddWithValue("@url", brewery.Url);
+                command.Parameters.AddWithValue("@logo", brewery.Logo);
 
                 command.ExecuteNonQuery();
             }

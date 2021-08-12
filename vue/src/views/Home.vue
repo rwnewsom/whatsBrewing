@@ -40,6 +40,9 @@
 
 export default {
   name: "home",
+  mounted () {
+        window.scrollTo(0, 0)
+    },
   
 };
 </script>

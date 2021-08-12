@@ -45,6 +45,13 @@
           >
             Register
           </router-link>
+           <router-link
+            class="admin account-button"
+            v-bind:to="{ name: 'admin' }"
+            v-if="this.$store.state.user.role=='admin'"
+          >
+            Admin
+          </router-link>
         </div>
     </div>
     <router-link id="logo-container" v-bind:to="{ name: 'home' }">
@@ -192,6 +199,10 @@ body {
 }
 
 .register {
+  font-weight: bold;
+}
+
+.admin {
   font-weight: bold;
 }
 

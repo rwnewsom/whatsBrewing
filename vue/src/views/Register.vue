@@ -62,6 +62,9 @@ export default {
       registrationErrorMsg: 'There were problems registering this user.',
     };
   },
+  mounted () {
+        window.scrollTo(0, 0)
+    },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
