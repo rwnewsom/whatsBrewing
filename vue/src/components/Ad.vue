@@ -76,7 +76,8 @@ export default {
 @import "../styles/colors.scss";
 
 .ad {
-  background-color: $white;
+  background-color: rgb(231, 230, 230);
+  border-radius: 5px;
   filter: drop-shadow(-0.2rem 0.1rem 0.8rem $black);
 }
 
@@ -91,6 +92,7 @@ export default {
   border: 2px solid $black;
   margin-left: auto;
   margin-right: auto;
+  filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
 }
 
 .ad-img {

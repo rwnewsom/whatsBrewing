@@ -212,12 +212,12 @@ button {
 
 #deleteButton{
     background-color: $red;
-    color: $blue;
+    color: $white;
     margin-top: 1rem;
 }
 #deleteButton:hover{
    background-color:$black;
-    color: $blue;
+    color: $white;
 }
 
 #brewerButton{

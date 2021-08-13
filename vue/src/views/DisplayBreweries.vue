@@ -14,7 +14,7 @@
         <div class="brewery-card-title">{{brewery.name}}</div>
       </router-link>
       <div id="pagination-breweries">
-        <jw-pagination :pageSize="7" :items="filteredBreweries" @changePage="onChangePage" />
+        <jw-pagination :pageSize="5" :items="filteredBreweries" @changePage="onChangePage" />
       </div>
 
     </div>
@@ -128,7 +128,7 @@ export default {
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem;
   background-size: contain;
-  background-image: url("https://thumbs.dreamstime.com/z/vector-modern-abstract-geometry-triangle-pattern-black-white-seamless-geometric-background-subtle-pillow-bed-sheet-design-79029924.jpg");
+  background-image: url("../assets/background.jpg");
 }
 
 .filter-box {
@@ -143,9 +143,10 @@ export default {
   margin-top: 1rem;
   display: flex;
   align-self: flex-start;
-  color: $blue;
+  color: $black;
   font-size: 1.3rem;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, .7)
 }
 
 .brewery-card {
@@ -167,7 +168,6 @@ export default {
 }
 
 .brewery-card-title {
-  color: $white;
   text-transform: uppercase;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

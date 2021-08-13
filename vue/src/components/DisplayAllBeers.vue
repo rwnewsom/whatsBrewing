@@ -45,10 +45,12 @@
                         class="noline beers-card"
                         :class="(beer.name)? '':'hidden'">
                     <div class="beer-card">
-                        <img id="beerCardPic" class="beers-card-img" v-bind:src="beer.beerImageUrl"  />
-                        <div class="beers-card-brewery">{{beer.breweryName}}</div>
-                        <div class="beers-card-title">{{beer.name}}</div>
-                        <div class="beers-card-style">{{beer.style}}</div>
+                        <img class="beers-card-img" v-bind:src="beer.beerImageUrl"  />
+                        <div class="beer-card-text">
+                            <div class="beers-card-brewery">{{beer.breweryName}}</div>
+                            <div class="beers-card-title">{{beer.name}}</div>
+                            <div class="beers-card-style">{{beer.style}}</div>
+                        </div>
                     </div>
                 </router-link>
                 <div id="pagination-breweries">
@@ -158,31 +160,9 @@ export default {
     justify-content: center;
 }
 
-.beers-card-style {
-    color: $white;
-    font-size: medium;
-    font-weight: normal;
-}
-
-.beers-card-brewery {
-    color: $white;
-    font-size: medium;
-    font-weight: normal;
-}
-
-#beerCardPic {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  background-color: rgba(245, 245, 245, 0.945);
-}
-
-
 .filter-box {
   border-radius: 5px;
-  background-color: $white;
+  background-color: rgb(231, 230, 230);
   padding: 20px;
   color: $black;
   filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
@@ -190,12 +170,14 @@ export default {
 
 .row {
     color: $black;
+    filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
+    margin-top: 1rem;
 }
 
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: .5rem;
   padding-bottom: 0;
   font-weight: bold;
   font-style: oblique;
@@ -222,28 +204,56 @@ input[type=text] {
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem;
   background-size: contain;
-  background-image: url("https://thumbs.dreamstime.com/z/vector-modern-abstract-geometry-triangle-pattern-black-white-seamless-geometric-background-subtle-pillow-bed-sheet-design-79029924.jpg");
+  background-image: url("../assets/background.jpg");
 }
 
-.beers-card-title {
-  color: $white;
-  text-transform: uppercase;
-  font-size: x-large;
-}
+
 
 .beer-card {
-  color: $white;
-  background: $blue;
-  text-align: center;
-  width: 15rem;
-  min-height: 375px;
-  margin: 1rem;
-  margin-top: 2 rem;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: sans-serif;
-  border-radius: 20px;
-  margin-bottom: 2rem;
+    color: $white;
+    background: $blue;
+    text-align: center;
+    width: 16rem;
+    min-height: 375px;
+    margin: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0.25rem 0.1rem 0.5rem $black);
+    
+    :hover, img:hover ~ .beer-card-text {
+        color: $black;
+    }
+
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        background-color: rgba(245, 245, 245, 0.945);
+    }
+
+    .beer-card-text {
+        display: flex;
+        height: 125px;
+        flex-direction: column;
+        justify-content: center;
+        vertical-align: middle;
+    }
+
+    .beers-card-title {
+        text-transform: uppercase;
+        font-size: x-large;
+    }
+    
+    .beers-card-style, .beers-card-brewery {
+        font-size: medium;
+        font-weight: normal;
+    }
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

@@ -1,11 +1,9 @@
 <template>
-        <div>
-            <div class="deleteButton">
-                        <button type="button" id="deleteButton" class="btn btn-outline-danger" v-on:click="deleteBeer">
-                            Delete Beer</button>
-                    </div>
+    <div>
+        <div class="deleteButton">
+            <button type="button" id="deleteButton" class="btn btn-outline-danger" v-on:click="deleteBeer">Delete Beer</button>
         </div>
-
+    </div>
 </template>
 
 <script>
@@ -32,12 +30,13 @@ export default {
 <style lang="scss">
 @import "../styles/colors.scss";
 #deleteButton{
+    color: $white;
     background-color: $blue;
     margin-top: 1rem;
 }
 #deleteButton:hover{
-   background-color:$white;
-    color: $blue;
+    background-color:$white;
+    color: $white;
 }
     
 </style>

@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="handleSave"> 
     <div>
       <p>
-        <button class="btn btn-primary" id="addReviewButton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-primary add-review-button" id="addReviewButton" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Leave a Review
         </button>
       </p>
@@ -247,6 +247,8 @@ select{
 //   filter: drop-shadow(0.25rem 0.1rem 0.5rem $blue);
 // }
 
-
+.add-review-button {
+  margin: 1rem 0;
+}
 
 </style>
