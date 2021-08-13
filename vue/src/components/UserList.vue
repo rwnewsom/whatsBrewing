@@ -1,4 +1,4 @@
-<template :key="componentKey">
+<template>
   <div class="user-list">
       <div class="container">
 
@@ -99,7 +99,14 @@ export default {
             UserService.toggleBrewer(this.updatedUser.userId, this.updatedUser)
             .then((response) => {
               if(response.status===200){
-                this.componentKey+=1;
+                UserService.listAllUsers()
+        .then(result => {
+            console.log('Promise Resolved', result);
+
+            if(result.status === 200) {
+                this.$store.commit('LOADED_USERS', result.data);
+            }
+        });
                 
               }
             });
