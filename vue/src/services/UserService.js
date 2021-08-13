@@ -15,4 +15,8 @@ export default {
         return client.delete('User/admin/users/'+id)
     },
 
+    toggleBrewer(id, updatedUser){
+        return client.put('User/admin/users/'+id, updatedUser)
+    },
+
 }

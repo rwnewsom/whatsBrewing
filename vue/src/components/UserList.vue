@@ -7,30 +7,20 @@
         <tr>
            <th>&nbsp;</th>
           <th>Username</th>
-          <th>Role</th>
-          
+          <th>Role</th>          
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
             &nbsp;
-          </td> 
-          
+          </td>           
           <td>
-              <!-- v-model="filter.username"  -->
             <input type="text" id="usernameFilter" v-model="filter.searchUserName" />
           </td>  
-          
-          
           <td>
-              <!-- v-model="filter.firstName" -->
             <input type="text" id="roleFilter" v-model="filter.searchRole" />  
           </td>
-        
-           
-          
-           
         </tr>        
       </tbody>
 
@@ -80,16 +70,45 @@ export default {
               for(let i = 0; i < this.selectedUserIds.length; i++){
                 let index = this.allUsers.findIndex(user => user.userId == this.selectedUserIds[i]);
                   UserService.deleteUser(this.selectedUserIds[i])
-                 .then(result => {
-                   console.log('Promise Resolved', result);
+                 .then(response => {
+                   console.log('Promise Resolved', response);
 
-                   if(result.status ===200){
+                     this.$store.commit('ADD_USER', response.data);
                      this.$store.commit('DELETE_USER', index);
-                   }
+                     
+                   
                  });
                 }    
             }
             //change store
+        },
+
+        toggleBrewer(){
+          console.log('Toggle User was Clicked!', event);
+          for(let i = 0; i < this.selectedUserIds.length; i++){
+            let index = this.allUsers.findIndex(user => user.userId == this.selectedUserIds[i]);
+            this.updatedUser.userId = this.allUsers[index].userId;
+            this.updatedUser.username = this.allUsers[index].username;
+            if(this.allUsers[index].role=="user"){
+              this.updatedUser.role = "brewer";
+            }
+            else if(this.allUsers[index].role=="brewer"){
+              this.updatedUser.role = "user";
+            }
+            else{
+              return;
+            }
+            UserService.toggleBrewer(this.updatedUser.userId, this.updatedUser)
+            .then((response) => {
+              if(response.status===200){
+                this.$store.commit('DELETE_USER', index);
+                this.$store.commit('ADD_USER',)
+                
+              }
+            });
+          }
+
+
         }
     },
 
@@ -100,6 +119,13 @@ export default {
           searchRole: ''
         },
         selectedUserIds: [],
+        
+
+        updatedUser:{
+          userId: 0,
+          username: '',
+          role: '',
+        }
       }
 
     },
@@ -150,6 +176,10 @@ table{
 
 th{
     text-transform: uppercase;
+    border: 1px solid $black;
+    overflow: hidden;
+    height: 14px;
+    white-space: nowrap;
 }
 
 tbody{
