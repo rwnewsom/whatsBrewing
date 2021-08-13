@@ -72,9 +72,7 @@ export default {
                   UserService.deleteUser(this.selectedUserIds[i])
                  .then(response => {
                    console.log('Promise Resolved', response);
-
-                     this.$store.commit('ADD_USER', response.data);
-                     this.$store.commit('DELETE_USER', index);
+                   this.$store.commit('DELETE_USER', index);
                      
                    
                  });
@@ -101,8 +99,14 @@ export default {
             UserService.toggleBrewer(this.updatedUser.userId, this.updatedUser)
             .then((response) => {
               if(response.status===200){
-                this.$store.commit('DELETE_USER', index);
-                this.$store.commit('ADD_USER',)
+                UserService.listAllUsers()
+        .then(result => {
+            console.log('Promise Resolved', result);
+
+            if(result.status === 200) {
+                this.$store.commit('LOADED_USERS', result.data);
+            }
+        });
                 
               }
             });
@@ -119,6 +123,7 @@ export default {
           searchRole: ''
         },
         selectedUserIds: [],
+        componentKey:0,
         
 
         updatedUser:{
