@@ -82,8 +82,12 @@ CREATE TABLE beer_reviews (
 -- Testing
 -- These values should not be kept when going to Production
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Jamie','xJ2ZyGObKkAFdBE4mNbhRFAAWR4=','rWVNVVt3ViE=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Sally','tjNi/Q/S3eFGM9MNzYbvs1UlPkw=','XMHlXC9AvA0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Robert','lGXkdgn3WIB3SbxvoFURpU9p1D8=', '8EU9xMmhRIw=','admin');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('brewer','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('GenericInternetTR0LL','z3hpHUM6DduZQ7YkbCsNnte6TKI=','JUyemIKATCI=','user');
 
 INSERT INTO breweries (brewery_name, logo, brewery_description, image_url) VALUES ('BrewDog', 'https://s3.amazonaws.com/blab-impact-published-production/9UL6eh0EDrIvu1EN497u6utq19f0y208', 'No-nonsense chain bar specializing in the Scottish brewery''s craft beers, with regular guest brews.', 'https://www.columbusunderground.com/wp-content/uploads/2017/05/BrewDog.jpg');
 INSERT INTO breweries (brewery_name, logo, brewery_description, image_url) VALUES ('Seventh Son Brewing Co.', 'https://shortnorth.org/wp-content/uploads/2015/03/seventh-son-logo.jpg', 'Brewery specializing in ales & IPAs with a bright, rustic tasting room & visiting food trucks.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOiHtJ3oAMw-R1GwuQJa_EDdkjIrkU0K1Gw&usqp=CAU');

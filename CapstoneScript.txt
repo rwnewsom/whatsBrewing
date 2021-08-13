@@ -1,0 +1,21 @@
+S1:  Good morning, my name is {{Rob}}, I am part of team OSCAR and we're going to be providing a demo of our Brewery Finder, What's Brewing, from the perspective of different users, starting with an administrator and ending with an annonymous user.
+
+As an admin, I need to be able to view all registered users, filter by role, grant brewer privileges to users, as well as to delete problem users.  I also want those features to be unavailable to those with other roles, such as brewers and users. An administrator can, however, complete any action available to another user. I will be followed by a brewer.
+
+S3: My name is {{Sally}} and I'm loggin in as a Brewer.  As I brewer, I need to be able to add and delete beers, as well as update my current page.
+
+	BEER: https://pabstblueribbon.com/wp-content/uploads/2020/10/pbr-org.png
+
+	BREWERY: 	Name: BrewDog DogTap Columbus
+			Desc: First U.S. outpost of a renowned U.K. bar & brewery offering craft brews & American eats.
+			Street#: 96
+			StreetName: Gender Rd
+			City: Canal Winchester
+			State: OH
+			Web: https://www.brewdog.com/usa/bars/usa/brewdog-dogtap-columbus
+
+
+S4: My name is {{Jamie}} and I'm logging in as a User.  As a user, I need to be able to find beers, and rate beers that I have tried.
+
+S1:  {{Quintin}} Finally, as an annonymous user I can search for brewers and beers, and read beer reviews.  However, I cannot rate beers and leave reviews.
+Thanks for watching out demo and would be happy to discuss the current code during the expo!
