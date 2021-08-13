@@ -16,7 +16,7 @@
 
 ### In Progress
 
-1. Delete a Beer
+1. **[Done]**Delete a Beer
     - Button background - danger 
     - Have a confirmation pop-up
     - Refresh Data following delete
@@ -40,7 +40,7 @@ You should attempt to complete all of the following required use cases.
    2. **[COMPLETE]** As a Beer Lover I can view a list of a brewery’s beers to see if there’s a beer I’d like to try or a beer I have tried that I’d like to rate/review.
 
                                                                        |
-### Sprint Backlog
+### Sprint Backlog **[DONE]**
 
 1. Login: functional but needs to be cleaned up.
 2. New Brewer Account
@@ -52,7 +52,7 @@ You should attempt to complete all of the following required use cases.
 
 ### Admin Panel
 
-1. Handle Bad Users
+**[DONE]**1. Handle Bad Users
   - Admins are able to view list of and delete users
 
 2. Validate that Brewery is legitimate
