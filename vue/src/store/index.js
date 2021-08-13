@@ -85,6 +85,9 @@ export default new Vuex.Store({
     },
     DELETE_USER(state, payload){
       state.allUsers.splice(payload, 1)
+    },
+    ADD_USER(state, payload){
+      state.allUsers.push(payload)
     }
   }
 })
